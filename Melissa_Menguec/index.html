@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Melissa – Trainingsplan</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0F0F0F;--off-white:#F7F5F2;--warm-gray:#EAE7E2;--mid-gray:#9A9690;--dark-gray:#3A3835;--rose:#8A5068;--rose-light:#F5EDF1;--teal:#3E7B7A;--teal-light:#EBF5F5;--amber:#8B6914;--amber-bg:#FAF3E3;--border:#E2DDD8;--white:#FFFFFF;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.hdr{background:var(--black);padding:3rem 1.5rem 2.5rem;position:relative;overflow:hidden;}
+.hdr::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;border:1px solid #1E1E1E;}
+.hdr::before{content:'';position:absolute;bottom:-30px;right:40px;width:80px;height:80px;border-radius:50%;border:1px solid #1A1A1A;}
+.hdr-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#555;font-weight:400;margin-bottom:1.2rem;}
+.hdr-name{font-family:'Libre Baskerville',serif;font-size:2.4rem;color:#fff;line-height:1.05;margin-bottom:.6rem;}
+.hdr-name em{font-style:italic;color:#888;display:block;font-size:1.5rem;}
+.hdr-sub{font-size:12px;color:#555;font-weight:300;letter-spacing:.04em;margin-bottom:1.8rem;line-height:1.8;}
+.hdr-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.hdr-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#777;border:1px solid #333;padding:4px 10px;}
+.goal-banner{background:var(--black);border-top:1px solid #1C1C1C;padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.goal-banner-text{font-size:11px;color:#666;letter-spacing:.04em;line-height:1.6;}
+.goal-banner-text strong{color:#fff;display:block;font-weight:500;margin-bottom:.15rem;font-size:12px;}
+.nav{background:var(--black);border-top:1px solid #1A1A1A;position:sticky;top:0;z-index:90;overflow-x:auto;display:flex;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nav-btn{flex-shrink:0;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#444;background:none;border:none;border-bottom:2px solid transparent;padding:.9rem 1.2rem;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s;font-weight:400;}
+.nav-btn.active{color:#fff;border-bottom-color:#fff;}
+.main{max-width:520px;margin:0 auto;padding:2rem 1.25rem 5rem;}
+.sect-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--mid-gray);font-weight:400;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+.phase-card{border:1px solid var(--border);background:var(--white);margin-bottom:.75rem;overflow:hidden;}
+.phase-card-head{padding:1.2rem 1.25rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;}
+.phase-period{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid-gray);margin-bottom:.35rem;}
+.phase-title{font-family:'Libre Baskerville',serif;font-size:1.05rem;color:var(--black);}
+.phase-active-badge{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);font-weight:500;white-space:nowrap;margin-top:.2rem;border:1px solid var(--rose);padding:2px 7px;}
+.phase-muted-badge{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid-gray);font-weight:400;white-space:nowrap;margin-top:.2rem;border:1px solid var(--border);padding:2px 7px;}
+.phase-body{border-top:1px solid var(--border);padding:1.1rem 1.25rem;}
+.phase-desc{font-size:12.5px;color:var(--dark-gray);line-height:1.75;}
+.phase-desc strong{color:var(--black);}
+.phase-pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.85rem;}
+.phase-pill{font-size:10px;color:var(--rose);background:var(--rose-light);padding:3px 9px;letter-spacing:.03em;}
+.phase-pill.dim{color:var(--mid-gray);background:var(--warm-gray);}
+.phase-pill.teal{color:var(--teal);background:var(--teal-light);}
+.schedule{border:1px solid var(--border);background:var(--white);overflow:hidden;}
+.sched-row{display:flex;align-items:center;padding:.7rem 1.25rem;border-bottom:1px solid var(--border);}
+.sched-row:last-child{border-bottom:none;}
+.sched-dot{width:4px;height:4px;border-radius:50%;background:var(--rose);margin-right:1rem;flex-shrink:0;}
+.sched-dot.rest{background:var(--border);}
+.sched-day{font-size:12px;font-weight:500;width:85px;flex-shrink:0;}
+.sched-type{font-size:12px;color:var(--mid-gray);}
+.wi{background:var(--white);border:1px solid var(--border);padding:1.4rem 1.25rem;margin-bottom:1.5rem;}
+.wi-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid-gray);margin-bottom:.5rem;}
+.wi-title{font-family:'Libre Baskerville',serif;font-size:1.1rem;margin-bottom:.6rem;}
+.wi-desc{font-size:12.5px;color:var(--dark-gray);line-height:1.7;}
+.wi-meta{display:flex;gap:0;margin-top:1rem;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:.85rem;}
+.wi-meta-item{font-size:10.5px;color:var(--mid-gray);letter-spacing:.05em;padding-right:1rem;margin-right:1rem;border-right:1px solid var(--border);}
+.wi-meta-item:last-child{border-right:none;}
+.simple-list{background:var(--white);border:1px solid var(--border);}
+.simple-item{display:flex;align-items:flex-start;gap:.9rem;padding:.9rem 1.25rem;border-bottom:1px solid var(--border);}
+.simple-item:last-child{border-bottom:none;}
+.si-num{font-size:10.5px;color:var(--mid-gray);width:18px;flex-shrink:0;padding-top:2px;}
+.si-name{font-size:13.5px;font-weight:500;margin-bottom:.2rem;}
+.si-detail{font-size:12px;color:var(--mid-gray);}
+.si-cue{font-size:12px;color:var(--dark-gray);margin-top:.4rem;line-height:1.6;padding-left:.85rem;border-left:2px solid var(--border);}
+.muscle-sep{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid-gray);margin:1.5rem 0 .6rem;display:flex;align-items:center;gap:.7rem;}
+.muscle-sep::after{content:'';flex:1;height:1px;background:var(--border);}
+.ex{background:var(--white);border:1px solid var(--border);margin-bottom:.6rem;overflow:hidden;}
+.ex.done{border-color:var(--rose);}
+.ex-vid-wrap{position:relative;background:#111;cursor:pointer;aspect-ratio:16/9;overflow:hidden;}
+.ex-vid{width:100%;height:100%;object-fit:cover;display:block;}
+.ex-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .25s;}
+.ex.playing .ex-overlay{opacity:0;pointer-events:none;}
+.play-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;}
+.play-btn svg{margin-left:3px;}
+.ex-body{padding:1rem 1.25rem;}
+.ex-top-row{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.25rem;}
+.ex-name{font-size:14px;font-weight:500;flex:1;line-height:1.35;}
+.ex.done .ex-name{color:var(--rose);}
+.ex-check{width:18px;height:18px;border:1.5px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:all .2s;}
+.ex.done .ex-check{background:var(--rose);border-color:var(--rose);}
+.ex-check svg{display:none;}
+.ex.done .ex-check svg{display:block;}
+.ex-reps{font-size:11.5px;color:var(--mid-gray);margin-bottom:.65rem;letter-spacing:.03em;}
+.ex-cue{font-size:12.5px;color:var(--dark-gray);line-height:1.65;background:var(--off-white);padding:.7rem .9rem;border-left:2px solid var(--rose);margin-bottom:.7rem;}
+.pu-badge{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;color:var(--teal);background:var(--teal-light);padding:2px 8px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.6rem;}
+.pu-badge::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--teal);}
+.ex-why-btn{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid-gray);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:.5rem;padding:0;}
+.ex-why-btn::before{content:'';display:block;width:12px;height:1px;background:var(--mid-gray);}
+.ex-why{display:none;margin-top:.75rem;padding:.85rem 1rem;background:var(--amber-bg);border-left:2px solid var(--amber);}
+.ex-why.open{display:block;}
+.ex-why-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem;}
+.ex-why-text{font-size:12px;color:#5A4310;line-height:1.65;}
+.finisher{background:var(--black);padding:1.25rem 1.25rem 1.25rem 1.5rem;margin-top:1.5rem;border-left:3px solid var(--rose);}
+.fin-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#555;margin-bottom:.4rem;}
+.fin-name{font-size:13.5px;font-weight:500;color:#fff;margin-bottom:.3rem;}
+.fin-desc{font-size:12px;color:#666;line-height:1.6;}
+.info-block{background:var(--white);border:1px solid var(--border);padding:1.25rem;}
+.info-block p{font-size:12.5px;color:var(--dark-gray);line-height:1.75;}
+.info-block p+p{margin-top:.85rem;}
+.page{display:none;}
+.page.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-eyebrow">Trainingsplan · April – Juni 2026</div>
+  <div class="hdr-name">Melissa<br><em>Mengüc</em></div>
+  <div class="hdr-sub">25 Jahre · Hypertrophietraining<br>Körperdefinition · Pull-up · Schulterblatt · Kraftausgleich</div>
+  <div class="hdr-tags">
+    <span class="hdr-tag">Bauch Beine Po</span>
+    <span class="hdr-tag">Pull-up</span>
+    <span class="hdr-tag">Schulterblatt</span>
+    <span class="hdr-tag">Beine ausgleichen</span>
+  </div>
+</div>
+
+<div class="goal-banner">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#555" stroke-width="1"/><circle cx="8" cy="8" r="3" stroke="#888" stroke-width="1"/><line x1="8" y1="1" x2="8" y2="4" stroke="#555" stroke-width="1"/></svg>
+  <div class="goal-banner-text"><strong>Ziel: Erstes Pull-up</strong>Markierte Übungen bauen systematisch Muskeln, Griffkraft und Kontrolle auf — Schritt für Schritt.</div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showPage('info',this)">Übersicht</button>
+  <button class="nav-btn" onclick="showPage('oben',this)">Oberkörper</button>
+  <button class="nav-btn" onclick="showPage('beine',this)">Beine</button>
+  <button class="nav-btn" onclick="showPage('rumpf',this)">Rumpf</button>
+</nav>
+
+<div class="main">
+
+<!-- ÜBERSICHT -->
+<div id="page-info" class="page active">
+
+  <div class="sect-label">Ziel-Roadmap</div>
+
+  <div class="phase-card">
+    <div class="phase-card-head">
+      <div><div class="phase-period">01. April – 01. Juni 2026</div><div class="phase-title">Phase 1 · Hypertrophietraining</div></div>
+      <div class="phase-active-badge">Aktiv</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-desc">
+        <strong>5–7 Wdh · schweres Gewicht · längere Pausen</strong><br><br>
+        "Toned-Look" &amp; Muskelaufbau: Mehr Muskelmasse bei niedrigem Körperfett für einen definierten Look. Gezielte Bauch-Beine-Po Übungen für einen feminin-getoned Look.<br><br>
+        <strong>Protraktion des Schulterblatts</strong> → wahrscheinlich langes Sitzen + Schwäche im Schultergelenk. Stabilisierung der BWS, Kräftigung des unteren Trapezius &amp; Serratus Anterior.<br><br>
+        <strong>Kraft in beiden Beinen ausgleichen</strong>: Isolationsübungen für beide Beine — Kraft und Beweglichkeit wieder gewinnen.<br><br>
+        <strong>Muskulatur auf Pull-Ups vorbereiten</strong>: Gezielte Übungen für Muskeln, Griffkraft und Kontrolle.
+      </div>
+      <div class="phase-pills">
+        <span class="phase-pill">3× Oberkörper</span>
+        <span class="phase-pill">2× Beine</span>
+        <span class="phase-pill">1× Rumpf</span>
+        <span class="phase-pill teal">Pull-up Progression</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-card-head">
+      <div><div class="phase-period">02. Juni – August 2026</div><div class="phase-title">Phase 2 · Kraftaufbau &amp; Erstes Pull-up</div></div>
+      <div class="phase-muted-badge">Geplant</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-desc">Aufbau auf Phase 1: Assisted Pull-ups, negatives Pull-up, dann vollständiges Pull-up. Körperdefinition weiter verfeinern.</div>
+      <div class="phase-pills">
+        <span class="phase-pill dim">Assisted Pull-up</span>
+        <span class="phase-pill dim">Negatives Pull-up</span>
+        <span class="phase-pill dim">Erstes Pull-up</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sect-label">Wochenplan</div>
+  <div class="schedule">
+    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Montag</div><div class="sched-type">Oberkörper</div></div>
+    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Dienstag</div><div class="sched-type">Beine</div></div>
+    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Mittwoch</div><div class="sched-type">Oberkörper</div></div>
+    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Donnerstag</div><div class="sched-type">Beine</div></div>
+    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Freitag</div><div class="sched-type">Oberkörper</div></div>
+    <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Samstag</div><div class="sched-type">Rumpf</div></div>
+    <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Sonntag</div><div class="sched-type">Erholung</div></div>
+  </div>
+
+  <div class="sect-label">Warum dieser Plan?</div>
+  <div class="info-block">
+    <p>Hypertrophietraining mit 5–7 Wiederholungen und schwerem Gewicht erzeugt Muskeldichte bei niedrigem Körperfettanteil — das ist der "Toned Look": sichtbar definiert, nicht massig.</p>
+    <p>Mehr Muskelmasse bedeutet: Dein Körper sieht definierter aus, ist stärker und verbrennt im Alltag mehr Kalorien — ohne dass du ständig mehr trainieren musst.</p>
+    <p>Die Schulterblatt-Protraktion (nach vorne kippen durch langes Sitzen) wird durch gezielte Schulterblatt-Aktivierung in jeder Einheit korrigiert. Single-Leg-Übungen gleichen das Kraftungleichgewicht zwischen rechtem und linkem Bein präzise aus.</p>
+  </div>
+</div>
+
+<!-- OBERKÖRPER -->
+<div id="page-oben" class="page">
+
+  <div class="wi">
+    <div class="wi-label">Oberkörper · 3× pro Woche</div>
+    <div class="wi-title">Rücken, Arme &amp; Pull-up Vorbereitung</div>
+    <div class="wi-desc">Definierter Rücken, schlanke Arme, aufrechte Haltung — und systematisch auf das erste Pull-up hinarbeiten. Schulterblatt-Protraktion wird aktiv korrigiert.</div>
+    <div class="wi-meta">
+      <span class="wi-meta-item">55–65 Min</span>
+      <span class="wi-meta-item">3 × 5–8 Wdh</span>
+      <span class="wi-meta-item">Schweres Gewicht</span>
+    </div>
+  </div>
+
+  <div class="sect-label">Aufwärmen</div>
+  <div class="simple-list">
+    <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Cross-Trainer</div><div class="si-detail">10 Min · moderates Tempo</div></div></div>
+  </div>
+
+  <div class="sect-label">Schulter-Aktivierung &amp; Mobilität</div>
+
+  <div class="ex" id="ex-sdi">
+    <div class="ex-vid-wrap" onclick="playVid('vid-sdi','ex-sdi')">
+      <video id="vid-sdi" class="ex-vid" src="media/shoulder-dislocates.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Shoulder Dislocates</div><button class="ex-check" onclick="toggleDone('ex-sdi')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">2 Sets · 10 Wdh · Stab oder Band · sehr langsam</div>
+      <div class="ex-cue">Griff breiter als schulterbreit. Arme komplett gestreckt. Langsam über den Kopf und nach hinten führen — so weit der Bewegungsumfang erlaubt. Keine Kompensation mit dem Rücken.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-sdi')">Warum diese Übung</button>
+      <div class="ex-why" id="why-sdi"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Mobilisiert den gesamten Schulterkreis und korrigiert aktiv die Schulterblatt-Protraktion — das Nach-vorne-Kippen durch langes Sitzen. Essentiell damit Schultern im Training in richtiger Position sind und Verletzungen verhindert werden.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-bpa">
+    <div class="ex-vid-wrap" onclick="playVid('vid-bpa','ex-bpa')">
+      <video id="vid-bpa" class="ex-vid" src="media/band-pull-aparts-male.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Band Pull-Aparts</div><button class="ex-check" onclick="toggleDone('ex-bpa')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 15 Wdh · Leichtes Band</div>
+      <div class="ex-cue">Arme auf Schulterhöhe gestreckt. Band auseinanderziehen bis Hände auf Linie mit den Schultern. Schulterblätter aktiv zusammenziehen — kurz halten.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bpa')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bpa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Stärkt unteren Trapezius und Serratus Anterior — bei dir durch Protraktion geschwächt. Wenn diese Muskeln stark sind, hält das Schulterblatt automatisch die richtige Position — im Training und im Alltag.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-spu">
+    <div class="ex-vid-wrap" onclick="playVid('vid-spu','ex-spu')">
+      <video id="vid-spu" class="ex-vid" src="media/scap-pull-ups.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Scapular Pull-Ups</div><button class="ex-check" onclick="toggleDone('ex-spu')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">1 Set · max. kontrollierte Wdh</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">An der Stange hängen, Arme gestreckt. Nur die Schulterblätter nach unten ziehen — ohne Arme zu beugen. Körper hebt sich leicht. Langsam und kontrolliert zurück.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-spu')">Warum diese Übung</button>
+      <div class="ex-why" id="why-spu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Step 1 des Pull-ups — die Initiationskraft, die beim echten Pull-up zuerst gebraucht wird. Jede Wiederholung bringt dich messbar näher an dein Ziel. Gleichzeitig korrigiert es deine Schulterblatt-Protraktion direkt an der Stange.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Trapezius &amp; Rücken</div>
+
+  <div class="ex" id="ex-ekr">
+    <div class="ex-body" style="padding-top:1.1rem;">
+      <div class="ex-top-row"><div class="ex-name">Einarmiges Kurzhantel-Rudern</div><button class="ex-check" onclick="toggleDone('ex-ekr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh pro Seite · Schweres Gewicht</div>
+      <div class="ex-cue">Ellbogen nah am Körper. Am Ende der Bewegung Schulterblatt aktiv zusammenziehen und kurz halten. Rücken neutral — keine Rotation im Oberkörper.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-ekr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-ekr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Trapezius, Rhomboid und Lat — alle Muskeln für aufrechte Haltung und definierten Rücken. Direkter Aufbau für Pull-up-Kraft. Einseitig = kein Kraftungleichgewicht möglich.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-vcr">
+    <div class="ex-vid-wrap" onclick="playVid('vid-vcr','ex-vcr')">
+      <video id="vid-vcr" class="ex-vid" src="media/26611201-Cable-Seated-Row-with-V-bar_Back.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Seated Cable Row – V-Grip</div><button class="ex-check" onclick="toggleDone('ex-vcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-cue">Oberkörper geht leicht nach vorn, ziehen zum Bauchnabel. Beine bleiben angespannt, Knie leicht gebeugt. Brust auf — Schulterblätter aktiv am Ende.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-vcr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-vcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert unteren Lat und BWS-Stabilisatoren — bei Schulterblatt-Protraktion geschwächt. Konstanter Kabelzug-Widerstand durch gesamte Bewegung maximiert Muskeldichte ohne Volumen.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-wcr">
+    <div class="ex-vid-wrap" onclick="playVid('vid-wcr','ex-wcr')">
+      <video id="vid-wcr" class="ex-vid" src="media/02181201-Cable-Seated-Wide-grip-Row_Back.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Seated Cable Row – Bar Wide Grip</div><button class="ex-check" onclick="toggleDone('ex-wcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-cue">Stange direkt unterhalb der Brust bringen. Brust auf. Schulterblätter aktiv zusammenziehen — kurz halten, dann kontrolliert zurück.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-wcr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-wcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Breiter Griff betont oberen Lat und hintere Schulter. Zusammen mit engem Griff = vollständige Rückenentwicklung. Trägt direkt zum Pull-up-Aufbau bei.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Latissimus</div>
+
+  <div class="ex" id="ex-lpd">
+    <div class="ex-vid-wrap" onclick="playVid('vid-lpd','ex-lpd')">
+      <video id="vid-lpd" class="ex-vid" src="media/01501201-Cable-Bar-Lateral-Pulldown_Back.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Lat Pulldown (Cable)</div><button class="ex-check" onclick="toggleDone('ex-lpd')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">Brust zur Stange. Schulterblätter zurück und Bauchnabel ein. Fersen geerdet. Ellbogen nach unten-aussen führen — Brust oben halten.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-lpd')">Warum diese Übung</button>
+      <div class="ex-why" id="why-lpd"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Simuliert die exakte Pull-up-Bewegung. Je stärker du hier wirst, desto näher am echten Pull-up. Lat gibt außerdem die "V-Form" — wichtig für definierten Oberkörper-Look.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-rsa">
+    <div class="ex-vid-wrap" onclick="playVid('vid-rsa','ex-rsa')">
+      <video id="vid-rsa" class="ex-vid" src="media/02371201-Cable-Straight-Arm-Pulldown-(with-rope)_Back.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Rope Straight Arm Pulldown</div><button class="ex-check" onclick="toggleDone('ex-rsa')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 12 Wdh · Mittleres Gewicht</div>
+      <div class="ex-cue">Arme gestreckt. Von oben bis zur Hüfte ziehen. Du lernst zu fühlen wie der Lat arbeitet — essentiell für saubere Pull-up-Technik.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-rsa')">Warum diese Übung</button>
+      <div class="ex-why" id="why-rsa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert "Lat-Bewusstsein" — du lernst den Lat zu isolieren und bewusst einzusetzen. Essentiell für effiziente Pull-up-Technik. Ohne Schulterbelastung.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Biceps</div>
+
+  <div class="ex" id="ex-bcm">
+    <div class="ex-vid-wrap" onclick="playVid('vid-bcm','ex-bcm')">
+      <video id="vid-bcm" class="ex-vid" src="media/10321201-Lever-Alternate-Biceps-Curl_Upper-Arms_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Bicep Curl – Maschine</div><button class="ex-check" onclick="toggleDone('ex-bcm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">Ellbogen stabil auf der Auflage. Volle Streckung unten. Geführt — kein Schwingen. Schweres Gewicht baut Kraft, nicht Volumen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bcm')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bcm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Biceps ist zweiter Hauptzieher beim Pull-up. Schwere Wdh = Muskeldichte ohne Volumen — stärker ohne "aufgeblasen". Definierte Arme = starke Muskeln + niedriges Körperfett.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Trizeps</div>
+
+  <div class="ex" id="ex-tki">
+    <div class="ex-vid-wrap" onclick="playVid('vid-tki','ex-tki')">
+      <video id="vid-tki" class="ex-vid" src="media/03331201-Dumbbell-Kickback_Upper-Arms.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Trizeps Kickback (Dumbbell)</div><button class="ex-check" onclick="toggleDone('ex-tki')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Warmup Set möglich</div>
+      <div class="ex-cue">Ein Knie im Schritt nach vorn, 90° mit Hüfte. Oberkörper leicht nach vorn gebeugt. Kurzhantel in einer Linie mit der Schulter bringen. 1 Set = R/L × 8.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-tki')">Warum diese Übung</button>
+      <div class="ex-why" id="why-tki"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert langen Trizepskopf in voller Streckung — erzeugt sichtbare Trizeps-Definition an der Rückseite des Oberarms. Straffere Arme kommen von starken Trizeps, nicht von vielen kleinen Übungen.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-ote">
+    <div class="ex-vid-wrap" onclick="playVid('vid-ote','ex-ote')">
+      <video id="vid-ote" class="ex-vid" src="media/01941201-Cable-Overhead-Triceps-Extension-(rope-attachment)_Upper-Arms-FIX_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Overhead Trizeps Extension (Cable)</div><button class="ex-check" onclick="toggleDone('ex-ote')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh</div>
+      <div class="ex-cue">Oberkörper gerade. Einstellen auf Po-Höhe. Arme gerade nach oben parallel. Ellbogen bleibt stabil — nur Unterarme bewegen sich.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-ote')">Warum diese Übung</button>
+      <div class="ex-why" id="why-ote"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Overhead-Position streckt Trizeps in längster Position — wissenschaftlich die effektivste Wachstumsstimulation. Perfekte Ergänzung zu Kickback für vollständige Trizepsentwicklung.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-trp">
+    <div class="ex-vid-wrap" onclick="playVid('vid-trp','ex-trp')">
+      <video id="vid-trp" class="ex-vid" src="media/24381201-Cable-Pushdown-(with-rope-attachment)-(female)_Upper-Arms.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Trizeps Rope Pushdown</div><button class="ex-check" onclick="toggleDone('ex-trp')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh</div>
+      <div class="ex-cue">Komplett oben einstellen. Ellbogen nah am Körper. Zur Hüfte bringen und wieder hoch — Ellbogen bleibt immer bei der Hüfte. Kontrolliert.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-trp')">Warum diese Übung</button>
+      <div class="ex-why" id="why-trp"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Dritter Winkel für vollständige Trizepsdefinition. Konstanter Kabelzug-Widerstand = optimale Muskelspannung durch gesamte Bewegung.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Brust</div>
+
+  <div class="ex" id="ex-brm">
+    <div class="ex-body" style="padding-top:1.1rem;">
+      <div class="ex-top-row"><div class="ex-name">Brustpresse – Maschine</div><button class="ex-check" onclick="toggleDone('ex-brm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-cue">Rücken flach an der Lehne. Schulterblätter zurückgezogen und gehalten. Kontrolliert drücken — Ellbogen nicht überstrecken.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-brm')">Warum diese Übung</button>
+      <div class="ex-why" id="why-brm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Balance Zug:Druck (2:1) schützt Schultergesundheit. Verhindert Muskelungleichgewichte, die Schulterblatt-Protraktion verschlimmern würden.</div></div>
+    </div>
+  </div>
+
+  <div class="sect-label">Cool-down Stretching</div>
+  <div class="simple-list">
+    <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">World's Greatest Stretch</div><div class="si-detail">5 Wdh pro Seite · Gesamtkörper-Mobilität</div></div></div>
+    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Thread the Needle</div><div class="si-detail">5 Wdh pro Seite · BWS Rotation lösen</div></div></div>
+    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Overhead Trizeps &amp; Schulter Stretch</div><div class="si-detail">30 Sek pro Seite</div></div></div>
+  </div>
+</div>
+
+<!-- BEINE -->
+<div id="page-beine" class="page">
+
+  <div class="wi">
+    <div class="wi-label">Beine · 2× pro Woche</div>
+    <div class="wi-title">Gluteus, Quadriceps &amp; Kraftausgleich</div>
+    <div class="wi-desc">BBP-Definition und Kraftungleichgewicht ausgleichen. Single-Leg-Übungen trainieren jede Seite unabhängig — die schwächere Seite holt auf.</div>
+    <div class="wi-meta">
+      <span class="wi-meta-item">55–65 Min</span>
+      <span class="wi-meta-item">Single-Leg Fokus</span>
+      <span class="wi-meta-item">Schweres Gewicht</span>
+    </div>
+  </div>
+
+  <div class="sect-label">Aufwärmen &amp; Mobilität</div>
+  <div class="simple-list">
+    <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Crosstrainer</div><div class="si-detail">10 Min · beide Seiten gleichmäßig</div></div></div>
+    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Glute Bridge mit Band</div><div class="si-detail">1 Set · 10 Wdh · Gesäß und Hüfte aktivieren</div></div></div>
+    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Hip Flexor to Hamstring Stretch</div><div class="si-detail">45 Sek pro Seite · 2 Runden</div></div></div>
+    <div class="simple-item"><div class="si-num">04</div><div><div class="si-name">90/90 Hip Stretch</div><div class="si-detail">45 Sek pro Seite · schwächere Seite beachten</div></div></div>
+  </div>
+
+  <div class="muscle-sep">Gluteus (BBP-Fokus)</div>
+
+  <div class="ex" id="ex-hth">
+    <div class="ex-vid-wrap" onclick="playVid('vid-hth','ex-hth')">
+      <video id="vid-hth" class="ex-vid" src="media/57611201-Smith-Hip-Thrust-(female)_Hips_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Hip Thrust (Smith Machine)</div><button class="ex-check" onclick="toggleDone('ex-hth')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 7 Wdh · Schweres Gewicht</div>
+      <div class="ex-cue">Füsse 30° weg vom Po, Zehenspitzen leicht nach aussen gedreht. Knie in Diamantform. Vollständige Hüftstreckung oben — kurz halten und Gesäß anspannen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-hth')">Warum diese Übung</button>
+      <div class="ex-why" id="why-hth"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Effektivste Übung für Gluteus maximus — wissenschaftlich dokumentiert. Schweres Gewicht + wenig Wdh = Muskeldichte für definierten, runden Po. Nicht massig, sondern kraftvoll.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-bss">
+    <div class="ex-vid-wrap" onclick="playVid('vid-bss','ex-bss')">
+      <video id="vid-bss" class="ex-vid" src="media/22901201-Dumbbell-Bulgarian-Split-Squat-(female)_Thighs.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Bulgarian Split Squat</div><button class="ex-check" onclick="toggleDone('ex-bss')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 14 Wdh (= 7× R/L) · Kurzhanteln</div>
+      <div class="ex-cue">Für Po-Aktivation: Oberkörper 15° nach vorn. Schritt 80% von Beinlänge nach vorn. 1 Set = R&amp;L 7×. Immer mit schwächerer Seite beginnen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bss')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bss"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Eine der effektivsten Übungen für Gesäß und Quadriceps gleichzeitig. Direkter Kraftausgleich: die schwächere Seite kann nicht kompensieren — sie muss mitziehen.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-bcl">
+    <div class="ex-body" style="padding-top:1.1rem;">
+      <div class="ex-top-row"><div class="ex-name">Banded Clamshell</div><button class="ex-check" onclick="toggleDone('ex-bcl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
+      <div class="ex-cue">Miniband (stark) oberhalb der Knielinie. Schulterblätter zurück, Bauchnabel ein. 1 Set = R/L × 10. Seitenunterschiede bewusst beachten.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bcl')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bcl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Gluteus medius — seitliche Gesäßdefinition und Hüftstabilität. Hier ist oft eine Seite schwächer — gleichmäßige Belastung ist essentiell für den Kraftausgleich.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-lba">
+    <div class="ex-body" style="padding-top:1.1rem;">
+      <div class="ex-top-row"><div class="ex-name">Lying Banded Hip-Abduction</div><button class="ex-check" onclick="toggleDone('ex-lba')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
+      <div class="ex-cue">Mittelstarkes Miniband über die Knöchel. 1 Set = R/L × 10. Becken stabil halten — keine Rotation. Seitliche Dehnung spüren.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-lba')">Warum diese Übung</button>
+      <div class="ex-why" id="why-lba"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Liegend = maximale Isolation der Außenhüfte ohne Kompensation. Besonders wirksam für seitliche Gesäßdefinition. Asymmetrien sind hier sofort spürbar.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Quadriceps (Single-Leg)</div>
+
+  <div class="ex" id="ex-slsu">
+    <div class="ex-vid-wrap" onclick="playVid('vid-slsu','ex-slsu')">
+      <video id="vid-slsu" class="ex-vid" src="media/94901201-Step-Up-on-Box_Thighs_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Single-Leg Step Up</div><button class="ex-check" onclick="toggleDone('ex-slsu')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh pro Seite · Grosse Box</div>
+      <div class="ex-cue">Auf einer grossen Box. 1 Set = 8× R/L. Immer mit schwächerer Seite beginnen. Dann gleiches Gewicht und gleiche Wdh auf der stärkeren Seite.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-slsu')">Warum diese Übung</button>
+      <div class="ex-why" id="why-slsu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Präzisestes Werkzeug gegen Kraft-Asymmetrien. Jedes Bein trägt sein eigenes Gewicht — keine Möglichkeit für die stärkere Seite zu kompensieren.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-slp">
+    <div class="ex-vid-wrap" onclick="playVid('vid-slp','ex-slp')">
+      <video id="vid-slp" class="ex-vid" src="media/08831201-Lever-Horizontal-One-leg-Press_Hips.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Single Leg Press (Machine)</div><button class="ex-check" onclick="toggleDone('ex-slp')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 7 Wdh pro Seite · 1 Set = 7× R/L</div>
+      <div class="ex-cue">Unterer Rücken bleibt flach. Beide Seiten mit gleichem Gewicht — Kraftdifferenz notieren und verfolgen. Knie in Zehenrichtung.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-slp')">Warum diese Übung</button>
+      <div class="ex-why" id="why-slp"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Maschine erlaubt höheres Gewicht mit vollständiger Kontrolle. Kraft jedes Beines direkt vergleich- und dosiert steigerbar — optimales Instrument für den Kraftausgleich.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Hamstrings</div>
+
+  <div class="ex" id="ex-rdl">
+    <div class="ex-vid-wrap" onclick="playVid('vid-rdl','ex-rdl')">
+      <video id="vid-rdl" class="ex-vid" src="media/14591201-Dumbbell-Romanian-Deadlift_Hips.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Romanian Deadlift (Dumbbell)</div><button class="ex-check" onclick="toggleDone('ex-rdl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8 Wdh · Min. 15 kg Kurzhanteln gesamt</div>
+      <div class="ex-cue">Bauchnabel ein, Schulterblätter zurück. Kurzhanteln leicht unterhalb der Knielinie mit 60% Gewicht. Neutral bleiben — Hamstrings bewusst spüren.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-rdl')">Warum diese Übung</button>
+      <div class="ex-why" id="why-rdl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Exzentrische Stärke — dehnt und kräftigt Hamstrings gleichzeitig. Kurzhanteln verhindern Kompensation durch eine Seite — wichtig für deinen Kraftausgleich.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Waden</div>
+
+  <div class="ex" id="ex-slcr">
+    <div class="ex-body" style="padding-top:1.1rem;">
+      <div class="ex-top-row"><div class="ex-name">Single Leg Calf Raise (Dumbbell)</div><button class="ex-check" onclick="toggleDone('ex-slcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 12 Wdh pro Seite</div>
+      <div class="ex-cue">Hand an der Wand abstützen. Volle Streckung oben, volle Absenkung unten. Gleichmäßig — Seitenunterschiede sofort spürbar und notieren.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-slcr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-slcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Single-Leg auch bei Waden: gleicht Asymmetrien aus. Stabiles Fundament für alle anderen Beinübungen und bessere Gesamtkörperstabilität.</div></div>
+    </div>
+  </div>
+
+  <div class="finisher">
+    <div class="fin-label">Aerobischer Finisher</div>
+    <div class="fin-name">5–10 Min Stepper</div>
+    <div class="fin-desc">Nach intensivem Beintag verbrennt dein Körper Stunden lang erhöht Fett — EPOC-Effekt. Finisher verlängert dieses Fenster optimal.</div>
+  </div>
+</div>
+
+<!-- RUMPF -->
+<div id="page-rumpf" class="page">
+
+  <div class="wi">
+    <div class="wi-label">Rumpf · 1× pro Woche</div>
+    <div class="wi-title">Core, Stabilität &amp; Pull-up Basis</div>
+    <div class="wi-desc">Ein starker Core ist die Basis für Pull-up, Deadlift und Hip Thrust. Und der sichtbar flache Bauch ist ein Bonus obendrauf.</div>
+    <div class="wi-meta">
+      <span class="wi-meta-item">45–55 Min</span>
+      <span class="wi-meta-item">Kontrolle &amp; Spannung</span>
+    </div>
+  </div>
+
+  <div class="sect-label">Aufwärmen</div>
+  <div class="simple-list">
+    <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Rudergerät</div><div class="si-detail">15 Min · Schulterblätter zusammenziehen · Rumpf aktiv halten</div></div></div>
+  </div>
+
+  <div class="sect-label">Stretch &amp; Mobilität</div>
+  <div class="simple-list">
+    <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Downward Facing Dog</div><div class="si-detail">5 × 30 Sek · Rücken strecken, Schultern öffnen</div></div></div>
+    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Doorway Chest Stretch</div><div class="si-detail">3 × 30 Sek · Schulterblatt-Protraktion aktiv korrigieren</div></div></div>
+    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Glute Bridge (ohne Gewicht)</div><div class="si-detail">1 Set · 10 Wdh · Aktivierung</div></div></div>
+  </div>
+
+  <div class="sect-label">Core-Übungen</div>
+
+  <div class="ex" id="ex-dbu">
+    <div class="ex-vid-wrap" onclick="playVid('vid-dbu','ex-dbu')">
+      <video id="vid-dbu" class="ex-vid" src="media/78391201-Dead-Bug-(VERSION-3)-(female)_Waist_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Dead Bug</div><button class="ex-check" onclick="toggleDone('ex-dbu')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10 Wdh pro Seite · Möglichkeit: beide Hände hinter dem Kopf</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">LWS flach auf dem Boden. Arm und Gegenbein gleichzeitig senken. Bewusst langsam — Kontrolle ist alles. Keine Hohlkreuzbildung.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-dbu')">Warum diese Übung</button>
+      <div class="ex-why" id="why-dbu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Anti-Rotations-Stabilität — überträgt sich direkt auf Pull-up (stabiler Körper = weniger Energie verschwendet) und alle schweren Grundübungen.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-bdo">
+    <div class="ex-vid-wrap" onclick="playVid('vid-bdo','ex-bdo')">
+      <video id="vid-bdo" class="ex-vid" src="media/51821201-Bird-Dog-(VERSION-2)-(female)_Back_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Bird Dog</div><button class="ex-check" onclick="toggleDone('ex-bdo')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
+      <div class="ex-cue">Rücken gerade. L-Arm hoch, R-Bein zurück. Leicht nach unten schauen — Wirbelsäule neutral. Optional mit Kurzhantel: Hüfte immer stabil und gerade bleiben.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bdo')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bdo"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Rumpfstabilität unter Extremitätenbewegung — exakt das Muster beim Pull-up und bei allen Beinübungen. Grundlagenübung für alles Weitere.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-hol">
+    <div class="ex-body" style="padding-top:1.1rem;">
+      <div class="ex-top-row"><div class="ex-name">Hollow Up</div><button class="ex-check" onclick="toggleDone('ex-hol')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">1 Set · kontrollierte Wdh · Qualität vor Quantität</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">Bauch ganz fest einziehen — als ob du eine Orange zerquetscht. Kleine Bewegungen. Kinn einziehen. Exakt die Körperspannung, die du im Pull-up brauchst.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-hol')">Warum diese Übung</button>
+      <div class="ex-why" id="why-hol"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Hollow-Körperspannung ist exakt die Position im Pull-up. Verbindung zwischen Core und Schultern — der Schlüssel zum ersten Pull-up. Du übst hier die Ganzkörperspannung, die du dort brauchst.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-plk">
+    <div class="ex-vid-wrap" onclick="playVid('vid-plk','ex-plk')">
+      <video id="vid-plk" class="ex-vid" src="media/04631201-Front-Plank-m_waist.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Plank</div><button class="ex-check" onclick="toggleDone('ex-plk')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · Maximale Haltezeit · notieren</div>
+      <div class="ex-cue">Körper gerade. Bauchnabel einziehen. Keine Hüfte oben oder unten. Zeit notieren — wir tracken deinen Fortschritt Woche für Woche.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-plk')">Warum diese Übung</button>
+      <div class="ex-why" id="why-plk"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Isometrische Core-Kraft — unter Last stabil bleiben. Messbarer Fortschrittsindikator. Stärkerer Core = mehr Gewicht bei Deadlift, Hip Thrust und Pull-up.</div></div>
+    </div>
+  </div>
+
+  <div class="ex" id="ex-llr">
+    <div class="ex-vid-wrap" onclick="playVid('vid-llr','ex-llr')">
+      <video id="vid-llr" class="ex-vid" src="media/11631201-Lying-Leg-Raise_Waist.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Lying Leg Raise</div><button class="ex-check" onclick="toggleDone('ex-llr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 12 Wdh · langsam senken</div>
+      <div class="ex-cue">LWS aktiv flach halten während du die Beine senkst. Kein Hohlkreuz. Langsam senken = maximale Wirkung für untere Bauchmuskulatur.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-llr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-llr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Untere Bauchmuskeln — sichtbar definierter unterer Bauchbereich. LWS flach = Rücken geschützt + maximale Aktivierung. Baut auf dem Plank auf für vollständige Core-Entwicklung.</div></div>
+    </div>
+  </div>
+
+  <div class="finisher">
+    <div class="fin-label">Aerobischer Finisher</div>
+    <div class="fin-name">10 Min Crosstrainer</div>
+    <div class="fin-desc">Wenn möglich ohne Hanteln. Fokus auf Schulterblatt-Haltung: aktiv nach unten-hinten ziehen. Du übst unbewusst die Schulterblatt-Kontrolle für den Pull-up.</div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function showPage(name,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleDone(id){document.getElementById(id).classList.toggle('done');}
+function toggleWhy(id){document.getElementById(id).classList.toggle('open');}
+function playVid(vid,card){
+  const v=document.getElementById(vid);
+  const c=document.getElementById(card);
+  if(v.paused){v.play();c.classList.add('playing');}
+  else{v.pause();c.classList.remove('playing');}
+}
+</script>
+</body>
+</html>
