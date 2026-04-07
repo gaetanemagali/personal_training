@@ -72,6 +72,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 .play-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;}
 .play-btn svg{margin-left:3px;}
 .ex-body{padding:1rem 1.25rem;}
+.ex-body-top{padding:1.1rem 1.25rem 1rem;}
 .ex-top-row{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.25rem;}
 .ex-name{font-size:14px;font-weight:500;flex:1;line-height:1.35;}
 .ex.done .ex-name{color:var(--rose);}
@@ -128,11 +129,9 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 
 <div class="main">
 
-<!-- ÜBERSICHT -->
+<!-- ══ ÜBERSICHT ══ -->
 <div id="page-info" class="page active">
-
   <div class="sect-label">Ziel-Roadmap</div>
-
   <div class="phase-card">
     <div class="phase-card-head">
       <div><div class="phase-period">01. April – 01. Juni 2026</div><div class="phase-title">Phase 1 · Hypertrophietraining</div></div>
@@ -154,14 +153,13 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       </div>
     </div>
   </div>
-
   <div class="phase-card">
     <div class="phase-card-head">
       <div><div class="phase-period">02. Juni – August 2026</div><div class="phase-title">Phase 2 · Kraftaufbau &amp; Erstes Pull-up</div></div>
       <div class="phase-muted-badge">Geplant</div>
     </div>
     <div class="phase-body">
-      <div class="phase-desc">Aufbau auf Phase 1: Assisted Pull-ups, negatives Pull-up, dann vollständiges Pull-up. Körperdefinition weiter verfeinern.</div>
+      <div class="phase-desc">Aufbau auf Phase 1: Assisted Pull-ups → Negatives Pull-up → Vollständiges Pull-up. Körperdefinition weiter verfeinern.</div>
       <div class="phase-pills">
         <span class="phase-pill dim">Assisted Pull-up</span>
         <span class="phase-pill dim">Negatives Pull-up</span>
@@ -184,49 +182,44 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
   <div class="sect-label">Warum dieser Plan?</div>
   <div class="info-block">
     <p>Hypertrophietraining mit 5–7 Wiederholungen und schwerem Gewicht erzeugt Muskeldichte bei niedrigem Körperfettanteil — das ist der "Toned Look": sichtbar definiert, nicht massig.</p>
-    <p>Mehr Muskelmasse bedeutet: Dein Körper sieht definierter aus, ist stärker und verbrennt im Alltag mehr Kalorien — ohne dass du ständig mehr trainieren musst.</p>
     <p>Die Schulterblatt-Protraktion (nach vorne kippen durch langes Sitzen) wird durch gezielte Schulterblatt-Aktivierung in jeder Einheit korrigiert. Single-Leg-Übungen gleichen das Kraftungleichgewicht zwischen rechtem und linkem Bein präzise aus.</p>
   </div>
 </div>
 
-<!-- OBERKÖRPER -->
+<!-- ══ OBERKÖRPER ══ -->
 <div id="page-oben" class="page">
-
   <div class="wi">
     <div class="wi-label">Oberkörper · 3× pro Woche</div>
     <div class="wi-title">Rücken, Arme &amp; Pull-up Vorbereitung</div>
     <div class="wi-desc">Definierter Rücken, schlanke Arme, aufrechte Haltung — und systematisch auf das erste Pull-up hinarbeiten. Schulterblatt-Protraktion wird aktiv korrigiert.</div>
     <div class="wi-meta">
       <span class="wi-meta-item">55–65 Min</span>
-      <span class="wi-meta-item">3 × 5–8 Wdh</span>
+      <span class="wi-meta-item">3 × 5–7 Wdh</span>
       <span class="wi-meta-item">Schweres Gewicht</span>
     </div>
   </div>
 
-  <div class="sect-label">Aufwärmen</div>
-  <div class="simple-list">
-    <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Cross-Trainer</div><div class="si-detail">10 Min · moderates Tempo</div></div></div>
-  </div>
+  <div class="sect-label">Aufwärmen · Dynamischer Stretch &amp; Mobility</div>
 
-  <div class="sect-label">Schulter-Aktivierung &amp; Mobilität</div>
-
+  <!-- Shoulder Dislocates — VIDEO ✅ -->
   <div class="ex" id="ex-sdi">
     <div class="ex-vid-wrap" onclick="playVid('vid-sdi','ex-sdi')">
-      <video id="vid-sdi" class="ex-vid" src="media/shoulder-dislocates.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-sdi" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/shoulder-dislocates.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Shoulder Dislocates</div><button class="ex-check" onclick="toggleDone('ex-sdi')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">2 Sets · 10 Wdh · Stab oder Band · sehr langsam</div>
-      <div class="ex-cue">Griff breiter als schulterbreit. Arme komplett gestreckt. Langsam über den Kopf und nach hinten führen — so weit der Bewegungsumfang erlaubt. Keine Kompensation mit dem Rücken.</div>
+      <div class="ex-cue">Griff breiter als schulterbreit. Arme komplett gestreckt. Langsam über den Kopf und nach hinten — so weit der Bewegungsumfang erlaubt. Keine Kompensation mit dem Rücken.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-sdi')">Warum diese Übung</button>
-      <div class="ex-why" id="why-sdi"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Mobilisiert den gesamten Schulterkreis und korrigiert aktiv die Schulterblatt-Protraktion — das Nach-vorne-Kippen durch langes Sitzen. Essentiell damit Schultern im Training in richtiger Position sind und Verletzungen verhindert werden.</div></div>
+      <div class="ex-why" id="why-sdi"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Mobilisiert den gesamten Schulterkreis und korrigiert aktiv die Schulterblatt-Protraktion — das Nach-vorne-Kippen durch langes Sitzen. Essentiell damit Schultern im Training in richtiger Position sind.</div></div>
     </div>
   </div>
 
+  <!-- Band Pull-Aparts — VIDEO ✅ -->
   <div class="ex" id="ex-bpa">
     <div class="ex-vid-wrap" onclick="playVid('vid-bpa','ex-bpa')">
-      <video id="vid-bpa" class="ex-vid" src="media/band-pull-aparts-male.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-bpa" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/band-pull-aparts-male.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
@@ -234,13 +227,14 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-reps">3 Sets · 15 Wdh · Leichtes Band</div>
       <div class="ex-cue">Arme auf Schulterhöhe gestreckt. Band auseinanderziehen bis Hände auf Linie mit den Schultern. Schulterblätter aktiv zusammenziehen — kurz halten.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-bpa')">Warum diese Übung</button>
-      <div class="ex-why" id="why-bpa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Stärkt unteren Trapezius und Serratus Anterior — bei dir durch Protraktion geschwächt. Wenn diese Muskeln stark sind, hält das Schulterblatt automatisch die richtige Position — im Training und im Alltag.</div></div>
+      <div class="ex-why" id="why-bpa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Stärkt unteren Trapezius und Serratus Anterior — bei dir durch Protraktion geschwächt. Wenn diese Muskeln stark sind, hält das Schulterblatt automatisch die richtige Position im Training und im Alltag.</div></div>
     </div>
   </div>
 
+  <!-- Scapular Pull-Ups — VIDEO ✅ -->
   <div class="ex" id="ex-spu">
     <div class="ex-vid-wrap" onclick="playVid('vid-spu','ex-spu')">
-      <video id="vid-spu" class="ex-vid" src="media/scap-pull-ups.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-spu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/scap-pull-ups.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
@@ -249,75 +243,116 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="pu-badge">Pull-up Vorbereitung</div>
       <div class="ex-cue">An der Stange hängen, Arme gestreckt. Nur die Schulterblätter nach unten ziehen — ohne Arme zu beugen. Körper hebt sich leicht. Langsam und kontrolliert zurück.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-spu')">Warum diese Übung</button>
-      <div class="ex-why" id="why-spu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Step 1 des Pull-ups — die Initiationskraft, die beim echten Pull-up zuerst gebraucht wird. Jede Wiederholung bringt dich messbar näher an dein Ziel. Gleichzeitig korrigiert es deine Schulterblatt-Protraktion direkt an der Stange.</div></div>
+      <div class="ex-why" id="why-spu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Step 1 des Pull-ups — die Initiationskraft, die beim echten Pull-up zuerst gebraucht wird. Jede Wiederholung bringt dich messbar näher. Korrigiert gleichzeitig deine Schulterblatt-Protraktion direkt an der Stange.</div></div>
     </div>
   </div>
 
-  <div class="muscle-sep">Trapezius &amp; Rücken</div>
+  <div class="sect-label">Gezielte Oberkörper &amp; Arm-Übungen · 3 × 5–7 Wdh</div>
 
+  <div class="muscle-sep">Trapezius</div>
+
+  <!-- Einarmiges KH-Rudern — kein Video -->
   <div class="ex" id="ex-ekr">
-    <div class="ex-body" style="padding-top:1.1rem;">
+    <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Einarmiges Kurzhantel-Rudern</div><button class="ex-check" onclick="toggleDone('ex-ekr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh pro Seite · Schweres Gewicht</div>
-      <div class="ex-cue">Ellbogen nah am Körper. Am Ende der Bewegung Schulterblatt aktiv zusammenziehen und kurz halten. Rücken neutral — keine Rotation im Oberkörper.</div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh pro Seite · Schweres Gewicht</div>
+      <div class="ex-cue">Ellbogen nah am Körper. Am Ende Schulterblatt aktiv zusammenziehen — 1 Sek halten. Rücken neutral, keine Rotation im Oberkörper.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-ekr')">Warum diese Übung</button>
       <div class="ex-why" id="why-ekr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Trapezius, Rhomboid und Lat — alle Muskeln für aufrechte Haltung und definierten Rücken. Direkter Aufbau für Pull-up-Kraft. Einseitig = kein Kraftungleichgewicht möglich.</div></div>
     </div>
   </div>
 
-  <div class="ex" id="ex-vcr">
-    <div class="ex-vid-wrap" onclick="playVid('vid-vcr','ex-vcr')">
-      <video id="vid-vcr" class="ex-vid" src="media/26611201-Cable-Seated-Row-with-V-bar_Back.mp4" loop muted playsinline preload="none"></video>
+  <!-- T-Bar Rudern — kein Video -->
+  <div class="ex" id="ex-tbr">
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">T-Bar Rudern mit Langhantel</div><button class="ex-check" onclick="toggleDone('ex-tbr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh · Schweres Gewicht</div>
+      <div class="ex-cue">Neutrale Wirbelsäule — Rücken gerade, kein Rundrücken. Ellbogen eng am Körper entlang ziehen. Schulterblätter am Ende zusammendrücken und kurz halten.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-tbr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-tbr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Baut massiv den mittleren Rücken auf. Schwere Gewichte mit wenig Wdh erzeugen Muskeldichte ohne Volumen — genau das, was du mit "schlanken Muskeln" meinst.</div></div>
+    </div>
+  </div>
+
+  <!-- Butterfly Reverse — kein Video -->
+  <div class="ex" id="ex-bfr">
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">Butterfly Reverse</div><button class="ex-check" onclick="toggleDone('ex-bfr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8–10 Wdh · Mittleres Gewicht</div>
+      <div class="ex-cue">Brust auf der Polsterung. Arme seitlich und leicht gebeugt nach hinten führen. Schulterblätter aktiv zusammenziehen — nicht schwingen, kontrolliert.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bfr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bfr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Korrigiert direkt deine Schulterblatt-Protraktion: zieht die Schulterblätter zusammen und kräftigt die Muskeln, die sie dort halten. Erzeugt außerdem die "runde Schulter"-Definition für den toned Oberkörper-Look.</div></div>
+    </div>
+  </div>
+
+  <!-- Inverted Rows — kein Video -->
+  <div class="ex" id="ex-inv">
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">Inverted Rows an der Stange</div><button class="ex-check" onclick="toggleDone('ex-inv')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · max. Wdh · Körpergewicht</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">Körper gerade wie ein Brett — kein Durchhängen in der Hüfte. Brust zur Stange ziehen. Starte geneigter (leichter) und arbeite dich zur Horizontale vor.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-inv')">Warum diese Übung</button>
+      <div class="ex-why" id="why-inv"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Das horizontale Pull-up — trainiert identische Muskeln (Lat, Biceps, Rhomboid) mit Körpergewicht. Die Stärke überträgt sich direkt auf deinen Pull-up. Eine der wichtigsten Übungen für dein Ziel.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Latissimus</div>
+
+  <!-- Lat Pulldown — VIDEO ✅ -->
+  <div class="ex" id="ex-lpd">
+    <div class="ex-vid-wrap" onclick="playVid('vid-lpd','ex-lpd')">
+      <video id="vid-lpd" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/01501201-Cable-Bar-Lateral-Pulldown_Back.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Seated Cable Row – V-Grip</div><button class="ex-check" onclick="toggleDone('ex-vcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-top-row"><div class="ex-name">Lat Pulldown</div><button class="ex-check" onclick="toggleDone('ex-lpd')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh · Schweres Gewicht</div>
+      <div class="pu-badge">Pull-up Vorbereitung</div>
+      <div class="ex-cue">Brust zur Stange. Schulterblätter zurück und Bauchnabel ein. Fersen geerdet. Ellbogen nach unten-aussen führen — Brust oben halten.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-lpd')">Warum diese Übung</button>
+      <div class="ex-why" id="why-lpd"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Simuliert die exakte Pull-up-Bewegung. Je stärker du hier wirst, desto näher bist du am echten Pull-up. Lat gibt außerdem die "V-Form" — wichtig für definierten Oberkörper-Look.</div></div>
+    </div>
+  </div>
+
+  <!-- Enges Rudern V-Grip — VIDEO ✅ -->
+  <div class="ex" id="ex-vcr">
+    <div class="ex-vid-wrap" onclick="playVid('vid-vcr','ex-vcr')">
+      <video id="vid-vcr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/26611201-Cable-Seated-Row-with-V-bar_Back.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Enges Rudern am Kabelzug</div><button class="ex-check" onclick="toggleDone('ex-vcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh · Schweres Gewicht</div>
       <div class="ex-cue">Oberkörper geht leicht nach vorn, ziehen zum Bauchnabel. Beine bleiben angespannt, Knie leicht gebeugt. Brust auf — Schulterblätter aktiv am Ende.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-vcr')">Warum diese Übung</button>
       <div class="ex-why" id="why-vcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert unteren Lat und BWS-Stabilisatoren — bei Schulterblatt-Protraktion geschwächt. Konstanter Kabelzug-Widerstand durch gesamte Bewegung maximiert Muskeldichte ohne Volumen.</div></div>
     </div>
   </div>
 
+  <!-- Breites Rudern Wide Grip — VIDEO ✅ -->
   <div class="ex" id="ex-wcr">
     <div class="ex-vid-wrap" onclick="playVid('vid-wcr','ex-wcr')">
-      <video id="vid-wcr" class="ex-vid" src="media/02181201-Cable-Seated-Wide-grip-Row_Back.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-wcr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/02181201-Cable-Seated-Wide-grip-Row_Back.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Seated Cable Row – Bar Wide Grip</div><button class="ex-check" onclick="toggleDone('ex-wcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-top-row"><div class="ex-name">Breites Rudern am Kabelzug</div><button class="ex-check" onclick="toggleDone('ex-wcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh · Schweres Gewicht</div>
       <div class="ex-cue">Stange direkt unterhalb der Brust bringen. Brust auf. Schulterblätter aktiv zusammenziehen — kurz halten, dann kontrolliert zurück.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-wcr')">Warum diese Übung</button>
       <div class="ex-why" id="why-wcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Breiter Griff betont oberen Lat und hintere Schulter. Zusammen mit engem Griff = vollständige Rückenentwicklung. Trägt direkt zum Pull-up-Aufbau bei.</div></div>
     </div>
   </div>
 
-  <div class="muscle-sep">Latissimus</div>
-
-  <div class="ex" id="ex-lpd">
-    <div class="ex-vid-wrap" onclick="playVid('vid-lpd','ex-lpd')">
-      <video id="vid-lpd" class="ex-vid" src="media/01501201-Cable-Bar-Lateral-Pulldown_Back.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Lat Pulldown (Cable)</div><button class="ex-check" onclick="toggleDone('ex-lpd')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
-      <div class="pu-badge">Pull-up Vorbereitung</div>
-      <div class="ex-cue">Brust zur Stange. Schulterblätter zurück und Bauchnabel ein. Fersen geerdet. Ellbogen nach unten-aussen führen — Brust oben halten.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-lpd')">Warum diese Übung</button>
-      <div class="ex-why" id="why-lpd"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Simuliert die exakte Pull-up-Bewegung. Je stärker du hier wirst, desto näher am echten Pull-up. Lat gibt außerdem die "V-Form" — wichtig für definierten Oberkörper-Look.</div></div>
-    </div>
-  </div>
-
+  <!-- Rope Straight Arm Pulldown — VIDEO ✅ -->
   <div class="ex" id="ex-rsa">
     <div class="ex-vid-wrap" onclick="playVid('vid-rsa','ex-rsa')">
-      <video id="vid-rsa" class="ex-vid" src="media/02371201-Cable-Straight-Arm-Pulldown-(with-rope)_Back.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-rsa" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/02371201-Cable-Straight-Arm-Pulldown-(with-rope)_Back.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Rope Straight Arm Pulldown</div><button class="ex-check" onclick="toggleDone('ex-rsa')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 12 Wdh · Mittleres Gewicht</div>
+      <div class="ex-reps">3 Sets · 10–12 Wdh · Mittleres Gewicht</div>
       <div class="ex-cue">Arme gestreckt. Von oben bis zur Hüfte ziehen. Du lernst zu fühlen wie der Lat arbeitet — essentiell für saubere Pull-up-Technik.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-rsa')">Warum diese Übung</button>
       <div class="ex-why" id="why-rsa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert "Lat-Bewusstsein" — du lernst den Lat zu isolieren und bewusst einzusetzen. Essentiell für effiziente Pull-up-Technik. Ohne Schulterbelastung.</div></div>
@@ -326,14 +361,15 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 
   <div class="muscle-sep">Biceps</div>
 
+  <!-- Bicep Curl Maschine — VIDEO ✅ -->
   <div class="ex" id="ex-bcm">
     <div class="ex-vid-wrap" onclick="playVid('vid-bcm','ex-bcm')">
-      <video id="vid-bcm" class="ex-vid" src="media/10321201-Lever-Alternate-Biceps-Curl_Upper-Arms_.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-bcm" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/10321201-Lever-Alternate-Biceps-Curl_Upper-Arms_.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Bicep Curl – Maschine</div><button class="ex-check" onclick="toggleDone('ex-bcm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh · Schweres Gewicht</div>
       <div class="pu-badge">Pull-up Vorbereitung</div>
       <div class="ex-cue">Ellbogen stabil auf der Auflage. Volle Streckung unten. Geführt — kein Schwingen. Schweres Gewicht baut Kraft, nicht Volumen.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-bcm')">Warum diese Übung</button>
@@ -343,13 +379,14 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 
   <div class="muscle-sep">Trizeps</div>
 
+  <!-- Trizeps Kickback KH — VIDEO ✅ -->
   <div class="ex" id="ex-tki">
     <div class="ex-vid-wrap" onclick="playVid('vid-tki','ex-tki')">
-      <video id="vid-tki" class="ex-vid" src="media/03331201-Dumbbell-Kickback_Upper-Arms.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-tki" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/03331201-Dumbbell-Kickback_Upper-Arms.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Trizeps Kickback (Dumbbell)</div><button class="ex-check" onclick="toggleDone('ex-tki')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-top-row"><div class="ex-name">Trizeps Kickback mit Kurzhantel</div><button class="ex-check" onclick="toggleDone('ex-tki')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 8 Wdh · Warmup Set möglich</div>
       <div class="ex-cue">Ein Knie im Schritt nach vorn, 90° mit Hüfte. Oberkörper leicht nach vorn gebeugt. Kurzhantel in einer Linie mit der Schulter bringen. 1 Set = R/L × 8.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-tki')">Warum diese Übung</button>
@@ -357,13 +394,14 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
 
+  <!-- Overhead Trizeps Extension — VIDEO ✅ -->
   <div class="ex" id="ex-ote">
     <div class="ex-vid-wrap" onclick="playVid('vid-ote','ex-ote')">
-      <video id="vid-ote" class="ex-vid" src="media/01941201-Cable-Overhead-Triceps-Extension-(rope-attachment)_Upper-Arms-FIX_.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-ote" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/01941201-Cable-Overhead-Triceps-Extension-(rope-attachment)_Upper-Arms-FIX_.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Overhead Trizeps Extension (Cable)</div><button class="ex-check" onclick="toggleDone('ex-ote')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-top-row"><div class="ex-name">Overhead Trizeps Extension mit Kabelzug</div><button class="ex-check" onclick="toggleDone('ex-ote')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 8 Wdh</div>
       <div class="ex-cue">Oberkörper gerade. Einstellen auf Po-Höhe. Arme gerade nach oben parallel. Ellbogen bleibt stabil — nur Unterarme bewegen sich.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-ote')">Warum diese Übung</button>
@@ -371,43 +409,29 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
 
-  <div class="ex" id="ex-trp">
-    <div class="ex-vid-wrap" onclick="playVid('vid-trp','ex-trp')">
-      <video id="vid-trp" class="ex-vid" src="media/24381201-Cable-Pushdown-(with-rope-attachment)-(female)_Upper-Arms.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Trizeps Rope Pushdown</div><button class="ex-check" onclick="toggleDone('ex-trp')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh</div>
-      <div class="ex-cue">Komplett oben einstellen. Ellbogen nah am Körper. Zur Hüfte bringen und wieder hoch — Ellbogen bleibt immer bei der Hüfte. Kontrolliert.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-trp')">Warum diese Übung</button>
-      <div class="ex-why" id="why-trp"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Dritter Winkel für vollständige Trizepsdefinition. Konstanter Kabelzug-Widerstand = optimale Muskelspannung durch gesamte Bewegung.</div></div>
-    </div>
-  </div>
-
   <div class="muscle-sep">Brust</div>
 
+  <!-- Brustpresse — kein Video -->
   <div class="ex" id="ex-brm">
-    <div class="ex-body" style="padding-top:1.1rem;">
+    <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Brustpresse – Maschine</div><button class="ex-check" onclick="toggleDone('ex-brm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh · Schweres Gewicht</div>
+      <div class="ex-reps">3 Sets · 5–7 Wdh · Schweres Gewicht</div>
       <div class="ex-cue">Rücken flach an der Lehne. Schulterblätter zurückgezogen und gehalten. Kontrolliert drücken — Ellbogen nicht überstrecken.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-brm')">Warum diese Übung</button>
       <div class="ex-why" id="why-brm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Balance Zug:Druck (2:1) schützt Schultergesundheit. Verhindert Muskelungleichgewichte, die Schulterblatt-Protraktion verschlimmern würden.</div></div>
     </div>
   </div>
 
-  <div class="sect-label">Cool-down Stretching</div>
+  <div class="sect-label">Stretching</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">World's Greatest Stretch</div><div class="si-detail">5 Wdh pro Seite · Gesamtkörper-Mobilität</div></div></div>
-    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Thread the Needle</div><div class="si-detail">5 Wdh pro Seite · BWS Rotation lösen</div></div></div>
-    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Overhead Trizeps &amp; Schulter Stretch</div><div class="si-detail">30 Sek pro Seite</div></div></div>
+    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Overhead Trizeps &amp; Schulter Stretch</div><div class="si-detail">30 Sek pro Seite</div></div></div>
+    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Thread the Needle</div><div class="si-detail">5 Wdh pro Seite · BWS Rotation lösen</div></div></div>
   </div>
 </div>
 
-<!-- BEINE -->
+<!-- ══ BEINE ══ -->
 <div id="page-beine" class="page">
-
   <div class="wi">
     <div class="wi-label">Beine · 2× pro Woche</div>
     <div class="wi-title">Gluteus, Quadriceps &amp; Kraftausgleich</div>
@@ -419,132 +443,196 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
 
-  <div class="sect-label">Aufwärmen &amp; Mobilität</div>
+  <div class="sect-label">Aufwärmen</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Crosstrainer</div><div class="si-detail">10 Min · beide Seiten gleichmäßig</div></div></div>
-    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Glute Bridge mit Band</div><div class="si-detail">1 Set · 10 Wdh · Gesäß und Hüfte aktivieren</div></div></div>
-    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Hip Flexor to Hamstring Stretch</div><div class="si-detail">45 Sek pro Seite · 2 Runden</div></div></div>
-    <div class="simple-item"><div class="si-num">04</div><div><div class="si-name">90/90 Hip Stretch</div><div class="si-detail">45 Sek pro Seite · schwächere Seite beachten</div></div></div>
   </div>
 
-  <div class="muscle-sep">Gluteus (BBP-Fokus)</div>
+  <div class="sect-label">Stretching &amp; Mobility</div>
 
-  <div class="ex" id="ex-hth">
-    <div class="ex-vid-wrap" onclick="playVid('vid-hth','ex-hth')">
-      <video id="vid-hth" class="ex-vid" src="media/57611201-Smith-Hip-Thrust-(female)_Hips_.mp4" loop muted playsinline preload="none"></video>
+  <!-- Glute Bridge mit Band — kein Video -->
+  <div class="ex" id="ex-gbm">
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">Glute Bridge mit Band</div><button class="ex-check" onclick="toggleDone('ex-gbm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">2 Sets · 15 Wdh · Leichtes Band</div>
+      <div class="ex-cue">Band oberhalb der Knie. Füsse flach, schulterbreit. Hüfte vollständig strecken und oben kurz halten. Knie aktiv nach aussen drücken gegen das Band.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-gbm')">Warum diese Übung</button>
+      <div class="ex-why" id="why-gbm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Aktiviert Gluteus maximus und medius gleichzeitig vor dem Training. Das Band fordert die Außenhüfte zusätzlich heraus — bessere Muskelaktivierung für alle folgenden Übungen.</div></div>
+    </div>
+  </div>
+
+  <!-- Hip Flexor to Hamstring Stretch — VIDEO ✅ -->
+  <div class="ex" id="ex-hfs">
+    <div class="ex-vid-wrap" onclick="playVid('vid-hfs','ex-hfs')">
+      <video id="vid-hfs" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/hip-flexor-to-hamstring-stretch.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Hip Thrust (Smith Machine)</div><button class="ex-check" onclick="toggleDone('ex-hth')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 7 Wdh · Schweres Gewicht</div>
-      <div class="ex-cue">Füsse 30° weg vom Po, Zehenspitzen leicht nach aussen gedreht. Knie in Diamantform. Vollständige Hüftstreckung oben — kurz halten und Gesäß anspannen.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-hth')">Warum diese Übung</button>
-      <div class="ex-why" id="why-hth"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Effektivste Übung für Gluteus maximus — wissenschaftlich dokumentiert. Schweres Gewicht + wenig Wdh = Muskeldichte für definierten, runden Po. Nicht massig, sondern kraftvoll.</div></div>
+      <div class="ex-top-row"><div class="ex-name">Hip Flexor to Hamstring Stretch</div><button class="ex-check" onclick="toggleDone('ex-hfs')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">45 Sek pro Seite · 2 Runden</div>
+      <div class="ex-cue">Im tiefen Ausfallschritt starten. Vorderes Bein strecken und zurücklehnen um Hamstring zu dehnen. Fließend zwischen den Positionen wechseln.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-hfs')">Warum diese Übung</button>
+      <div class="ex-why" id="why-hfs"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Löst Verkürzungen in Hüftbeuger und Hamstrings — typisch bei langem Sitzen. Verbessert Bewegungsumfang für alle Squats, Lunges und Hip Thrusts. Essenzielles Warmup für Beintag.</div></div>
     </div>
   </div>
 
-  <div class="ex" id="ex-bss">
-    <div class="ex-vid-wrap" onclick="playVid('vid-bss','ex-bss')">
-      <video id="vid-bss" class="ex-vid" src="media/22901201-Dumbbell-Bulgarian-Split-Squat-(female)_Thighs.mp4" loop muted playsinline preload="none"></video>
+  <!-- 90/90 Hip Stretch — VIDEO ✅ -->
+  <div class="ex" id="ex-hsr">
+    <div class="ex-vid-wrap" onclick="playVid('vid-hsr','ex-hsr')">
+      <video id="vid-hsr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/90-90-external-rotation.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Bulgarian Split Squat</div><button class="ex-check" onclick="toggleDone('ex-bss')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 14 Wdh (= 7× R/L) · Kurzhanteln</div>
-      <div class="ex-cue">Für Po-Aktivation: Oberkörper 15° nach vorn. Schritt 80% von Beinlänge nach vorn. 1 Set = R&amp;L 7×. Immer mit schwächerer Seite beginnen.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-bss')">Warum diese Übung</button>
-      <div class="ex-why" id="why-bss"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Eine der effektivsten Übungen für Gesäß und Quadriceps gleichzeitig. Direkter Kraftausgleich: die schwächere Seite kann nicht kompensieren — sie muss mitziehen.</div></div>
+      <div class="ex-top-row"><div class="ex-name">90/90 Hip Stretch</div><button class="ex-check" onclick="toggleDone('ex-hsr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">45 Sek pro Seite · 2 Runden</div>
+      <div class="ex-cue">Beide Beine in 90°. Versuche das vordere Knie am Boden zu bringen R&L. Stütze dich mit Armen nach hinten und öffne die Brust. Aufrechter Rücken.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-hsr')">Warum diese Übung</button>
+      <div class="ex-why" id="why-hsr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Verbessert die Hüftrotationsmobilität in beide Richtungen gleichzeitig. Wichtig für tiefe Squats und Bulgarian Split Squats — mehr Bewegungsumfang = mehr Muskelaktivierung.</div></div>
     </div>
   </div>
 
-  <div class="ex" id="ex-bcl">
-    <div class="ex-body" style="padding-top:1.1rem;">
-      <div class="ex-top-row"><div class="ex-name">Banded Clamshell</div><button class="ex-check" onclick="toggleDone('ex-bcl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
-      <div class="ex-cue">Miniband (stark) oberhalb der Knielinie. Schulterblätter zurück, Bauchnabel ein. 1 Set = R/L × 10. Seitenunterschiede bewusst beachten.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-bcl')">Warum diese Übung</button>
-      <div class="ex-why" id="why-bcl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Gluteus medius — seitliche Gesäßdefinition und Hüftstabilität. Hier ist oft eine Seite schwächer — gleichmäßige Belastung ist essentiell für den Kraftausgleich.</div></div>
+  <div class="sect-label">Muskelspezifische Übungen</div>
+
+  <div class="muscle-sep">Quadriceps</div>
+
+  <!-- Walking Lunges — VIDEO ✅ -->
+  <div class="ex" id="ex-wlu">
+    <div class="ex-vid-wrap" onclick="playVid('vid-wlu','ex-wlu')">
+      <video id="vid-wlu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/dumbbell-walking-lunges.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Walking Lunges</div><button class="ex-check" onclick="toggleDone('ex-wlu')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 8–10 Wdh pro Bein · Kurzhanteln</div>
+      <div class="ex-cue">Großer Schritt nach vorne. Hinteres Knie sinkt kontrolliert Richtung Boden. Oberkörper aufrecht. Mit dem vorderen Bein abdrücken zum nächsten Schritt. Immer mit schwächerer Seite beginnen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-wlu')">Warum diese Übung</button>
+      <div class="ex-why" id="why-wlu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Quadriceps und Gluteus gleichzeitig — unilateral, sodass jede Seite unabhängig arbeitet. Hilft direkt beim Kraftausgleich zwischen rechtem und linkem Bein.</div></div>
     </div>
   </div>
 
-  <div class="ex" id="ex-lba">
-    <div class="ex-body" style="padding-top:1.1rem;">
-      <div class="ex-top-row"><div class="ex-name">Lying Banded Hip-Abduction</div><button class="ex-check" onclick="toggleDone('ex-lba')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
-      <div class="ex-cue">Mittelstarkes Miniband über die Knöchel. 1 Set = R/L × 10. Becken stabil halten — keine Rotation. Seitliche Dehnung spüren.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-lba')">Warum diese Übung</button>
-      <div class="ex-why" id="why-lba"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Liegend = maximale Isolation der Außenhüfte ohne Kompensation. Besonders wirksam für seitliche Gesäßdefinition. Asymmetrien sind hier sofort spürbar.</div></div>
-    </div>
-  </div>
-
-  <div class="muscle-sep">Quadriceps (Single-Leg)</div>
-
+  <!-- Single-Leg Step Up — VIDEO ✅ -->
   <div class="ex" id="ex-slsu">
     <div class="ex-vid-wrap" onclick="playVid('vid-slsu','ex-slsu')">
-      <video id="vid-slsu" class="ex-vid" src="media/94901201-Step-Up-on-Box_Thighs_.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-slsu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/94901201-Step-Up-on-Box_Thighs_.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Single-Leg Step Up</div><button class="ex-check" onclick="toggleDone('ex-slsu')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8 Wdh pro Seite · Grosse Box</div>
-      <div class="ex-cue">Auf einer grossen Box. 1 Set = 8× R/L. Immer mit schwächerer Seite beginnen. Dann gleiches Gewicht und gleiche Wdh auf der stärkeren Seite.</div>
+      <div class="ex-reps">3 Sets · 8 Wdh pro Bein · Grosse Box · mit Kurzhanteln</div>
+      <div class="ex-cue">1 Set = 8× R/L. Immer mit schwächerer Seite beginnen. Rücken stabil — strahle durch die Decke. Gleiches Gewicht und gleiche Wdh auf der stärkeren Seite.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-slsu')">Warum diese Übung</button>
-      <div class="ex-why" id="why-slsu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Präzisestes Werkzeug gegen Kraft-Asymmetrien. Jedes Bein trägt sein eigenes Gewicht — keine Möglichkeit für die stärkere Seite zu kompensieren.</div></div>
+      <div class="ex-why" id="why-slsu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Präzisestes Werkzeug gegen Kraft-Asymmetrien. Jedes Bein trägt sein eigenes Gewicht — keine Möglichkeit für die stärkere Seite zu kompensieren. Direkter Ausgleich R-L.</div></div>
     </div>
   </div>
 
+  <!-- Single-Leg Press — VIDEO ✅ -->
   <div class="ex" id="ex-slp">
     <div class="ex-vid-wrap" onclick="playVid('vid-slp','ex-slp')">
-      <video id="vid-slp" class="ex-vid" src="media/08831201-Lever-Horizontal-One-leg-Press_Hips.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-slp" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/08831201-Lever-Horizontal-One-leg-Press_Hips.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Single Leg Press (Machine)</div><button class="ex-check" onclick="toggleDone('ex-slp')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-top-row"><div class="ex-name">Single-Leg Press (liegend)</div><button class="ex-check" onclick="toggleDone('ex-slp')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 7 Wdh pro Seite · 1 Set = 7× R/L</div>
-      <div class="ex-cue">Unterer Rücken bleibt flach. Beide Seiten mit gleichem Gewicht — Kraftdifferenz notieren und verfolgen. Knie in Zehenrichtung.</div>
+      <div class="ex-cue">Unterer Rücken bleibt flach — nie abheben lassen. Knie in Zehenrichtung. Beide Seiten mit gleichem Gewicht — Kraftdifferenz notieren und verfolgen.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-slp')">Warum diese Übung</button>
-      <div class="ex-why" id="why-slp"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Maschine erlaubt höheres Gewicht mit vollständiger Kontrolle. Kraft jedes Beines direkt vergleich- und dosiert steigerbar — optimales Instrument für den Kraftausgleich.</div></div>
+      <div class="ex-why" id="why-slp"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Maschine erlaubt höheres Gewicht mit vollständiger Kontrolle. Kraft jedes Beines direkt vergleich- und dosiert steigerbar — optimales Instrument für deinen Kraftausgleich.</div></div>
     </div>
   </div>
 
   <div class="muscle-sep">Hamstrings</div>
 
+  <!-- Romanian Deadlift mit Kurzhanteln — VIDEO ✅ -->
   <div class="ex" id="ex-rdl">
     <div class="ex-vid-wrap" onclick="playVid('vid-rdl','ex-rdl')">
-      <video id="vid-rdl" class="ex-vid" src="media/14591201-Dumbbell-Romanian-Deadlift_Hips.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-rdl" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/14591201-Dumbbell-Romanian-Deadlift_Hips.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Romanian Deadlift (Dumbbell)</div><button class="ex-check" onclick="toggleDone('ex-rdl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-top-row"><div class="ex-name">Romanian Deadlift mit Kurzhanteln</div><button class="ex-check" onclick="toggleDone('ex-rdl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 8 Wdh · Min. 15 kg Kurzhanteln gesamt</div>
-      <div class="ex-cue">Bauchnabel ein, Schulterblätter zurück. Kurzhanteln leicht unterhalb der Knielinie mit 60% Gewicht. Neutral bleiben — Hamstrings bewusst spüren.</div>
+      <div class="ex-cue">Bauchnabel ein, Schulterblätter zurück. Kurzhanteln leicht unterhalb der Knielinie — 60% Gewicht. Neutral bleiben. Hamstrings bewusst spüren und dehnen.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-rdl')">Warum diese Übung</button>
-      <div class="ex-why" id="why-rdl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Exzentrische Stärke — dehnt und kräftigt Hamstrings gleichzeitig. Kurzhanteln verhindern Kompensation durch eine Seite — wichtig für deinen Kraftausgleich.</div></div>
+      <div class="ex-why" id="why-rdl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Exzentrische Stärke — dehnt und kräftigt Hamstrings gleichzeitig. Kurzhanteln verhindern Kompensation durch eine Seite — wichtig für deinen Kraftausgleich zwischen den Beinen.</div></div>
     </div>
   </div>
 
   <div class="muscle-sep">Waden</div>
 
+  <!-- Single Leg Calf Raise — kein Video -->
   <div class="ex" id="ex-slcr">
-    <div class="ex-body" style="padding-top:1.1rem;">
-      <div class="ex-top-row"><div class="ex-name">Single Leg Calf Raise (Dumbbell)</div><button class="ex-check" onclick="toggleDone('ex-slcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">Single Leg Calf Raise mit Kurzhanteln</div><button class="ex-check" onclick="toggleDone('ex-slcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 12 Wdh pro Seite</div>
-      <div class="ex-cue">Hand an der Wand abstützen. Volle Streckung oben, volle Absenkung unten. Gleichmäßig — Seitenunterschiede sofort spürbar und notieren.</div>
+      <div class="ex-cue">Hand an der Wand abstützen. Volle Streckung oben — 1 Sek halten. Volle Absenkung unten. Gleichmäßig beider Seiten — Seitenunterschiede sofort spürbar.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-slcr')">Warum diese Übung</button>
-      <div class="ex-why" id="why-slcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Single-Leg auch bei Waden: gleicht Asymmetrien aus. Stabiles Fundament für alle anderen Beinübungen und bessere Gesamtkörperstabilität.</div></div>
+      <div class="ex-why" id="why-slcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Single-Leg auch bei Waden: gleicht Asymmetrien der Wadenmuskulatur aus. Stabiles Fundament für alle anderen Beinübungen — stabile Waden = bessere Balance und Kraftübertragung.</div></div>
+    </div>
+  </div>
+
+  <div class="muscle-sep">Gluteus</div>
+
+  <!-- Hip Thrust — VIDEO ✅ -->
+  <div class="ex" id="ex-hth">
+    <div class="ex-vid-wrap" onclick="playVid('vid-hth','ex-hth')">
+      <video id="vid-hth" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/57611201-Smith-Hip-Thrust-(female)_Hips_.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Hip Thrust</div><button class="ex-check" onclick="toggleDone('ex-hth')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 7 Wdh · Schweres Gewicht</div>
+      <div class="ex-cue">Füsse 30° weg vom Po, Zehenspitzen leicht nach aussen (Knie in Diamantform). Hüfte vollständig strecken oben — 1 Sek halten. Gesäß bewusst anspannen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-hth')">Warum diese Übung</button>
+      <div class="ex-why" id="why-hth"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Effektivste Übung für Gluteus maximus — wissenschaftlich dokumentiert. Schweres Gewicht + wenig Wdh = Muskeldichte für definierten, runden Po. Nicht massig, sondern kraftvoll geformt.</div></div>
+    </div>
+  </div>
+
+  <!-- Banded Clamshell — kein Video -->
+  <div class="ex" id="ex-bcl">
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">Banded Clamshell</div><button class="ex-check" onclick="toggleDone('ex-bcl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
+      <div class="ex-cue">Miniband (stark) oberhalb der Knielinie. Schulterblätter zurück, Bauchnabel ein. Hüfte stabil — nur das obere Knie öffnet sich. 1 Set = R/L × 10.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bcl')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bcl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Gluteus medius — seitliche Gesäßdefinition und Hüftstabilität. Hier ist oft eine Seite schwächer — gleichmäßige Belastung ist essentiell für den Kraftausgleich.</div></div>
+    </div>
+  </div>
+
+  <!-- Bulgarian Split Squats — VIDEO ✅ -->
+  <div class="ex" id="ex-bss">
+    <div class="ex-vid-wrap" onclick="playVid('vid-bss','ex-bss')">
+      <video id="vid-bss" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/22901201-Dumbbell-Bulgarian-Split-Squat-(female)_Thighs.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Bulgarian Split Squats</div><button class="ex-check" onclick="toggleDone('ex-bss')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 7 Wdh pro Seite · Kurzhanteln</div>
+      <div class="ex-cue">Für Po-Aktivation: Oberkörper 15° nach vorn. Schritt 80% von Beinlänge nach vorn. 1 Set = R&amp;L 7×. Immer mit schwächerer Seite beginnen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-bss')">Warum diese Übung</button>
+      <div class="ex-why" id="why-bss"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Eine der effektivsten Übungen für Gesäß und Quadriceps gleichzeitig. Direkter Kraftausgleich: die schwächere Seite kann nicht kompensieren — sie muss mitziehen. Auch ohne Gewicht sehr wirksam am Anfang.</div></div>
+    </div>
+  </div>
+
+  <!-- Lying Banded Hip-Abduction — kein Video -->
+  <div class="ex" id="ex-lba">
+    <div class="ex-body-top">
+      <div class="ex-top-row"><div class="ex-name">Lying Banded Hip-Abduction</div><button class="ex-check" onclick="toggleDone('ex-lba')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
+      <div class="ex-cue">Mittelstarkes Miniband über die Knöchel. 1 Set = R/L × 10. Becken stabil halten — keine Rotation. Seitliche Dehnung in der Außenhüfte bewusst spüren.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-lba')">Warum diese Übung</button>
+      <div class="ex-why" id="why-lba"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Liegend = maximale Isolation der Außenhüfte ohne Kompensation. Besonders wirksam für seitliche Gesäßdefinition. Asymmetrien zwischen den Seiten sind hier sofort spürbar.</div></div>
     </div>
   </div>
 
   <div class="finisher">
     <div class="fin-label">Aerobischer Finisher</div>
     <div class="fin-name">5–10 Min Stepper</div>
-    <div class="fin-desc">Nach intensivem Beintag verbrennt dein Körper Stunden lang erhöht Fett — EPOC-Effekt. Finisher verlängert dieses Fenster optimal.</div>
+    <div class="fin-desc">Nach intensivem Beintag verbrennt dein Körper noch Stunden lang erhöht Fett — EPOC-Effekt. Der Finisher kurbelt die nachträgliche Fettverbrennung nach dem Krafttraining an.</div>
   </div>
 </div>
 
-<!-- RUMPF -->
+<!-- ══ RUMPF ══ -->
 <div id="page-rumpf" class="page">
-
   <div class="wi">
     <div class="wi-label">Rumpf · 1× pro Woche</div>
     <div class="wi-title">Core, Stabilität &amp; Pull-up Basis</div>
@@ -564,14 +652,15 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Downward Facing Dog</div><div class="si-detail">5 × 30 Sek · Rücken strecken, Schultern öffnen</div></div></div>
     <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Doorway Chest Stretch</div><div class="si-detail">3 × 30 Sek · Schulterblatt-Protraktion aktiv korrigieren</div></div></div>
-    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Glute Bridge (ohne Gewicht)</div><div class="si-detail">1 Set · 10 Wdh · Aktivierung</div></div></div>
+    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Glute Bridge (ohne Gewicht)</div><div class="si-detail">1 Set · 10 Wdh · Core und Gesäß aktivieren</div></div></div>
   </div>
 
   <div class="sect-label">Core-Übungen</div>
 
+  <!-- Dead Bug — VIDEO ✅ -->
   <div class="ex" id="ex-dbu">
     <div class="ex-vid-wrap" onclick="playVid('vid-dbu','ex-dbu')">
-      <video id="vid-dbu" class="ex-vid" src="media/78391201-Dead-Bug-(VERSION-3)-(female)_Waist_.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-dbu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/78391201-Dead-Bug-(VERSION-3)-(female)_Waist_.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
@@ -584,22 +673,24 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
 
+  <!-- Bird Dog — VIDEO ✅ -->
   <div class="ex" id="ex-bdo">
     <div class="ex-vid-wrap" onclick="playVid('vid-bdo','ex-bdo')">
-      <video id="vid-bdo" class="ex-vid" src="media/51821201-Bird-Dog-(VERSION-2)-(female)_Back_.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-bdo" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/51821201-Bird-Dog-(VERSION-2)-(female)_Back_.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Bird Dog</div><button class="ex-check" onclick="toggleDone('ex-bdo')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 10 Wdh pro Seite</div>
-      <div class="ex-cue">Rücken gerade. L-Arm hoch, R-Bein zurück. Leicht nach unten schauen — Wirbelsäule neutral. Optional mit Kurzhantel: Hüfte immer stabil und gerade bleiben.</div>
+      <div class="ex-cue">Rücken gerade. L-Arm hoch, R-Bein zurück. Leicht nach unten schauen — Wirbelsäule neutral. Optional mit Kurzhantel: Hüfte immer stabil und gerade.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-bdo')">Warum diese Übung</button>
-      <div class="ex-why" id="why-bdo"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Rumpfstabilität unter Extremitätenbewegung — exakt das Muster beim Pull-up und bei allen Beinübungen. Grundlagenübung für alles Weitere.</div></div>
+      <div class="ex-why" id="why-bdo"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Rumpfstabilität unter Extremitätenbewegung — exakt das Muster beim Pull-up und bei allen anderen Grundübungen. Unerlässliche Grundlage für alles Weitere.</div></div>
     </div>
   </div>
 
+  <!-- Hollow Up — kein Video -->
   <div class="ex" id="ex-hol">
-    <div class="ex-body" style="padding-top:1.1rem;">
+    <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Hollow Up</div><button class="ex-check" onclick="toggleDone('ex-hol')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">1 Set · kontrollierte Wdh · Qualität vor Quantität</div>
       <div class="pu-badge">Pull-up Vorbereitung</div>
@@ -609,9 +700,10 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
 
+  <!-- Plank — VIDEO ✅ -->
   <div class="ex" id="ex-plk">
     <div class="ex-vid-wrap" onclick="playVid('vid-plk','ex-plk')">
-      <video id="vid-plk" class="ex-vid" src="media/04631201-Front-Plank-m_waist.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-plk" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/04631201-Front-Plank-m_waist.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
@@ -619,13 +711,14 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-reps">3 Sets · Maximale Haltezeit · notieren</div>
       <div class="ex-cue">Körper gerade. Bauchnabel einziehen. Keine Hüfte oben oder unten. Zeit notieren — wir tracken deinen Fortschritt Woche für Woche.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-plk')">Warum diese Übung</button>
-      <div class="ex-why" id="why-plk"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Isometrische Core-Kraft — unter Last stabil bleiben. Messbarer Fortschrittsindikator. Stärkerer Core = mehr Gewicht bei Deadlift, Hip Thrust und Pull-up.</div></div>
+      <div class="ex-why" id="why-plk"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Isometrische Core-Kraft. Messbarer Fortschrittsindikator. Stärkerer Core = mehr Gewicht bei Deadlift, Hip Thrust und Pull-up — alles hängt zusammen.</div></div>
     </div>
   </div>
 
+  <!-- Lying Leg Raise — VIDEO ✅ -->
   <div class="ex" id="ex-llr">
     <div class="ex-vid-wrap" onclick="playVid('vid-llr','ex-llr')">
-      <video id="vid-llr" class="ex-vid" src="media/11631201-Lying-Leg-Raise_Waist.mp4" loop muted playsinline preload="none"></video>
+      <video id="vid-llr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Melissa_Menguec/media/11631201-Lying-Leg-Raise_Waist.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
