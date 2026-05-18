@@ -242,1080 +242,577 @@ section.active{display:block}
 .plan-block strong{color:var(--dark);font-weight:700}
 .plan-block em{color:var(--dark)}
 .plan-list{list-style:none;margin:10px 0 16px}
-.plan-list li{font-size:13px;line-height:1.7;padding:9px 0;border-bottom:1px solid var(--bg);display:flex;gap:12px;color:#3a3835;align-items:flex-start}
-.plan-list li::before{content:'—';color:var(--accent);flex-shrink:0;font-weight:700;line-height:1.7}
+.plan-list li{font-size:13px;line-height:1.7;padding:6px 0;border-bottom:1px solid #F0EDEA;color:#555}
 .plan-list li:last-child{border-bottom:none}
+.plan-list strong{color:var(--dark)}
 
-/* ── WORKOUT TRACKER ─────────────────────────────────────────── */
-.tracker-layout{display:grid;grid-template-columns:320px 1fr;gap:44px;align-items:start}
-.tracker-form{background:var(--card);padding:26px;border:1px solid var(--border);position:sticky;top:64px}
-.complete-row{display:flex;align-items:center;gap:9px;padding:10px 0}
-.complete-row input[type=checkbox]{width:15px;height:15px;cursor:pointer;accent-color:var(--accent);flex-shrink:0}
-.complete-row label{font-size:11px;letter-spacing:.04em;cursor:pointer;color:#555}
-
-.history-head{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:22px;padding-bottom:12px;border-bottom:1.5px solid var(--dark)}
-.hist-entry{border:1px solid var(--border);margin-bottom:8px;background:var(--card)}
-.hist-entry.done{border-left:3px solid var(--accent)}
-.hist-entry-hd{display:flex;align-items:center;gap:12px;padding:13px 18px;cursor:pointer;user-select:none}
-.sess-badge{font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--dark);color:#fff;padding:3px 9px;white-space:nowrap;flex-shrink:0;font-weight:600}
-.sess-badge.done{background:var(--accent);color:var(--dark)}
-.hist-date{font-size:12px;color:var(--muted);flex:1}
-.hist-chevron{font-size:10px;color:var(--border)}
-.hist-body{display:none;padding:10px 18px 16px;border-top:1px solid var(--bg)}
-.hist-body.open{display:block}
-.hist-notes{font-size:12.5px;line-height:1.7;color:#555;white-space:pre-wrap}
-.hist-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 0;display:inline-block;margin-top:6px}
-.hist-del:hover{color:#b83232}
-
-/* ── FOOTER ──────────────────────────────────────────────────── */
-footer{margin-top:80px;padding:24px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.footer-l,.footer-r{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-
-/* ── RESPONSIVE ──────────────────────────────────────────────── */
-@media(max-width:960px){
-  .track-layout,.tracker-layout{grid-template-columns:1fr}
-  .track-form,.tracker-form{position:static}
-  .plan-grid{grid-template-columns:1fr}
-  .timeline{grid-template-columns:repeat(3,1fr)}
-  .phase-overview{grid-template-columns:1fr}
-}
-@media(max-width:700px){
-  .container{padding:0 18px}
-  .sec-title{font-size:32px}
-  .ex-grid{grid-template-columns:1fr}
-  .chart-grid{grid-template-columns:1fr}
-  .schedule-grid{grid-template-columns:repeat(4,1fr)}
-  .timeline{grid-template-columns:repeat(2,1fr)}
-  .plan-block{padding:26px}
-  .nav-brand{display:none}
-  .session-tab{padding:12px 14px}
-}
-@media(max-width:480px){
-  .schedule-grid{grid-template-columns:repeat(3,1fr)}
-  .phase-overview{grid-template-columns:1fr}
-}
+footer{background:var(--dark);color:#888;padding:60px 0;text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+footer strong{color:#fff;font-weight:700}
 </style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ─────────────────────────────────────────────── -->
 <nav>
   <div class="nav-brand">Ritika</div>
   <div class="nav-links">
-    <a onclick="showSection('training')" class="active" id="nav-training">Training Plan</a>
-    <a onclick="showSection('tracking')" id="nav-tracking">Track Data</a>
-    <a onclick="showSection('plan')" id="nav-plan">Your Plan</a>
-    <a onclick="showSection('tracker')" id="nav-tracker">Log Session</a>
+    <a id="nav-training" class="active">Training Plan</a>
+    <a id="nav-tracking">Track Data</a>
+    <a id="nav-plan">Your Plan</a>
+    <a id="nav-tracker">Log Session</a>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════════
-     01 — TRAINING PLAN
-══════════════════════════════════════════════════════════ -->
-<section id="training" class="active">
 <div class="container">
 
-  <div class="sec-head">
-    <div class="sec-tag">01 — Programme Overview</div>
-    <div class="sec-title">Training Plan</div>
-    <div class="sec-sub">Upper / Lower Split · 4–5 Sessions per Week · 55–60 min</div>
-  </div>
-
-  <!-- Weekly schedule -->
-  <div class="schedule-grid">
-    <div class="sched-day"><div class="sched-label">Day 1</div><div class="sched-name">Lower Body A</div></div>
-    <div class="sched-day"><div class="sched-label">Day 2</div><div class="sched-name">Upper Body A</div></div>
-    <div class="sched-day rest"><div class="sched-label">Day 3</div><div class="sched-name">Rest / Walk</div></div>
-    <div class="sched-day"><div class="sched-label">Day 4</div><div class="sched-name">Lower Body B</div></div>
-    <div class="sched-day"><div class="sched-label">Day 5</div><div class="sched-name">Upper Body B</div></div>
-    <div class="sched-day"><div class="sched-label">Day 6 · opt.</div><div class="sched-name">Conditioning</div></div>
-    <div class="sched-day rest"><div class="sched-label">Day 7</div><div class="sched-name">Full Rest</div></div>
-  </div>
-
-  <!-- 6-month timeline -->
-  <div class="timeline-wrap">
-    <div class="tl-label">6-Month Goal Timeline</div>
-    <div class="timeline">
-      <div class="tl-month"><div class="tl-month-num">01</div><div class="tl-month-name">Foundation</div><div class="tl-item"><div class="tl-dot"></div><span>Pattern & technique</span></div><div class="tl-item"><div class="tl-dot"></div><span>Pull-up: eccentric phase</span></div><div class="tl-item"><div class="tl-dot"></div><span>Circumference baseline</span></div></div>
-      <div class="tl-month"><div class="tl-month-num">02</div><div class="tl-month-name">Load progression</div><div class="tl-item"><div class="tl-dot"></div><span>Progressive overload begins</span></div><div class="tl-item"><div class="tl-dot"></div><span>Pull-up: band-assisted</span></div><div class="tl-item"><div class="tl-dot"></div><span>First biometric rescan</span></div></div>
-      <div class="tl-month"><div class="tl-month-num">03</div><div class="tl-month-name">Adaptation</div><div class="tl-item"><div class="tl-dot"></div><span>Visible shoulder definition</span></div><div class="tl-item"><div class="tl-dot"></div><span>Waist −3–4 cm target</span></div><div class="tl-item"><div class="tl-dot"></div><span>Light band pull-ups</span></div></div>
-      <div class="tl-month"><div class="tl-month-num">04</div><div class="tl-month-name">Recomposition</div><div class="tl-item"><div class="tl-dot"></div><span>Glute lift clearly visible</span></div><div class="tl-item"><div class="tl-dot"></div><span>Arm definition emerging</span></div><div class="tl-item"><div class="tl-dot"></div><span>Week 12 comprehensive review</span></div></div>
-      <div class="tl-month"><div class="tl-month-num">05</div><div class="tl-month-name">Peak block</div><div class="tl-item"><div class="tl-dot"></div><span>Strength peaks — PR attempts</span></div><div class="tl-item"><div class="tl-dot"></div><span>First unassisted pull-up</span></div><div class="tl-item"><div class="tl-dot"></div><span>Hourglass shape meaningful</span></div></div>
-      <div class="tl-month"><div class="tl-month-num">06</div><div class="tl-month-name">Review & renew</div><div class="tl-item"><div class="tl-dot"></div><span>Full biometric comparison</span></div><div class="tl-item"><div class="tl-dot"></div><span>New 12-week block targets</span></div><div class="tl-item"><div class="tl-dot"></div><span>Pull-ups: sets of 3+</span></div></div>
-    </div>
-  </div>
-
-  <!-- Phase overview -->
-  <div class="phase-overview">
-    <div class="phase-block ph-active">
-      <div class="pb-badge">Active — Weeks 1–4</div>
-      <div class="pb-num">Phase 01</div>
-      <div class="pb-title">Foundation</div>
-      <div class="pb-params">3 sets × 12 reps<br>RPE 7–8 · Rest 60–90 sec<br>Focus: technique, motor patterns</div>
-    </div>
-    <div class="phase-block">
-      <div class="pb-badge">Next — Weeks 5–8</div>
-      <div class="pb-num">Phase 02</div>
-      <div class="pb-title">Progressive Load</div>
-      <div class="pb-params">3–4 sets × 10–12 reps<br>RPE 8 · Rest 90 sec<br>Focus: load progression, volume</div>
-    </div>
-    <div class="phase-block">
-      <div class="pb-badge">Planned — Weeks 9–12</div>
-      <div class="pb-num">Phase 03</div>
-      <div class="pb-title">Strength & Definition</div>
-      <div class="pb-params">4 sets × 10–12 reps<br>RPE 8–9 · Rest 90–120 sec<br>Focus: peak effort, definition</div>
-    </div>
-  </div>
-
-  <!-- Session tabs -->
-  <div class="session-tabs">
-    <button class="session-tab active" onclick="showSession(this,'lower-a')">Lower Body A — Quad</button>
-    <button class="session-tab" onclick="showSession(this,'upper-a')">Upper Body A — Push</button>
-    <button class="session-tab" onclick="showSession(this,'lower-b')">Lower Body B — Glute</button>
-    <button class="session-tab" onclick="showSession(this,'upper-b')">Upper Body B — Pull</button>
-  </div>
-
-  <!-- ── LOWER BODY A ─────────────────────────────────────────── -->
-  <div class="session-content active" id="session-lower-a">
-    <div class="session-meta">
-      <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Quad strength · Glute activation · Anti-extension core</div></div>
-      <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~57 minutes</div></div>
-      <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
-      <div class="smeta"><div class="smeta-label">Deload rule</div><div class="smeta-val">Weeks 5, 10, 15 — reduce volume 40%</div></div>
-    </div>
-    <div class="ex-grid">
-
-      <div class="ex-card warm-card">
-        <div class="ex-img-wrap"><img src="Exercises/warm_up_lower.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Warm-Up</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
-          <div class="ex-name">Hip circle, bodyweight squat, banded clamshell</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~8 min</div></div></div>
-          <div class="ex-cue">Activate the glutes with clamshells before loading. Prime TVA with a deep exhale and brace — your deep core should be engaged before the first squat rep.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>These three minutes are the difference between a strong session and a flat one. Hip circles restore hip mobility; banded clamshells switch on the glute medius; bodyweight squats rehearse the movement pattern you're about to load. Skipping this is the fastest route to a poor session.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/back_squat.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Back Squat</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 01</div>
-          <div class="ex-name">Back Squat</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 2–3 min between sets</div>
-          <div class="ex-cue">Depth to parallel; bar travels in a straight vertical path. Knees track over the second toe throughout. Brace hard before the descent — hold that brace until you are back at the top.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The highest-return compound movement in the programme. It activates more total muscle mass simultaneously than almost any other exercise — quads, glutes, hamstrings, and core all working together. For PCOS specifically, this kind of compound loading produces the strongest improvements in insulin sensitivity. Everything else in this session builds on the strength foundation the squat creates.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/Romanian-Deadlift.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Romanian Deadlift</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 02</div>
-          <div class="ex-name">Romanian Deadlift (DB or BB)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
-          <div class="ex-cue">Hip hinge with a soft knee — not a squat. Controlled 3-second descent; feel the hamstring stretch at the bottom. Stop before the lower back rounds.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The RDL specifically loads the hamstrings in their lengthened position — the mechanical condition most strongly associated with hypertrophy. The 3-second descent is not optional; this is where the stimulus actually happens. Paired with the squat, it ensures balanced development of the entire posterior chain — which is what creates the glute-hamstring line visible from behind.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/walking_lunge.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Walking Lunge (Sandbag)</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 03</div>
-          <div class="ex-name">Walking Lunge (Sandbag)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
-          <div class="ex-cue">Torso upright throughout. Drive through the front heel on every step; knee tracks over the second toe. The sandbag challenges balance and stability in a way dumbbells cannot.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Trains each leg independently — which identifies and corrects side-to-side strength differences before they become injuries. The sandbag's shifting load demands far more core engagement than dumbbells, and the walking pattern develops the functional, athletic stability that carries over to daily movement. An exercise that feels harder than it looks, for good reason.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/leg_press.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Leg Press</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 04</div>
-          <div class="ex-name">Leg Press</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
-          <div class="ex-cue">Feet shoulder-width on the platform. Controlled descent — do not allow the lower back to peel off the pad. Do not lock out the knees at the top; keep tension on the quads throughout.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Allows high-volume quad overload in a stable, controlled position — without adding more spinal fatigue after a heavy squat. This is the second compound quad movement, and it works because the machine supports the spine while the quads continue to accumulate the volume that drives growth. The controlled descent also builds connective tissue resilience that protects the knee long-term.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/cable_hip_abduction.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Cable Hip Abduction</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 05</div>
-          <div class="ex-name">Cable Hip Abduction</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 15 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 15 each</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Stand tall throughout — no lateral lean. Slow 2-second eccentric on every rep. The goal here is shape, not just strength.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>This is the primary exercise for building the glute medius — the muscle that creates hip width and defines the upper curve of the hourglass shape. Cable provides constant tension at every point of the range of motion, unlike machine abductors which lose tension mid-range. The slow eccentric is where the actual stimulus occurs. Consistent work here, over months, is what changes the silhouette from the front.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/deadbug.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Dead Bug (weighted)</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 06a <span class="ex-type superset">Superset</span></div>
-          <div class="ex-name">Dead Bug (weighted)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12 each</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec after 06b</div>
-          <div class="ex-cue">Lower back pressed firmly to the floor — non-negotiable. Opposite arm and leg extend simultaneously; breathe out as you reach. Add weight only once you can hold form for the full set.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Builds deep core stability — the transverse abdominis and lumbar stabilisers — without loading the spine. This is the foundation of core strength: not visible definition, but the internal architecture that makes every other exercise safer and more effective. As squatting loads increase across the programme, the deep core you build here is what protects you.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/landmine_arc.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Landmine Arc (Rainbow)</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 06b <span class="ex-type superset">Superset</span></div>
-          <div class="ex-name">Landmine Arc (Rainbow)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12 each</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec after this</div>
-          <div class="ex-cue">Arc the bar at hip height in a rainbow pattern. Rotation comes from the thoracic spine — not the lower back. Hips stay square and still throughout.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The only exercise in the plan that trains the core in the rotational plane — a plane that is almost always neglected. Oblique strength and lateral waist definition come from this kind of work. The landmine constrains the movement to a controlled arc so the lower back stays protected while the thoracic spine rotates freely. Over time, this contributes directly to the definition at the sides of the waist.</p></div>
-        </div>
-      </div>
-
-    </div>
-  </div><!-- /lower-a -->
-
-  <!-- ── UPPER BODY A ─────────────────────────────────────────── -->
-  <div class="session-content" id="session-upper-a">
-    <div class="session-meta">
-      <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Shoulder strength · Tricep definition · Anterior core</div></div>
-      <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~57 minutes</div></div>
-      <div class="smeta"><div class="smeta-label">Session Identity</div><div class="smeta-val">Push + Arm Definition</div></div>
-      <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
-    </div>
-    <div class="ex-grid">
-
-      <div class="ex-card warm-card">
-        <div class="ex-img-wrap"><img src="Exercises/warm_up_upper.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Warm-Up</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
-          <div class="ex-name">Band pull-apart × 15, shoulder circles, thoracic rotation</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~7 min</div></div></div>
-          <div class="ex-cue">Prime the scapular stabilisers before any pressing. Band pull-aparts activate the rear delts and prepare the shoulder for the load to come — don't skip these.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Band pull-aparts activate the rear deltoids and scapular retractors — the muscles most likely to be inhibited after hours at a desk. Thoracic rotation restores the spinal mobility needed to press safely overhead. A shoulder that hasn't been mobilised before pressing is the fastest route to an impingement. Seven minutes here prevents months of setback.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/landmine_press.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Landmine Press</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 01</div>
-          <div class="ex-name">Landmine Press</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 2 min</div>
-          <div class="ex-cue">Single arm; load one end of a barbell into a landmine attachment. Push from shoulder height at a 45° arc to full extension. This pressing angle is mechanically safer for the shoulder than a straight overhead press — load it accordingly.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The 45° pressing arc reduces subacromial impingement risk compared to a strict vertical press, meaning you can train shoulder strength more aggressively and more safely over time. It's also unilateral — each arm works independently, which identifies and corrects side-to-side strength imbalances before they compound into postural problems. Shoulder definition is built through load; this is the exercise that delivers it without the injury risk.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/pushup.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Push-Up</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 02</div>
-          <div class="ex-name">Push-Up (weighted vest or plate on back)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
-          <div class="ex-cue">At intermediate level, bodyweight push-ups are too easy — add a plate or vest. Protract the scapulae at the top (push the floor away actively). Elbows at 45° to the torso; lower chest to the floor each rep.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>A closed-chain pressing movement — meaning the hand is fixed to the ground — which trains the serratus anterior and scapular stabilisers in a way no machine replicates. These are the muscles that keep the shoulder blade properly positioned during all pressing work, and their development directly affects how the shoulders look in a top. Adding a plate or vest keeps this a genuine strength stimulus as ability grows.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/lateral_raise.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Lateral Raise (Cable)</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 03</div>
-          <div class="ex-name">Lateral Raise (cable — unilateral)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">4 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">4 × 12–15 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 15 each</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Cable keeps constant tension through the full range — superior to dumbbells for this purpose. Slight forward lean; lead with the elbow, not the wrist. This is the primary exercise for shoulder width. Four sets matter here.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The medial deltoid is the muscle that creates shoulder width — and it is notoriously difficult to develop because most exercises underload it. Cable provides constant tension at every point in the arc, unlike dumbbells which lose resistance in the lower half. Four sets is deliberate: this muscle requires high volume to grow, and the results — visible width that broadens the shoulder-to-waist ratio — accumulate over months of this consistent stimulus.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/tricep_kickback_bench.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Tricep Kickback</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 04</div>
-          <div class="ex-name">Tricep Kickback (bench-supported, dumbbell)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12–15</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 12–15</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Chest supported on an incline bench; torso near-parallel to the floor. Upper arm stays fixed and parallel to the floor throughout — this is the key. Extend fully at the top, squeeze hard, return slowly over 2 seconds.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Loads the tricep in its shortened (contracted) position — the direct complement to the overhead extension, which works the long head in its lengthened position. Together, they develop the tricep through its full range of stimulus. The bench-supported position removes any momentum from the movement, which is exactly why isolation exercises like this one actually produce results when done correctly.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/tricep_overhead_extension.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Overhead Tricep Extension</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 05</div>
-          <div class="ex-name">Overhead Tricep Extension (weight plate)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Hold a plate with both hands, gripping through the hole or on the top rim. Elbows stay close to the temples — do not flare. Lower behind the head until forearms reach parallel, then press to full extension. Targets the long head — the largest portion of the tricep.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The long head of the tricep — the largest of the three heads, and the one responsible for the visible definition at the back of the upper arm — is maximally stretched only when the arm is overhead. This is the one position the kickback cannot reach. The overhead extension is therefore not redundant; it's the specific stimulus that builds the long head, which is what changes how the arm looks in a sleeveless top.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/hollow_hold.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Hollow Body Hold</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 06 <span class="ex-type superset">Superset</span></div>
-          <div class="ex-name">Hollow Body Hold</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 25 sec</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 30 sec</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 35 sec</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 30 sec (after 07)</div>
-          <div class="ex-cue">Ribs down; legs long and together; lower back pressed to floor. If the lower back lifts, bend the knees — integrity over duration. Progress time only when form holds for the full interval.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Trains the anterior core under sustained isometric tension — which is how the core actually functions during pressing and pulling movements. Not a crunch, not a plank: a full-body integrated position that demands the entire anterior chain works together. It also forms the foundation of the gymnastic core skill set, so as strength in this position develops, more challenging movements become accessible.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/Ab_Wheel_Roullout.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Ab Wheel Rollout</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 07 <span class="ex-type superset">Superset</span></div>
-          <div class="ex-name">Ab Wheel Rollout (from knees)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 30 sec (after this)</div>
-          <div class="ex-cue">Brace TVA before the roll. Controlled descent — don't let the lower back arch. Only go as far as you can maintain a rigid plank position. The return is the work; pull the wheel back deliberately.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The highest-demand anti-extension core exercise available without specialist equipment. It requires the entire anterior chain to resist full spinal extension under a long lever arm — significantly harder than any plank or crunch variation. The core strength built here translates directly to the stability needed for heavier squats and presses, and to the visible abdominal definition that emerges as body composition improves.</p></div>
-        </div>
-      </div>
-
-    </div><!-- /ex-grid -->
-  </div><!-- /upper-a -->
-
-
-  <!-- ── LOWER BODY B ─────────────────────────────────────────── -->
-  <div class="session-content" id="session-lower-b">
-    <div class="session-meta">
-      <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Posterior chain · Glute hypertrophy · Rotational core</div></div>
-      <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~58 minutes</div></div>
-      <div class="smeta"><div class="smeta-label">Scheduling Note</div><div class="smeta-val">Heaviest session — after a rest day</div></div>
-      <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
-    </div>
-    <div class="ex-grid">
-
-      <div class="ex-card warm-card">
-        <div class="ex-img-wrap"><img src="Exercises/warm_up_lower.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Warm-Up</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
-          <div class="ex-name">90/90 stretch, banded clamshell, hip bridge hold</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~8 min</div></div></div>
-          <div class="ex-cue">Mobilise hip internal rotation before loading the posterior chain. The 90/90 stretch directly prepares the hip for the hinge pattern. Exhale at the top of the bridge — get the glute firing before the bar is in your hands.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The 90/90 specifically targets hip internal rotation — the range of motion most restricted in people who sit for long hours, and the exact range demanded by the hip thrust and split squat. Without it, the hip will compensate by loading the lower back instead. The bridge hold fires the glute maximus before the bar is loaded, ensuring the primary mover is awake before the heaviest exercise of the session begins.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/barbell_hip_thrust.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Barbell Hip Thrust</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 01</div>
-          <div class="ex-name">Barbell Hip Thrust</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
-          <div class="ex-cue">Pad across the hips; shoulders on the bench. Posterior pelvic tilt at the top — squeeze glutes maximally and hold 1 second. This is the primary glute hypertrophy driver in the plan. Done consistently, it is what changes the shape.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The most research-supported exercise for glute hypertrophy — it loads the glute maximus at peak contraction, which is the mechanical position associated with the strongest hypertrophic stimulus. Unlike squats or deadlifts, where the glute is secondary to the quad or hamstring, the hip thrust places the glute as the primary mover under heavy load. This is the exercise most directly responsible for the shape change this programme targets. Progressive load here, week over week, is not optional — it is the mechanism.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/bulgarian_split_squat.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Bulgarian Split Squat</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 02</div>
-          <div class="ex-name">Bulgarian Split Squat (DB)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 2 min</div>
-          <div class="ex-cue">The most challenging accessory in the programme. Front foot far enough forward that the shin stays vertical on descent. Controlled descent; drive through the front heel. Take the full 2 minutes — this taxes the system significantly.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The single most demanding unilateral lower body exercise, and deliberately so. The elevated rear foot increases hip flexor mobility at the bottom — a useful side effect — while the front leg works through a greater range of motion than any standard lunge. Greater range means greater glute recruitment at depth, and the 2-minute rest is not recovery padding but a genuine physiological requirement. This exercise produces results precisely because it demands so much.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/lying_leg_curl.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Lying Leg Curl</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 03</div>
-          <div class="ex-name">Lying Leg Curl (machine)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
-          <div class="ex-cue">Slow 3-second eccentric — the lengthened-position loading is what drives hamstring hypertrophy. Do not hyperextend the hip at the start of each rep. This is isolation work; control matters more than load.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The lying position places the hamstring at maximum length before the curl begins — the mechanical condition most strongly associated with hypertrophic stimulus. The 3-second eccentric is where the actual work occurs: slow lowering under load in the lengthened position produces significantly more muscle protein synthesis than a fast, controlled rep. The concentric (curling up) is largely a reset. This is the science of why the tempo prescription is non-negotiable.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/palloff_press.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Pallof Press</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 04a <span class="ex-type superset">Superset</span></div>
-          <div class="ex-name">Pallof Press (cable)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 15 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 15 each</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec (after 04b)</div>
-          <div class="ex-cue">Anti-rotation: the goal is to resist movement, not create it. Stand sideways to the cable; press straight out from the chest; hold 1–2 seconds at full extension. Hips and shoulders stay perfectly square — if the torso rotates, the exercise has not worked.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>An anti-rotation exercise — it trains the core's capacity to resist lateral forces, not generate movement. The deep stabilisers activated here (obliques, quadratus lumborum, transverse abdominis) are the muscles that contribute most to waist narrowing and lateral stability. The effect is subtle and accumulates over months. It also directly supports the heavy unilateral work in this session by building the stabilisation architecture the pelvis needs under single-leg load.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/side_plank_hip_raise.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Side Plank with Hip Raise</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 04b <span class="ex-type superset">Superset</span></div>
-          <div class="ex-name">Side Plank with Hip Raise</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 12 + load</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec (after this)</div>
-          <div class="ex-cue">Raise and lower the hip under full control — no collapse at the bottom. In Phase 3, hold a dumbbell on the top hip to add load. This trains the lateral chain and obliques in a way that directly contributes to waist definition.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Trains the lateral chain — obliques, glute medius, and quadratus lumborum — as an integrated system under dynamic load. This is one of the few exercises that develops the oblique definition visible from the side and front, and specifically builds the hip-to-waist line that defines the hourglass silhouette when viewed laterally. The addition of load in Phase 3 is what takes this from maintenance to genuine hypertrophic stimulus.</p></div>
-        </div>
-      </div>
-
-    </div><!-- /ex-grid -->
-  </div><!-- /lower-b -->
-
-
-  <!-- ── UPPER BODY B ─────────────────────────────────────────── -->
-  <div class="session-content" id="session-upper-b">
-    <div class="session-meta">
-      <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Back width & thickness · Bicep definition · Scapular health</div></div>
-      <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~60 minutes</div></div>
-      <div class="smeta"><div class="smeta-label">Priority Note</div><div class="smeta-val">Pull-up progression first — always</div></div>
-      <div class="smeta"><div class="smeta-label">Session Identity</div><div class="smeta-val">Pull + Arm Definition</div></div>
+  <!-- ── SECTION 01: TRAINING PLAN ────────────────────────────── -->
+  <section id="sec-training" class="active">
+    <div class="sec-head">
+      <div class="sec-tag">01 — Programme Overview</div>
+      <h1 class="sec-title">Training Plan</h1>
+      <div class="sec-sub">Upper / Lower Split · 4–5 Sessions per Week · 55–60 min</div>
     </div>
 
-    <!-- Pull-up Progression Table -->
-    <div class="tbl-section-label">Pull-Up Progression — Perform First, Every Session</div>
-    <div class="tbl-wrap">
-      <table class="std-table">
-        <thead>
-          <tr><th>Phase</th><th>Weeks</th><th>Exercise</th><th>Protocol</th><th>Target</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="pb-badge-sm">Phase 1</span></td>
-            <td>1–4</td>
-            <td>Scapular pull-up + Negative pull-up</td>
-            <td>Scapular: 3 × 8 | Negative: 3 × 3–5 reps (5-sec descent)</td>
-            <td>Lat activation + eccentric strength foundation</td>
-          </tr>
-          <tr>
-            <td><span class="pb-badge-sm">Phase 2</span></td>
-            <td>5–8</td>
-            <td>Band-assisted pull-up (medium band)</td>
-            <td>3 × 4–6 full reps; add one rep each session</td>
-            <td>Concentric strength through full range of motion</td>
-          </tr>
-          <tr>
-            <td><span class="pb-badge-sm">Phase 3</span></td>
-            <td>9–12</td>
-            <td>Band-assisted (light band) + unassisted attempts</td>
-            <td>2 sets band + 1 set unassisted max reps</td>
-            <td>Bridge to bodyweight</td>
-          </tr>
-          <tr>
-            <td><span class="pb-badge-sm">Phase 4</span></td>
-            <td>12+</td>
-            <td>Bodyweight pull-up</td>
-            <td>3 × max reps; progress to weighted when 3 × 8 achieved</td>
-            <td>Goal achieved — continue progressing</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="schedule-grid">
+      <div class="sched-day"><div class="sched-label">Day 1</div><div class="sched-name">Lower Body A</div></div>
+      <div class="sched-day"><div class="sched-name">Upper Body A</div><div class="sched-label">Day 2</div></div>
+      <div class="sched-day rest"><div class="sched-name">Rest / Walk</div><div class="sched-label">Day 3</div></div>
+      <div class="sched-day"><div class="sched-name">Lower Body B</div><div class="sched-label">Day 4</div></div>
+      <div class="sched-day"><div class="sched-name">Upper Body B</div><div class="sched-label">Day 5</div></div>
+      <div class="sched-day"><div class="sched-name">Conditioning</div><div class="sched-label">Day 6 · opt.</div></div>
+      <div class="sched-day rest"><div class="sched-name">Full Rest</div><div class="sched-label">Day 7</div></div>
     </div>
 
-    <div class="ex-grid">
-
-      <div class="ex-card warm-card">
-        <div class="ex-img-wrap"><img src="Exercises/warm_up_upper.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Warm-Up</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
-          <div class="ex-name">Cat-cow × 10, scapular pull-up × 8, dead hang × 20 sec</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~8 min</div></div></div>
-          <div class="ex-cue">Scapular pull-up: hang from the bar, pull the shoulder blades down without bending the elbows. This is the foundational movement that makes pull-ups possible. Dead hang builds grip and shoulder health simultaneously.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The dead hang passively decompresses the spine and stretches the lat under load — two minutes of benefit in twenty seconds. The scapular pull-up teaches the first movement of a pull-up: lat depression and scapular retraction before the elbow bends. Without this motor pattern, pull-up attempts are just arm bending, which will never produce the result. Learning it properly here makes the pull-up progression work.</p></div>
+    <div class="timeline-wrap">
+      <div class="tl-label">6-Month Goal Timeline</div>
+      <div class="timeline">
+        <div class="tl-month">
+          <div class="tl-month-num">01</div><div class="tl-month-name">Foundation</div>
+          <div class="tl-item"><div class="tl-dot"></div>Pattern & technique</div>
+          <div class="tl-item"><div class="tl-dot"></div>Pull-up: eccentric phase</div>
+          <div class="tl-item"><div class="tl-dot"></div>Circumference baseline</div>
+        </div>
+        <div class="tl-month">
+          <div class="tl-month-num">02</div><div class="tl-month-name">Load progression</div>
+          <div class="tl-item"><div class="tl-dot"></div>Progressive overload begins</div>
+          <div class="tl-item"><div class="tl-dot"></div>Pull-up: band-assisted</div>
+          <div class="tl-item"><div class="tl-dot"></div>First biometric rescan</div>
+        </div>
+        <div class="tl-month">
+          <div class="tl-month-num">03</div><div class="tl-month-name">Adaptation</div>
+          <div class="tl-item"><div class="tl-dot"></div>Visible shoulder definition</div>
+          <div class="tl-item"><div class="tl-dot"></div>Waist −3–4 cm target</div>
+          <div class="tl-item"><div class="tl-dot"></div>Light band pull-ups</div>
+        </div>
+        <div class="tl-month">
+          <div class="tl-month-num">04</div><div class="tl-month-name">Recomposition</div>
+          <div class="tl-item"><div class="tl-dot"></div>Glute lift clearly visible</div>
+          <div class="tl-item"><div class="tl-dot"></div>Arm definition emerging</div>
+          <div class="tl-item"><div class="tl-dot"></div>Week 12 comprehensive review</div>
+        </div>
+        <div class="tl-month">
+          <div class="tl-month-num">05</div><div class="tl-month-name">Peak block</div>
+          <div class="tl-item"><div class="tl-dot"></div>Strength peaks — PR attempts</div>
+          <div class="tl-item"><div class="tl-dot"></div>First unassisted pull-up</div>
+          <div class="tl-item"><div class="tl-dot"></div>Hourglass shape meaningful</div>
+        </div>
+        <div class="tl-month">
+          <div class="tl-month-num">06</div><div class="tl-month-name">Review & renew</div>
+          <div class="tl-item"><div class="tl-dot"></div>Full biometric comparison</div>
+          <div class="tl-item"><div class="tl-dot"></div>New 12-week block targets</div>
+          <div class="tl-item"><div class="tl-dot"></div>Pull-ups: sets of 3+</div>
         </div>
       </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/lat_pulldown.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Lat Pulldown</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 01</div>
-          <div class="ex-name">Lat Pulldown (pull-up specificity)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 2 min</div>
-          <div class="ex-cue">Overhand shoulder-width grip. Initiate with lat depression — pull the shoulders down before the elbows bend. Controlled 3-second eccentric. These sets build the pulling strength that transfers directly to the pull-up progression.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Vertical pulling in the same movement plane as a pull-up, which makes every set a direct investment in the pull-up goal. The 3-second eccentric builds the eccentric strength required for controlled pull-up descent — the capacity most people lack. Back width (the V-taper from shoulder to waist) is developed through consistent vertical pulling volume. This is why it sits at Exercise 01.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/seated_narrow_row_cable.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Seated Cable Row</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 02</div>
-          <div class="ex-name">Seated Cable Row (narrow grip)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
-          <div class="ex-cue">Chest proud; row to the lower ribs; retract and depress the scapulae at end range. Initiate with the shoulder blades, not the arms. Back thickness is built through volume — four sets in Phase 2+ is deliberate.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Horizontal pulling builds mid-back thickness — rhomboids, mid and lower traps — which is distinct from the width built by vertical pulling. Width and thickness together create the fully developed back that changes how the torso looks from behind and improves posture in a way that becomes visible in how clothes fit. The scapular retraction at the end range is where the actual stimulus occurs; initiation with the shoulder blades rather than the arms is what separates an effective set from a wasted one.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/single_arm_dumbell_row.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Single-Arm DB Row</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 03</div>
-          <div class="ex-name">Single-Arm DB Row</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
-          <div class="ex-cue">Long range of motion; elbow travels close to the body. Hips stay square — no rotation. Load heavier than feels comfortable; this allows the most mechanical loading of the lat of any row variation.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The single-arm position permits a longer range of motion and heavier absolute load than bilateral rows — which means the heaviest lat loading available in this session. Side-to-side asymmetries in back strength are identified and corrected here before they express as visible postural imbalances. The instruction to load heavier than comfortable is deliberate: back muscles are large and require significant mechanical stimulus to adapt.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/face_pull.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Face Pull</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 04</div>
-          <div class="ex-name">Face Pull (external rotation emphasis)</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 15</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 15</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 15</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">High pulley; pull to forehead; elbows stay above the hands throughout. This is scapular health maintenance — the rear delt and external rotators need direct work to counterbalance all the pressing in Upper A. Don't skip this.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>The external rotators and rear delts are almost always undertrained relative to the pressing volume in Upper A. Without this counterbalance, internal rotation gradually dominates — the shoulders round forward, the upper back looks less developed, and the risk of impingement injury increases steadily. The face pull is one of the most effective direct remedies. It also directly develops the posterior delt, which is visible from the side and back when the shoulder is fully developed.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/ez_bicep_curl.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>EZ Bar Bicep Curl</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 05</div>
-          <div class="ex-name">EZ Bar Bicep Curl</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Full supination at the top of every rep; slow 2–3 second eccentric. Elbows fixed at sides throughout — no swinging. The EZ bar reduces wrist strain while keeping the bicep fully engaged. Progress load when the top of the rep range feels controlled.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Full bicep development through the complete range of motion, with supination at the top engaging the short head maximally. The EZ bar's angled grip reduces the wrist torque that makes straight-bar curls uncomfortable for many people, without sacrificing the mechanical stimulus. The 2–3 second eccentric is where arm definition is actually built — the slow lowering phase under load produces significantly more hypertrophic response than a fast return.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/hammer_curl.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Hammer Curl</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 06</div>
-          <div class="ex-name">Hammer Curl</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12–15</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 12–15</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Neutral grip throughout. This targets the brachialis, which sits underneath the bicep and pushes it upward — creating the arm thickness that makes bicep curls look different. Controlled 2-second eccentric.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Targets the brachialis — the muscle that sits underneath the bicep and, when developed, physically pushes the bicep upward. This is what creates arm thickness and makes the bicep peak visibly higher. It is an additive stimulus to the EZ bar curl, not a replacement: the two exercises together develop the full arm in a way neither achieves alone. Consistent work here over months is what makes the difference between arms that look trained and arms that look sculpted.</p></div>
-        </div>
-      </div>
-
-      <div class="ex-card">
-        <div class="ex-img-wrap"><img src="Exercises/bird_dog.gif" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="ex-img-placeholder" style="display:none"><span>Bird Dog</span></div></div>
-        <div class="ex-body">
-          <div class="ex-num">Exercise 07 <span class="ex-type core">Core</span></div>
-          <div class="ex-name">Bird Dog</div>
-          <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12 each</div></div></div>
-          <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
-          <div class="ex-cue">Start on hands and knees, spine neutral. Extend opposite arm and leg simultaneously; hold 2 seconds; return without the hand or knee touching the floor between reps. The challenge is not the movement — it is keeping the pelvis perfectly still throughout.</div>
-          <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
-          <div class="why-body"><p>Lumbar stabilisation and deep extensor activation — the closing movement of the session for a specific reason. After heavy posterior chain loading, the lumbar extensors and multifidus need active stabilisation work to close out safely and reinforce spinal integrity. The movement looks simple; the challenge is the pelvis staying completely still under a long lever arm. This is the deep stability work that protects the lower back across all four sessions.</p></div>
-        </div>
-      </div>
-
-    </div><!-- /ex-grid -->
-  </div><!-- /upper-b -->
-
-</div><!-- /container -->
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     02 — DATA TRACKING
-══════════════════════════════════════════════════════════ -->
-<section id="tracking">
-<div class="container">
-  <div class="sec-head">
-    <div class="sec-tag">02 — Progress Monitoring</div>
-    <div class="sec-title">Track Data</div>
-    <div class="sec-sub">InBody Metrics · Circumferences · Multi-Date History</div>
-  </div>
-
-  <div class="track-layout">
-    <!-- Form -->
-    <div class="track-form">
-      <div class="form-head">Log New Entry</div>
-      <div class="fg"><label>Date</label><input type="date" id="t-date"></div>
-
-      <div class="form-sep">Body Composition</div>
-      <div class="fg"><label>Weight (kg)</label><input type="number" step="0.1" id="t-weight" placeholder="e.g. 88.6"></div>
-      <div class="fg"><label>Body Fat %</label><input type="number" step="0.1" id="t-bf" placeholder="e.g. 39.9"></div>
-      <div class="fg"><label>Fat-Free Mass (kg)</label><input type="number" step="0.1" id="t-ffm" placeholder="e.g. 53.2"></div>
-      <div class="fg"><label>Skeletal Muscle Mass (kg)</label><input type="number" step="0.1" id="t-smm" placeholder="e.g. 50.5"></div>
-
-      <div class="form-sep">Health Markers</div>
-      <div class="fg"><label>Visceral Fat Rating</label><input type="number" step="0.5" id="t-vf" placeholder="e.g. 6"></div>
-      <div class="fg"><label>Phase Angle (°)</label><input type="number" step="0.1" id="t-pa" placeholder="e.g. 6.0"></div>
-      <div class="fg"><label>ECW : TBW Ratio</label><input type="number" step="0.001" id="t-ecw" placeholder="e.g. 0.466"></div>
-      <div class="fg"><label>Total Body Water (L)</label><input type="number" step="0.1" id="t-tbw" placeholder="e.g. 36.3"></div>
-
-      <div class="form-sep">Circumferences (cm)</div>
-      <div class="fg"><label>Chest</label><input type="number" step="0.1" id="t-chest" placeholder="e.g. 97.8"></div>
-      <div class="fg"><label>Waist</label><input type="number" step="0.1" id="t-waist" placeholder="e.g. 89.0"></div>
-      <div class="fg"><label>Hip</label><input type="number" step="0.1" id="t-hip" placeholder="e.g. 111.0"></div>
-      <div class="fg"><label>Thigh</label><input type="number" step="0.1" id="t-thigh" placeholder="e.g. 63.5"></div>
-      <div class="fg"><label>Upper Arm</label><input type="number" step="0.1" id="t-arm" placeholder="e.g. 35.6"></div>
-
-      <button class="btn" onclick="saveTrackingEntry()">Save Entry</button>
-      <button class="btn danger" onclick="clearAllTracking()">Clear All Data</button>
     </div>
 
-    <!-- Charts + table -->
-    <div>
-      <div class="chart-grid">
-        <div class="chart-card"><div class="chart-title">Weight (kg)</div><div class="chart-canvas-wrap"><canvas id="chart-weight"></canvas></div></div>
-        <div class="chart-card"><div class="chart-title">Body Fat %</div><div class="chart-canvas-wrap"><canvas id="chart-bf"></canvas></div></div>
-        <div class="chart-card"><div class="chart-title">Fat-Free Mass (kg)</div><div class="chart-canvas-wrap"><canvas id="chart-ffm"></canvas></div></div>
-        <div class="chart-card"><div class="chart-title">Visceral Fat Rating</div><div class="chart-canvas-wrap"><canvas id="chart-vf"></canvas></div></div>
-        <div class="chart-card"><div class="chart-title">Phase Angle (°)</div><div class="chart-canvas-wrap"><canvas id="chart-pa"></canvas></div></div>
-        <div class="chart-card"><div class="chart-title">ECW : TBW Ratio</div><div class="chart-canvas-wrap"><canvas id="chart-ecw"></canvas></div></div>
-        <div class="chart-card" style="grid-column:1/-1"><div class="chart-title">Circumferences (cm)</div><div class="chart-canvas-wrap" style="height:180px"><canvas id="chart-circ"></canvas></div></div>
+    <div class="phase-overview">
+      <div class="phase-block ph-active">
+        <div class="pb-badge">Active — Weeks 1–4</div>
+        <div class="pb-num">Phase 01</div><div class="pb-title">Foundation</div>
+        <div class="pb-params">3 sets × 12 reps<br>RPE 7–8 · Rest 60–90 sec<br>Focus: technique, motor patterns</div>
       </div>
-
-      <div class="data-tbl-label">Entry History</div>
-      <div class="tbl-wrap">
-        <table class="std-table" id="data-table">
-          <thead>
-            <tr><th>Date</th><th>Weight</th><th>BF%</th><th>FFM</th><th>SMM</th><th>Visc.Fat</th><th>Phase°</th><th>ECW:TBW</th><th>Chest</th><th>Waist</th><th>Hip</th><th>Thigh</th><th>Arm</th><th></th></tr>
-          </thead>
-          <tbody id="data-tbody"></tbody>
-        </table>
+      <div class="phase-block">
+        <div class="pb-badge">Next — Weeks 5–8</div>
+        <div class="pb-num">Phase 02</div><div class="pb-title">Progressive Load</div>
+        <div class="pb-params">3–4 sets × 10–12 reps<br>RPE 8 · Rest 90 sec<br>Focus: load progression, volume</div>
       </div>
-      <div id="tracking-empty" class="empty-msg">No entries yet — log your first scan above.</div>
+      <div class="phase-block">
+        <div class="pb-badge">Planned — Weeks 9–12</div>
+        <div class="pb-num">Phase 03</div><div class="pb-title">Strength & Definition</div>
+        <div class="pb-params">4 sets × 10–12 reps<br>RPE 8–9 · Rest 90–120 sec<br>Focus: peak effort, definition</div>
+      </div>
     </div>
-  </div>
+
+    <div class="session-tabs">
+      <button class="session-tab active" data-session="session-lower-a">Lower Body A — Quad</button>
+      <button class="session-tab" data-session="session-upper-a">Upper Body A — Push</button>
+      <button class="session-tab" data-session="session-lower-b">Lower Body B — Glute</button>
+      <button class="session-tab" data-session="session-upper-b">Upper Body B — Pull</button>
+    </div>
+
+    <!-- ── LOWER BODY A ─────────────────────────────────────────── -->
+    <div class="session-content active" id="session-lower-a">
+      <div class="session-meta">
+        <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Quad strength · Glute activation · Anti-extension core</div></div>
+        <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~57 minutes</div></div>
+        <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
+        <div class="smeta"><div class="smeta-label">Deload rule</div><div class="smeta-val">Weeks 5, 10, 15 — reduce volume 40%</div></div>
+      </div>
+      <div class="ex-grid">
+
+        <div class="ex-card warm-card">
+          <div class="ex-img-wrap"><img src="Exercises/warm_up_lower.gif" alt="Warm-Up"></div>
+          <div class="ex-body">
+            <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
+            <div class="ex-name">Hip circle, bodyweight squat, banded clamshell</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~8 min</div></div></div>
+            <div class="ex-cue">Activate the glutes with clamshells before loading. Prime TVA with a deep exhale and brace — your deep core should be engaged before the first squat rep.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>These three minutes are the difference between a strong session and a flat one. Hip circles restore hip mobility; banded clamshells switch on the glute medius; bodyweight squats rehearse the movement pattern you're about to load. Skipping this is the fastest route to a poor session.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/back_squat.gif" alt="Back Squat"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 01</div>
+            <div class="ex-name">Back Squat</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 2–3 min between sets</div>
+            <div class="ex-cue">Depth to parallel; bar travels in a straight vertical path. Knees track over the second toe throughout. Brace hard before the descent — hold that brace until you are back at the top.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The highest-return compound movement in the programme. It activates more total muscle mass simultaneously than almost any other exercise — quads, glutes, hamstrings, and core all working together. For PCOS specifically, this kind of compound loading produces the strongest improvements in insulin sensitivity. Everything else in this session builds on the strength foundation the squat creates.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/Romanian-Deadlift.gif" alt="Romanian Deadlift"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 02</div>
+            <div class="ex-name">Romanian Deadlift (DB or BB)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
+            <div class="ex-cue">Hip hinge with a soft knee — not a squat. Controlled 3-second descent; feel the hamstring stretch at the bottom. Stop before the lower back rounds.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The RDL specifically loads the hamstrings in their lengthened position — the mechanical condition most strongly associated with hypertrophy. The 3-second descent is not optional; this is where the stimulus actually happens. Paired with the squat, it ensures balanced development of the entire posterior chain — which is what creates the glute-hamstring line visible from behind.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/walking_lunge.gif" alt="Walking Lunge"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 03</div>
+            <div class="ex-name">Walking Lunge (Sandbag)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
+            <div class="ex-cue">Torso upright throughout. Drive through the front heel on every step; knee tracks over the second toe. The sandbag challenges balance and stability in a way dumbbells cannot.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Trains each leg independently — which identifies and corrects side-to-side strength differences before they become injuries. The sandbag's shifting load demands far more core engagement than dumbbells, and the walking pattern develops the functional, athletic stability that carries over to daily movement. An exercise that feels harder than it looks, for good reason.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/leg_press.gif" alt="Leg Press"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 04</div>
+            <div class="ex-name">Leg Press</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
+            <div class="ex-cue">Feet shoulder-width on the platform. Controlled descent — do not allow the lower back to peel off the pad. Do not lock out the knees at the top; keep tension on the quads throughout.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Allows high-volume quad overload in a stable, controlled position — without adding more spinal fatigue after a heavy squat. This is the second compound quad movement, and it works because the machine supports the spine while the quads continue to accumulate the volume that drives growth. The controlled descent also builds connective tissue resilience that protects the knee long-term.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/cable_hip_abduction.gif" alt="Cable Hip Abduction"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 05</div>
+            <div class="ex-name">Cable Hip Abduction</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 15 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 15 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Stand tall throughout — no lateral lean. Slow 2-second eccentric on every rep. The goal here is shape, not just strength.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The gluteus medius — the muscle on the side of the hip — is what creates the "shelf" look and the rounded silhouette from the front. Most compound movements like squats primarily hit the glute maximus. The cable abduction is the specific tool to isolate and grow the medius. A high-rep, high-burn exercise that is essential for the aesthetic goals of this programme.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/deadbug.gif" alt="Dead Bug"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 06a <span class="ex-type superset">Superset</span></div>
+            <div class="ex-name">Dead Bug (weighted)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec after 06b</div>
+            <div class="ex-cue">Lower back pressed firmly to the floor — non-negotiable. Opposite arm and leg extend simultaneously; breathe out as you reach. Add weight only once you can hold form for the full set.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Teaches the core to maintain spinal stability while the limbs are moving — which is exactly how it must function during a heavy squat or deadlift. By forcing the lower back to stay flat against the floor, it builds the deep transverse abdominis strength that creates a tight, functional midsection. A foundational core movement that most people do too fast; slow it down to feel the work.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/landmine_arc.gif" alt="Landmine Arc"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 06b <span class="ex-type superset">Superset</span></div>
+            <div class="ex-name">Landmine Arc (Rainbow)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec after this</div>
+            <div class="ex-cue">Arc the bar at hip height in a rainbow pattern. Rotation comes from the thoracic spine — not the lower back. Hips stay square and still throughout.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Trains anti-rotation — the ability of the core to resist being pulled out of position. This builds the oblique strength that frames the midsection and provides the rotational stability needed for athletic movement. Because the load is at the end of a long lever (the barbell), the demand on the core is significantly higher than a standard Russian twist or crunch.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── UPPER BODY A ─────────────────────────────────────────── -->
+    <div class="session-content" id="session-upper-a">
+      <div class="session-meta">
+        <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Shoulder width · Pressing strength · Core stability</div></div>
+        <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~57 minutes</div></div>
+        <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
+      </div>
+      <div class="ex-grid">
+
+        <div class="ex-card warm-card">
+          <div class="ex-img-wrap"><img src="Exercises/warm_up_upper.gif" alt="Warm-Up"></div>
+          <div class="ex-body">
+            <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
+            <div class="ex-name">Band pull-apart × 15, shoulder circles, thoracic rotation</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~7 min</div></div></div>
+            <div class="ex-cue">Prime the scapular stabilisers before any pressing. Band pull-aparts activate the rear delts and prepare the shoulder for the load to come — don't skip these.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Band pull-aparts activate the rear deltoids and scapular retractors — the muscles most likely to be inhibited after hours at a desk. Thoracic rotation restores the spinal mobility needed to press safely overhead. A shoulder that hasn't been mobilised before pressing is the fastest route to an impingement. Seven minutes here prevents months of setback.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/landmine_press.gif" alt="Landmine Press"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 01</div>
+            <div class="ex-name">Landmine Press</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 2 min</div>
+            <div class="ex-cue">Single arm; load one end of a barbell into a landmine attachment. Push from shoulder height at a 45° arc to full extension. This pressing angle is mechanically safer for the shoulder than a straight overhead press — load it accordingly.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The 45° pressing arc reduces subacromial impingement risk compared to a strict vertical press, meaning you can train shoulder strength more aggressively and more safely over time. It's also unilateral — each arm works independently, which identifies and corrects side-to-side strength imbalances before they compound into postural problems. Shoulder definition is built through load; this is the exercise that delivers it without the injury risk.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/pushup.gif" alt="Push-Up"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 02</div>
+            <div class="ex-name">Push-Up (weighted vest or plate on back)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
+            <div class="ex-cue">At intermediate level, bodyweight push-ups are too easy — add a plate or vest. Protract the scapulae at the top (push the floor away actively). Elbows at 45° to the torso; lower chest to the floor each rep.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>A closed-chain pressing movement — meaning the hand is fixed to the ground — which trains the serratus anterior and scapular stabilisers in a way no machine replicates. These are the muscles that keep the shoulder blade properly positioned during all pressing work, and their development directly affects how the shoulders look in a top. Adding a plate or vest keeps this a genuine strength stimulus as ability grows.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/lateral_raise.gif" alt="Lateral Raise"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 03</div>
+            <div class="ex-name">Lateral Raise (cable — unilateral)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">4 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">4 × 12–15 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 15 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Cable keeps constant tension through the full range — superior to dumbbells for this purpose. Slight forward lean; lead with the elbow, not the wrist. This is the primary exercise for shoulder width. Four sets matter here.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The medial deltoid is the muscle that creates shoulder width — and it is notoriously difficult to develop because most exercises underload it. Cable provides constant tension at every point in the arc, unlike dumbbells which lose resistance in the lower half. Four sets is deliberate: this muscle requires high volume to grow, and the results — visible width that broadens the shoulder-to-waist ratio — accumulate over months of this consistent stimulus.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/tricep_kickback_bench.gif" alt="Tricep Kickback"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 04</div>
+            <div class="ex-name">Tricep Kickback (bench-supported, dumbbell)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12–15</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 12–15</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Chest supported on an incline bench; torso near-parallel to the floor. Upper arm stays fixed and parallel to the floor throughout — this is the key. Extend fully at the top, squeeze hard, return slowly over 2 seconds.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Loads the tricep in its shortened (contracted) position — the direct complement to the overhead extension, which works the long head in its lengthened position. Together, they develop the tricep through its full range of stimulus. The bench-supported position removes any momentum from the movement, which is exactly why isolation exercises like this one actually produce results when done correctly.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/tricep_overhead_extension.gif" alt="Tricep Extension"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 05</div>
+            <div class="ex-name">Overhead Tricep Extension (weight plate)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Hold a plate with both hands, gripping through the hole or on the top rim. Elbows stay close to the temples — do not flare. Lower behind the head until forearms reach parallel, then press to full extension. Targets the long head — the largest portion of the tricep.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The long head of the tricep — the largest of the three heads, and the one responsible for the visible definition at the back of the upper arm — is maximally stretched only when the arm is overhead. This is the one position the kickback cannot reach. The overhead extension is therefore not redundant; it's the specific stimulus that builds the long head, which is what changes how the arm looks in a sleeveless top.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/hollow_hold.gif" alt="Hollow Hold"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 06 <span class="ex-type superset">Superset</span></div>
+            <div class="ex-name">Hollow Body Hold</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 25 sec</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 30 sec</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 35 sec</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 30 sec (after 07)</div>
+            <div class="ex-cue">Ribs down; legs long and together; lower back pressed to floor. If the lower back lifts, bend the knees — integrity over duration. Progress time only when form holds for the full interval.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Trains the anterior core under sustained isometric tension — which is how the core actually functions during pressing and pulling movements. Not a crunch, not a plank: a full-body integrated position that demands the entire anterior chain works together. It also forms the foundation of the gymnastic core skill set, so as strength in this position develops, more challenging movements become accessible.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/Ab_Wheel_Roullout.gif" alt="Ab Wheel"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 07 <span class="ex-type superset">Superset</span></div>
+            <div class="ex-name">Ab Wheel Rollout (from knees)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 8</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 30 sec (after this)</div>
+            <div class="ex-cue">Brace TVA before the roll. Controlled descent — don't let the lower back arch. Only go as far as you can maintain a rigid plank position. The return is the work; pull the wheel back deliberately.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The highest-demand anti-extension core exercise available without specialist equipment. It requires the entire anterior chain to resist full spinal extension under a long lever arm — significantly harder than any plank or crunch variation. The core strength built here translates directly to the stability needed for heavier squats and presses, and to the visible abdominal definition that emerges as body composition improves.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── LOWER BODY B ─────────────────────────────────────────── -->
+    <div class="session-content" id="session-lower-b">
+      <div class="session-meta">
+        <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Posterior chain · Glute hypertrophy · Rotational core</div></div>
+        <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~58 minutes</div></div>
+        <div class="smeta"><div class="smeta-label">Scheduling Note</div><div class="smeta-val">Heaviest session — after a rest day</div></div>
+        <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
+      </div>
+      <div class="ex-grid">
+
+        <div class="ex-card warm-card">
+          <div class="ex-img-wrap"><img src="Exercises/warm_up_lower.gif" alt="Warm-Up"></div>
+          <div class="ex-body">
+            <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
+            <div class="ex-name">Banded glute bridge × 20, bird-dog, frog pump</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~8 min</div></div></div>
+            <div class="ex-cue">Wake up the glutes before loading them. Bird-dog primes the core and cross-body stability; banded bridges ensure the glutes are ready to take the load from the hip thrust.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Banded glute bridges are the specific stimulus needed to wake up the glute maximus before heavy loading. Frog pumps provide the lateral activation that compound movements sometimes miss. Skipping this activation means the hamstrings and lower back will likely overcompensate for the glutes during the main lift — which is exactly what we want to avoid for both safety and aesthetic results.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/barbell_hip_thrust.gif" alt="Hip Thrust"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 01</div>
+            <div class="ex-name">Barbell Hip Thrust</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 2 min</div>
+            <div class="ex-cue">Chin tucked; ribs down; drive through the heels. Full lockout at the top with a 1-second squeeze. This is the single most effective exercise for glute hypertrophy — prioritize it.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Unlike the squat, which loads the glutes in their lengthened position, the hip thrust loads them at the point of peak contraction (the top). This specific mechanical tension is the primary driver of glute growth. It also involves minimal lower back fatigue compared to deadlifts, meaning you can load it heavily and frequently enough to see real changes in shape. The 1-second squeeze at the top is the most important part of the rep.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/bulgarian_split_squat.gif" alt="Split Squat"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 02</div>
+            <div class="ex-name">Bulgarian Split Squat</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 10–12 ea.</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
+            <div class="ex-cue">Rear foot elevated on a bench. Lean slightly forward to increase glute bias. Control the descent; drive through the front heel. This is a challenging movement — focus on balance and control.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The forward lean during a Bulgarian Split Squat increases the stretch on the glute maximus, making it one of the most effective unilateral exercises for both strength and shape. Because each leg works alone, it identifies and fixes imbalances. It's a high-demand exercise that also improves hip mobility and stability — which protects the knees and lower back during all other lower body work.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/lying_leg_curl.gif" alt="Leg Curl"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 03</div>
+            <div class="ex-name">Lying Leg Curl</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
+            <div class="ex-cue">Keep hips pressed into the pad throughout — do not allow the lower back to arch. Controlled 2-second eccentric (lowering) phase. This isolates the hamstrings perfectly.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Isolates the hamstrings through knee flexion — the specific function that compound movements like the RDL don't fully address. This develops the "pop" of the hamstring and ensures the knee joint is balanced and protected against the stronger quads. The constant tension of the machine, especially during the slow lowering phase, is what drives the hypertrophy needed for defined legs.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/palloff_press.gif" alt="Pallof Press"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 04 <span class="ex-type superset">Superset</span></div>
+            <div class="ex-name">Pallof Press (cable)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 15 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 30 sec (after 05)</div>
+            <div class="ex-cue">Stand perpendicular to the cable machine. Hold the handle at chest height; press straight out and resist the cable pulling you sideways. Hold for 2 seconds at full extension. Hips and shoulders stay square.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The ultimate anti-rotation exercise. It trains the core to resist lateral forces, which is essential for protecting the spine during heavy lifting and daily movement. Unlike crunches, it builds functional stability and a strong, tight midsection by teaching the muscles to work together to maintain a neutral position under load. It's the "inner armor" that supports everything else you do.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/side_plank_hip_raise.gif" alt="Side Plank"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 05 <span class="ex-type superset">Superset</span></div>
+            <div class="ex-name">Side Plank with Hip Raise</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 15 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 20 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 30 sec (after this)</div>
+            <div class="ex-cue">From a side plank position, lower the hip to the floor and then drive it back up as high as possible. Focus on the oblique on the bottom side. This builds both lateral stability and waist definition.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Combines the stability of a side plank with the active contraction of the obliques and glute medius. This double-duty movement strengthens the lateral chain, which is often neglected, and contributes to the overall stability and silhouette of the midsection and hips. It's an efficient way to build the "side core" strength that supports the heavier compound lifts.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── UPPER BODY B ─────────────────────────────────────────── -->
+    <div class="session-content" id="session-upper-b">
+      <div class="session-meta">
+        <div class="smeta"><div class="smeta-label">Session Goal</div><div class="smeta-val">Back width · Bicep shape · Postural core</div></div>
+        <div class="smeta"><div class="smeta-label">Duration</div><div class="smeta-val">~57 minutes</div></div>
+        <div class="smeta"><div class="smeta-label">Intensity</div><div class="smeta-val">RPE 7–8 (Phase 1)</div></div>
+      </div>
+      <div class="ex-grid">
+
+        <div class="ex-card warm-card">
+          <div class="ex-img-wrap"><img src="Exercises/warm_up_upper.gif" alt="Warm-Up"></div>
+          <div class="ex-body">
+            <div class="ex-num">Warm-Up <span class="ex-type warm">Activation</span></div>
+            <div class="ex-name">Scapular pull-ups × 12, band pull-apart, shoulder circles</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">All phases</div><div class="ph-param">2 rounds · BW</div></div><div class="ph-item"><div class="ph-num">Rest</div><div class="ph-param">None</div></div><div class="ph-item"><div class="ph-num">Duration</div><div class="ph-param">~7 min</div></div></div>
+            <div class="ex-cue">Prime the lats and scapulae. Scapular pull-ups are essential for teaching the back muscles to initiate the pull-down — don't skip these.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Scapular pull-ups teach the brain how to engage the lats and mid-back before the arms take over. Band pull-aparts ensure the rear delts are ready to support the pulling movements. This activation sequence is what prevents the biceps from doing all the work during your rows and pulldowns — ensuring the stimulus actually goes to the back muscles we want to develop.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/lat_pulldown.gif" alt="Lat Pulldown"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 01</div>
+            <div class="ex-name">Lat Pulldown (wide grip)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
+            <div class="ex-cue">Pull to the upper chest; lead with the elbows. Focus on squeezing the shoulder blades together at the bottom. This is the primary exercise for back width and the V-taper.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The latissimus dorsi (lats) are the largest muscles of the upper body and are responsible for the width of the back. Developing the lats creates the V-taper that makes the waist appear smaller by comparison. The wide grip pulldown is the most effective way to target the upper and outer lats, providing the width that defines the upper body silhouette.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/seated_narrow_row_cable.gif" alt="Cable Row"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 02</div>
+            <div class="ex-name">Seated Cable Row (narrow grip)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3–4 × 10–12</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 90 sec</div>
+            <div class="ex-cue">Sit tall; do not use momentum. Pull the handle to the lower stomach; squeeze the mid-back hard. This builds back thickness and improves posture.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Targets the rhomboids and mid-trapezius — the muscles responsible for back thickness and "pulling the shoulders back." In a world of desk work, these muscles are often weak and overstretched. Strengthening them not only improves the look of the back but also corrects the forward-slumped posture that can make the chest and shoulders appear smaller than they are.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/single_arm_dumbell_row.gif" alt="DB Row"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 03</div>
+            <div class="ex-name">Single-Arm DB Row</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12 ea.</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 60 sec</div>
+            <div class="ex-cue">Support yourself on a bench. Pull the dumbbell to the hip, not the chest. Feel the stretch at the bottom and the hard squeeze at the top. identifies and fixes side-to-side back imbalances.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>Unilateral work like the single-arm row is essential for identifying and correcting strength and muscle imbalances. Because the arm is free to move in a more natural arc than on a machine, it also improves shoulder health and stability. It allows for a greater range of motion at the top of the rep, leading to better muscle activation and growth.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/face_pull.gif" alt="Face Pull"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 04</div>
+            <div class="ex-name">Face Pull (cable)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 15</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 15–20</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 15–20</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Pull the rope towards your forehead; pull the ends apart at the top. Focus on the rear delts and upper back. This is a "prehab" exercise for shoulder health and posture.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The rear deltoids and external rotators of the shoulder are critical for both joint health and the "rounded" look of the shoulder from the side and back. Face pulls are the gold standard for targeting these small but important muscles. They counteract the internal rotation caused by heavy chest work and poor posture, ensuring the shoulders stay healthy and look athletic from every angle.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/ez_bicep_curl.gif" alt="Bicep Curl"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 05</div>
+            <div class="ex-name">EZ Bar Bicep Curl</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12–15</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Elbows pinned to the sides; no swinging. Squeeze hard at the top; control the lowering phase. The EZ bar is easier on the wrists than a straight bar.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The classic bicep builder. While biceps are worked during all pulling movements, isolation work is needed to maximize their shape and peak. The EZ bar allows for a more natural wrist position, meaning you can load the biceps more heavily without wrist pain. Consistent, controlled curling is what builds the definition that shows when the arms are flexed or in a short-sleeved top.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/hammer_curl.gif" alt="Hammer Curl"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 06</div>
+            <div class="ex-name">Hammer Curl (dumbbell)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 12</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12–15</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">4 × 10–12</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 45 sec</div>
+            <div class="ex-cue">Neutral grip (palms facing each other). Targets the brachialis — the muscle underneath the bicep that "pushes" it up, making the arm look thicker from the side.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>The brachialis is a muscle that lies beneath the bicep. When developed, it literally pushes the bicep up, increasing the height of the arm peak and the thickness of the arm from the side. The neutral (hammer) grip also heavily works the brachioradialis of the forearm, providing a complete, athletic look to the entire arm.</p></div>
+          </div>
+        </div>
+
+        <div class="ex-card">
+          <div class="ex-img-wrap"><img src="Exercises/bird_dog.gif" alt="Bird Dog"></div>
+          <div class="ex-body">
+            <div class="ex-num">Exercise 07</div>
+            <div class="ex-name">Bird Dog (slow & controlled)</div>
+            <div class="phase-strip"><div class="ph-item ph-active"><div class="ph-num">Phase 1</div><div class="ph-param">3 × 10 each</div></div><div class="ph-item"><div class="ph-num">Phase 2</div><div class="ph-param">3 × 12 each</div></div><div class="ph-item"><div class="ph-num">Phase 3</div><div class="ph-param">3 × 15 each</div></div></div>
+            <div class="ex-rest"><strong>Rest:</strong> 30 sec</div>
+            <div class="ex-cue">On all fours; extend opposite arm and leg. Keep the back flat — do not arch. Hold for 2 seconds at full extension. This is about stability and control, not speed.</div>
+            <button class="why-toggle" onclick="toggleWhy(this)">Why this? <span class="why-icon">↓</span></button>
+            <div class="why-body"><p>A fundamental core and posterior chain stability exercise. It teaches the body to maintain a neutral spine while the limbs are moving, which is critical for protecting the lower back. It also activates the glutes and spinal erectors in a low-impact way, making it an excellent "finisher" that reinforces the postural habits we're building throughout the programme.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
 </div>
-</section>
 
-
-<!-- ══════════════════════════════════════════════════════════
-     03 — UNDERSTANDING YOUR PLAN
-══════════════════════════════════════════════════════════ -->
-<section id="plan">
-<div class="container">
-  <div class="sec-head">
-    <div class="sec-tag">03 — Context & Rationale</div>
-    <div class="sec-title">Understanding Your Plan</div>
-    <div class="sec-sub">PCOS · Training Rationale · Dietary Principles · Recovery</div>
-  </div>
-
-  <div class="plan-grid">
-
-    <div class="plan-block">
-      <div class="plan-tag">01 — Health Modifier</div>
-      <div class="plan-title">PCOS — what it means for your body and your training</div>
-      <p>PCOS is a hormonal condition — not a character flaw, not a life sentence, and certainly not a reason to train <em>around</em> yourself instead of <em>for</em> yourself.</p>
-      <p>Here is what it actually means: PCOS disrupts how your cells respond to insulin. When insulin sensitivity is low, your body stores energy differently — it accumulates fat centrally, and it resists the hormonal signals that would otherwise direct energy toward muscle growth. Combined with elevated androgens and a tendency toward elevated cortisol under stress, it can feel as though the body is working against you. It is not. It just requires a different sequence.</p>
-      <p><strong>Resistance training is not a supplement to treatment — it is treatment.</strong> The 2023 International Evidence-Based PCOS Guidelines recommend vigorous resistance exercise as a first-line intervention. The RPE 8 sets in this programme produce the strongest improvements in insulin sensitivity, androgen levels, and reproductive hormones of any intervention studied. This matters. What you are doing in the gym is clinically significant.</p>
-      <p>If you have a regular natural cycle, your energy and recovery capacity will shift across the month. The first half tends to support higher loads and better recovery; the second half may call for maintained volume with slightly reduced peak intensity. Track how you feel week to week — the data from your own body is the most precise instrument available.</p>
-    </div>
-
-    <div class="plan-block">
-      <div class="plan-tag">02 — Programme Design</div>
-      <div class="plan-title">Why this programme looks the way it does</div>
-      <p>An Upper/Lower split, four days a week, is not a generic choice. With your goals — muscle hypertrophy, fat loss, and PCOS metabolic management — this structure gives you the best return on the time you invest.</p>
-      <p><strong>Morning sessions improve glucose disposal throughout the day.</strong> This matters specifically for you — training in the morning is associated with better metabolic outcomes for women with insulin resistance. It is not a preference; it is a priority.</p>
-      <p><strong>Compound lifts first.</strong> Squats, Romanian deadlifts, hip thrusts, presses, and rows activate the largest muscle groups and drive the cellular changes that insulin-resistant muscle needs. Isolation work builds on this foundation — it does not replace it.</p>
-      <p><strong>RPE over percentage maxes.</strong> RPE — rate of perceived exertion — calibrates to how you feel on any given day. On a hard week, stressful work, or late in your cycle, RPE 8 looks different to RPE 8 on a fresh day. The system adjusts itself. This is more intelligent than a fixed percentage, and it protects against overreaching when recovery is compromised.</p>
-      <p><strong>Progressive loading</strong> via double progression: complete the top of the rep range with good form, then add load at the next session. The programme begins at 3 × 12 — a rep range that builds the technique, the motor patterns, and the connective tissue capacity needed before heavier loads are introduced. Each phase builds on the last. Nothing is arbitrary.</p>
-    </div>
-
-    <div class="plan-block">
-      <div class="plan-tag">03 — Nutrition</div>
-      <div class="plan-title">Dietary principles</div>
-      <p>The meal plan is built around three priorities: supporting muscle growth, managing insulin, and reducing inflammation. These are not in conflict — the same food choices serve all three.</p>
-      <p><strong>Protein target: 159–177 g per day</strong> (1.8–2.0 g/kg body weight). This is the range the research supports for muscle retention and growth alongside a caloric deficit. Distribute it across the day — not all at one meal. Every meal should contain a meaningful protein source.</p>
-      <p><strong>Low glycaemic index foods are the default.</strong> Slow-release carbohydrates — sweet potato, oats, legumes, whole grains — improve insulin sensitivity over time. This is not about avoidance; it is about choosing the version of carbohydrate that works with your hormones rather than against them.</p>
-      <ul class="plan-list">
-        <li>No gluten, no lactose, no lentils — remove completely</li>
-        <li>No paprika or bell peppers, no carrots, no white potatoes</li>
-        <li>Sweet potato: permitted and encouraged — slow-release, anti-inflammatory, high in potassium</li>
-        <li>No added sugar in any form, including honey, maple syrup, and agave</li>
-        <li>Anti-inflammatory focus: oily fish, leafy greens, olive oil, turmeric, ginger</li>
-      </ul>
-      <p><strong>Magnesium citrate</strong> supplementation is well-evidenced for insulin sensitivity in PCOS — continue. Vitamin D and Omega-3 are worth testing and considering with your GP; deficiency is common and the effect on muscle function and inflammation is meaningful.</p>
-    </div>
-
-    <div class="plan-block">
-      <div class="plan-tag">04 — Recovery</div>
-      <div class="plan-title">Recovery — where the adaptation actually happens</div>
-      <p>Training provides the stimulus. Recovery is where the adaptation happens. The two are not separable — one without the other produces fatigue, not progress.</p>
-      <p><strong>Deload every 5th week.</strong> Reduce volume by 40–50% and maintain intensity. This is not optional rest — it is when the nervous system consolidates the adaptations the previous four weeks demanded. PCOS-related cortisol dysregulation means deloads matter more for you than for a client without this condition. Do not skip them.</p>
-      <p><strong>Hydration: minimum 3.1 litres on rest days, 3.5–4.0 litres on training days.</strong> Your total body water was below the expected range for your body composition at baseline. Consistent hydration affects energy, performance, and how InBody readings interpret your progress — it is one of the faster-acting levers available.</p>
-      <p><strong>Sleep quality</strong> was not captured in the initial assessment. PCOS is associated with sleep-disordered breathing and elevated cortisol — both of which impair recovery and fat loss regardless of how well the training and nutrition are managed. If sleep feels non-restorative, raise it with your GP.</p>
-      <ul class="plan-list">
-        <li>Magnesium citrate — continue; evidenced for sleep quality and insulin sensitivity</li>
-        <li>Vitamin D testing recommended — deficiency impairs muscle function and is common in PCOS</li>
-        <li>Omega-3 supplementation — anti-inflammatory; consider after GP review</li>
-        <li>Review checkpoints: Week 4 (in-session), Week 8 (full rescan), Week 12 (comprehensive)</li>
-      </ul>
-      <p>Progress is not linear. There will be weeks where the numbers don't move the way you expect — and weeks where they shift significantly. The InBody data will tell us whether composition is changing even when the scale doesn't. That is precisely why we track both.</p>
-    </div>
-
-  </div>
-</div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     04 — WORKOUT TRACKER
-══════════════════════════════════════════════════════════ -->
-<section id="tracker">
-<div class="container">
-  <div class="sec-head">
-    <div class="sec-tag">04 — Session Log</div>
-    <div class="sec-title">Log Session</div>
-    <div class="sec-sub">Log Sessions · Track Completion · Review History</div>
-  </div>
-
-  <div class="tracker-layout">
-    <!-- Form -->
-    <div class="tracker-form">
-      <div class="form-head">Log a Session</div>
-      <div class="fg"><label>Date</label><input type="date" id="w-date"></div>
-      <div class="fg">
-        <label>Session</label>
-        <select id="w-session">
-          <option value="Lower Body A">Lower Body A — Quad Dominant</option>
-          <option value="Upper Body A">Upper Body A — Push + Arms</option>
-          <option value="Lower Body B">Lower Body B — Glute / Hip</option>
-          <option value="Upper Body B">Upper Body B — Pull + Arms</option>
-          <option value="Metabolic Conditioning">Metabolic Conditioning (Day 6)</option>
-          <option value="Rest / Walk">Rest / Walk / Active Recovery</option>
-        </select>
-      </div>
-      <div class="fg"><label>Phase</label>
-        <select id="w-phase">
-          <option value="Phase 1 — Foundation">Phase 1 — Foundation (Wk 1–4)</option>
-          <option value="Phase 2 — Progressive Load">Phase 2 — Progressive Load (Wk 5–8)</option>
-          <option value="Phase 3 — Strength & Definition">Phase 3 — Strength & Definition (Wk 9–12)</option>
-        </select>
-      </div>
-      <div class="complete-row">
-        <input type="checkbox" id="w-complete">
-        <label for="w-complete">Session completed in full</label>
-      </div>
-      <div class="fg">
-        <label>Notes — loads, how it felt, anything notable</label>
-        <textarea id="w-notes" placeholder="e.g. Back squat 40 kg × 12. Felt strong today. Pull-up: 3 × 5 negatives with 5-sec descent."></textarea>
-      </div>
-      <button class="btn" onclick="saveWorkout()">Save Session</button>
-    </div>
-
-    <!-- History -->
-    <div>
-      <div class="history-head">Session History</div>
-      <div id="workout-history"></div>
-      <div id="tracker-empty" class="empty-msg">No sessions logged yet — start with today's session.</div>
-    </div>
-  </div>
-</div>
-</section>
-
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-l">Ritika Manchanda · Training Programme · 2026</div>
-  <div class="footer-r">Personal Use Only · Confidential</div>
+  <div class="container">
+    <p><strong>Ritika Manchanda</strong> · Personal Training Programme · 2026</p>
+  </div>
 </footer>
 
-
-<!-- ══════════════════════════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════════════════════════ -->
 <script>
-// ── WHY THIS EXERCISE TOGGLE ──────────────────────────────────
+// Tab Switching Logic
+document.querySelectorAll('.session-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.session-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.session-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.session).classList.add('active');
+  });
+});
+
+// Why This Toggle Logic
 function toggleWhy(btn) {
   const body = btn.nextElementSibling;
   body.classList.toggle('open');
   btn.classList.toggle('open');
+  btn.querySelector('.why-icon').textContent = body.classList.contains('open') ? '↑' : '↓';
 }
-
-// ── SECTION NAVIGATION ───────────────────────────────────────
-function showSection(id) {
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.getElementById('nav-' + id).classList.add('active');
-  if (id === 'tracking') setTimeout(renderCharts, 60);
-}
-
-// ── SESSION TABS ─────────────────────────────────────────────
-function showSession(btn, id) {
-  document.querySelectorAll('.session-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.session-content').forEach(c => c.classList.remove('active'));
-  document.getElementById('session-' + id).classList.add('active');
-  btn.classList.add('active');
-}
-
-// ── HISTORY ENTRY TOGGLE ─────────────────────────────────────
-function toggleEntry(id) {
-  const body = document.getElementById('hb-' + id);
-  if (body) body.classList.toggle('open');
-}
-
-// ── CHART INSTANCES ──────────────────────────────────────────
-const charts = {};
-
-function makeChart(id, label, color, data, labels, type) {
-  const ctx = document.getElementById(id);
-  if (!ctx) return;
-  if (charts[id]) { charts[id].destroy(); }
-  charts[id] = new Chart(ctx, {
-    type: type || 'line',
-    data: {
-      labels: labels,
-      datasets: Array.isArray(label)
-        ? label.map((l, i) => ({
-            label: l,
-            data: data[i],
-            borderColor: color[i],
-            backgroundColor: color[i] + '33',
-            tension: 0.3,
-            pointRadius: 4,
-            borderWidth: 2,
-            fill: false
-          }))
-        : [{
-            label: label,
-            data: data,
-            borderColor: color,
-            backgroundColor: color + '22',
-            tension: 0.3,
-            pointRadius: 4,
-            borderWidth: 2,
-            fill: true
-          }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: Array.isArray(label),
-          labels: { font: { size: 10, family: 'DM Sans' }, boxWidth: 10, padding: 8 }
-        }
-      },
-      scales: {
-        x: { grid: { color: '#EDE9E3' }, ticks: { font: { size: 9, family: 'DM Sans' } } },
-        y: { grid: { color: '#EDE9E3' }, ticks: { font: { size: 9, family: 'DM Sans' } } }
-      }
-    }
-  });
-}
-
-function renderCharts() {
-  const entries = getTrackingData().sort((a, b) => a.date.localeCompare(b.date));
-  const labels = entries.map(e => e.date);
-  const v = k => entries.map(e => (e[k] !== undefined && e[k] !== null) ? e[k] : null);
-  const ACC = '#BF8C48';
-
-  makeChart('chart-weight', 'Weight (kg)', ACC, v('weight'), labels);
-  makeChart('chart-bf', 'Body Fat %', '#7BAABF', v('bf'), labels);
-  makeChart('chart-ffm', 'Fat-Free Mass (kg)', '#6A9E78', v('ffm'), labels);
-  makeChart('chart-vf', 'Visceral Fat', '#BF6A6A', v('vf'), labels, 'bar');
-  makeChart('chart-pa', 'Phase Angle °', '#9A7ABF', v('pa'), labels);
-  makeChart('chart-ecw', 'ECW:TBW Ratio', '#7A9ABF', v('ecw'), labels);
-  makeChart('chart-circ',
-    ['Chest', 'Waist', 'Hip', 'Thigh', 'Upper Arm'],
-    ['#BF8C48', '#7BAABF', '#6A9E78', '#BF6A6A', '#9A7ABF'],
-    [v('chest'), v('waist'), v('hip'), v('thigh'), v('arm')],
-    labels
-  );
-}
-
-// ── TRACKING DATA ─────────────────────────────────────────────
-function getTrackingData() {
-  return JSON.parse(localStorage.getItem('ritika_tracking_v2') || '[]');
-}
-function setTrackingData(arr) {
-  localStorage.setItem('ritika_tracking_v2', JSON.stringify(arr));
-}
-
-function saveTrackingEntry() {
-  const date = document.getElementById('t-date').value;
-  if (!date) { alert('Please select a date.'); return; }
-  const ids = ['weight','bf','ffm','smm','vf','pa','ecw','tbw','chest','waist','hip','thigh','arm'];
-  const entry = { date };
-  ids.forEach(id => {
-    const val = parseFloat(document.getElementById('t-' + id).value);
-    entry[id] = isNaN(val) ? null : val;
-  });
-  const data = getTrackingData();
-  data.push(entry);
-  setTrackingData(data);
-  renderTrackingTable();
-  renderCharts();
-  ids.forEach(id => { document.getElementById('t-' + id).value = ''; });
-}
-
-function deleteTrackingEntry(idx) {
-  if (!confirm('Delete this entry?')) return;
-  const data = getTrackingData();
-  data.splice(idx, 1);
-  setTrackingData(data);
-  renderTrackingTable();
-  renderCharts();
-}
-
-function clearAllTracking() {
-  if (!confirm('Delete ALL tracking data? This cannot be undone.')) return;
-  localStorage.removeItem('ritika_tracking_v2');
-  renderTrackingTable();
-  renderCharts();
-}
-
-function fmt(val) { return (val !== null && val !== undefined) ? val : '—'; }
-
-function renderTrackingTable() {
-  const data = getTrackingData().slice().sort((a,b) => b.date.localeCompare(a.date));
-  const tbody = document.getElementById('data-tbody');
-  const empty = document.getElementById('tracking-empty');
-  if (!data.length) {
-    if (tbody) tbody.innerHTML = '';
-    if (empty) empty.style.display = 'block';
-    return;
-  }
-  if (empty) empty.style.display = 'none';
-  if (tbody) tbody.innerHTML = data.map((e, i) => `
-    <tr>
-      <td>${e.date}</td>
-      <td>${fmt(e.weight)}</td>
-      <td>${fmt(e.bf)}</td>
-      <td>${fmt(e.ffm)}</td>
-      <td>${fmt(e.smm)}</td>
-      <td>${fmt(e.vf)}</td>
-      <td>${fmt(e.pa)}</td>
-      <td>${fmt(e.ecw)}</td>
-      <td>${fmt(e.chest)}</td>
-      <td>${fmt(e.waist)}</td>
-      <td>${fmt(e.hip)}</td>
-      <td>${fmt(e.thigh)}</td>
-      <td>${fmt(e.arm)}</td>
-      <td><button class="del-btn" onclick="deleteTrackingEntry(${data.length - 1 - i})">✕</button></td>
-    </tr>`).join('');
-}
-
-// ── WORKOUT TRACKER ───────────────────────────────────────────
-function getWorkoutData() {
-  return JSON.parse(localStorage.getItem('ritika_workouts_v2') || '[]');
-}
-function setWorkoutData(arr) {
-  localStorage.setItem('ritika_workouts_v2', JSON.stringify(arr));
-}
-
-function saveWorkout() {
-  const date = document.getElementById('w-date').value;
-  if (!date) { alert('Please select a date.'); return; }
-  const entry = {
-    date,
-    session: document.getElementById('w-session').value,
-    phase: document.getElementById('w-phase').value,
-    complete: document.getElementById('w-complete').checked,
-    notes: document.getElementById('w-notes').value.trim()
-  };
-  const data = getWorkoutData();
-  data.push(entry);
-  setWorkoutData(data);
-  renderWorkoutHistory();
-  document.getElementById('w-date').value = new Date().toISOString().split('T')[0];
-  document.getElementById('w-complete').checked = false;
-  document.getElementById('w-notes').value = '';
-}
-
-function deleteWorkout(originalIdx) {
-  if (!confirm('Delete this session log?')) return;
-  const data = getWorkoutData();
-  data.splice(originalIdx, 1);
-  setWorkoutData(data);
-  renderWorkoutHistory();
-}
-
-function renderWorkoutHistory() {
-  const rawData = getWorkoutData();
-  const data = rawData.slice().reverse();
-  const container = document.getElementById('workout-history');
-  const empty = document.getElementById('tracker-empty');
-  if (!data.length) {
-    if (container) container.innerHTML = '';
-    if (empty) empty.style.display = 'block';
-    return;
-  }
-  if (empty) empty.style.display = 'none';
-  if (container) container.innerHTML = data.map((e, i) => {
-    const originalIdx = rawData.length - 1 - i;
-    return `
-    <div class="hist-entry${e.complete ? ' done' : ''}">
-      <div class="hist-entry-hd" onclick="toggleEntry('${i}')">
-        <span class="sess-badge${e.complete ? ' done' : ''}">${e.session}</span>
-        <span class="hist-date">${e.date}${e.phase ? ' · ' + e.phase : ''}${e.complete ? ' · ✓' : ''}</span>
-        <span class="hist-chevron">▾</span>
-      </div>
-      <div class="hist-body" id="hb-${i}">
-        <div class="hist-notes">${e.notes || '<span style="color:#aaa;font-style:italic">No notes recorded.</span>'}</div>
-        <button class="hist-del" onclick="deleteWorkout(${originalIdx})">Delete entry</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ── INIT ──────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-  const today = new Date().toISOString().split('T')[0];
-  const tDate = document.getElementById('t-date');
-  const wDate = document.getElementById('w-date');
-  if (tDate) tDate.value = today;
-  if (wDate) wDate.value = today;
-  renderTrackingTable();
-  renderWorkoutHistory();
-  document.querySelectorAll('.ex-img-wrap img').forEach(img => {
-    if (!img.complete || img.naturalWidth === 0) {
-      img.style.display = 'none';
-      const ph = img.nextElementSibling;
-      if (ph) ph.style.display = 'flex';
-    }
-  });
-});
 </script>
 </body>
 </html>
