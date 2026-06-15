@@ -61,6 +61,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 .ex{background:var(--white);border:1px solid var(--border);margin-bottom:.6rem;overflow:hidden;}
 .ex.done{border-color:var(--accent);}
 .ex-vid-wrap{position:relative;background:#111;cursor:pointer;aspect-ratio:16/9;overflow:hidden;}
+.ex-vid-wrap.gif-wrap{background:var(--warm-gray);cursor:default;}
 .ex-vid{width:100%;height:100%;object-fit:cover;display:block;}
 .ex-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .25s;}
 .ex.playing .ex-overlay{opacity:0;pointer-events:none;}
@@ -103,7 +104,6 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 </style>
 </head>
 <body>
-
 <div class="hdr">
   <div class="hdr-eyebrow">Trainingsplan · April – Juni 2026</div>
   <div class="hdr-name">Cathleen<br><em>Schüttendieb</em></div>
@@ -115,7 +115,6 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <span class="hdr-tag">Grundfitness</span>
   </div>
 </div>
-
 <nav class="nav">
   <button class="nav-btn active" onclick="showPage('info',this)">Übersicht</button>
   <button class="nav-btn" onclick="showPage('oben',this)">Oberkörper</button>
@@ -123,9 +122,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
   <button class="nav-btn" onclick="showPage('rumpf',this)">Rumpf</button>
   <button class="nav-btn" onclick="showPage('messung',this)">Messungen</button>
 </nav>
-
 <div class="main">
-
 <!-- ══ ÜBERSICHT ══ -->
 <div id="page-info" class="page active">
   <div class="sect-label">Ziel-Roadmap</div>
@@ -163,7 +160,6 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       </div>
     </div>
   </div>
-
   <div class="sect-label">Wochenplan</div>
   <div class="schedule">
     <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Montag</div><div class="sched-type">Oberkörper</div></div>
@@ -174,7 +170,6 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Samstag</div><div class="sched-type">Rumpf</div></div>
     <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Sonntag</div><div class="sched-type">Erholung</div></div>
   </div>
-
   <div class="sect-label">Warum dieser Plan?</div>
   <div class="info-block">
     <p>Bei einer HWS-Skoliose mit Gegenschwung in der BWS und einem Bandscheibenvorfall in C4 ist es entscheidend, die tiefe Rückenmuskulatur sanft zu stärken — <strong>ohne Druckbelastung auf die Bandscheiben</strong>. Alle Übungen sind daraufhin ausgewählt.</p>
@@ -182,7 +177,6 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <p>Tiefe Stabilisatoren: M. transversus abdominis · M. multifidus · Zwerchfell — das interne Korsett deiner Wirbelsäule.</p>
   </div>
 </div>
-
 <!-- ══ OBERKÖRPER ══ -->
 <div id="page-oben" class="page">
   <div class="wi">
@@ -195,15 +189,12 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <span class="wi-meta-item">Mittleres Gewicht</span>
     </div>
   </div>
-
   <div class="sect-label">Aufwärmen</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Cross-Trainer</div><div class="si-detail">10 Min · moderates Tempo</div></div></div>
   </div>
-
   <div class="sect-label">Schulter-Mobilität & Rücken</div>
-
-  <!-- Band Pull-Apart — VIDEO vorhanden -->
+  <!-- Band Pull-Apart — VIDEO -->
   <div class="ex" id="ex-bpa">
     <div class="ex-vid-wrap" onclick="playVid('vid-bpa','ex-bpa')">
       <video id="vid-bpa" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/band-pull-aparts-male.mp4" loop muted playsinline preload="none"></video>
@@ -217,8 +208,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-bpa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Zieht das Schulterblatt aktiv in die richtige Position zurück. Stärkt hinteren Schulteranteil und Trapezius — direkt verantwortlich für Schulterrotation und Schmerzfreiheit bei Nervenwurzel-Kompression C4.</div></div>
     </div>
   </div>
-
-  <!-- External Rotation — VIDEO vorhanden -->
+  <!-- External Rotation — VIDEO -->
   <div class="ex" id="ex-ext">
     <div class="ex-vid-wrap" onclick="playVid('vid-ext','ex-ext')">
       <video id="vid-ext" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/90-90-external-rotation.mp4" loop muted playsinline preload="none"></video>
@@ -232,8 +222,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-ext"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Infraspinatus und Teres minor — die Außenrotatoren, die direkt für deine eingeschränkte Schulterrotation verantwortlich sind. Mit jeder Wiederholung wächst der Bewegungsradius.</div></div>
     </div>
   </div>
-
-  <!-- Thread the Needle — kein Video -->
+  <!-- Thread the Needle -->
   <div class="ex" id="ex-ttn">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Thread the Needle</div><button class="ex-check" onclick="toggleDone('ex-ttn')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -243,10 +232,21 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-ttn"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Löst Verspannungen in der BWS sanft auf und verbessert die Rotationsmobilität — bei HWS-Skoliose mit Gegenschwung in der BWS besonders wichtig. Entlastet indirekt deine Bandscheiben.</div></div>
     </div>
   </div>
-
+  <!-- Seated Face Pull — GIF -->
+  <div class="ex" id="ex-sfp">
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/seated_face_pull.gif" alt="Seated Face Pull">
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Seated Face Pull</div><button class="ex-check" onclick="toggleDone('ex-sfp')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 15 Wdh · Leichtes–mittleres Gewicht</div>
+      <div class="ex-cue">Seilgriff auf Augenhöhe einstellen. Seil zur Stirn ziehen, Ellbogen dabei nach aussen und oben führen. Schulterblätter aktiv zusammenziehen — kurz in der Endposition halten. Schultern bleiben unten, kein Hochziehen.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-sfp')">Warum diese Übung</button>
+      <div class="ex-why" id="why-sfp"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Face Pulls aktivieren gezielt die Außenrotatoren der Schulter (Infraspinatus, Teres minor) sowie den hinteren Deltamuskel und Trapezius. Bei eingeschränkter Schulterrotation und HWS-Belastung ist dies eine der effektivsten Übungen zur Wiederherstellung der Schulterbalance und Entlastung der Nervenwurzel C4.</div></div>
+    </div>
+  </div>
   <div class="muscle-sep">Trapezius</div>
-
-  <!-- Einarmiges KH-Rudern — kein Video -->
+  <!-- Einarmiges KH-Rudern -->
   <div class="ex" id="ex-ekr">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Einarmiges Kurzhantel-Rudern</div><button class="ex-check" onclick="toggleDone('ex-ekr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -256,8 +256,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-ekr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Stärkt mittleren und oberen Trapezius — Basis für Schulterblatt-Stabilisierung und verbesserte Schulterrotation. Aktiviert gleichzeitig tiefe Rückenmuskulatur entlang der Wirbelsäule.</div></div>
     </div>
   </div>
-
-  <!-- T-Bar Rudern — kein Video -->
+  <!-- T-Bar Rudern -->
   <div class="ex" id="ex-tbr">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">T-Bar Rudern mit Langhantel</div><button class="ex-check" onclick="toggleDone('ex-tbr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -267,8 +266,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-tbr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Die T-Bar-Position sorgt für eine neutrale Wirbelsäule — ideal bei deinem Bandscheibenvorfall, da kein Kompressionsdruck auf C4 entsteht. Aktiviert massiv Rhomboid und mittleren Trapezius für aufrechte Körperhaltung.</div></div>
     </div>
   </div>
-
-  <!-- Butterfly Reverse — kein Video -->
+  <!-- Butterfly Reverse -->
   <div class="ex" id="ex-bfr">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Butterfly Reverse</div><button class="ex-check" onclick="toggleDone('ex-bfr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -278,10 +276,8 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-bfr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert gezielt den hinteren Schulteranteil und Rhomboid — durch Alltagshaltung oft zu schwach. Ein kräftiger hinterer Schulter zieht die Schulterblätter zurück und entlastet deine HWS dauerhaft.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Latissimus</div>
-
-  <!-- Enges Rudern V-Grip — VIDEO vorhanden -->
+  <!-- Enges Rudern V-Grip — VIDEO -->
   <div class="ex" id="ex-vcr">
     <div class="ex-vid-wrap" onclick="playVid('vid-vcr','ex-vcr')">
       <video id="vid-vcr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/26611201-Cable-Seated-Row-with-V-bar_Back.mp4" loop muted playsinline preload="none"></video>
@@ -295,85 +291,36 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-vcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert den Latissimus — wirkt wie ein natürliches Korsett um deine Wirbelsäule. Starker Lat entlastet die Bandscheiben und verbessert aufrechte Haltung dauerhaft.</div></div>
     </div>
   </div>
-
-  <!-- Breites Rudern Wide Grip — VIDEO vorhanden -->
-  <div class="ex" id="ex-wcr">
-    <div class="ex-vid-wrap" onclick="playVid('vid-wcr','ex-wcr')">
-      <video id="vid-wcr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/02181201-Cable-Seated-Wide-grip-Row_Back.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Breites Rudern am Kabelzug (Wide Grip)</div><button class="ex-check" onclick="toggleDone('ex-wcr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 15 Wdh · Mittleres Gewicht</div>
-      <div class="ex-cue">Stange direkt unterhalb der Brust bringen. Ellbogen leicht nach aussen. Brust auf, Schulterblätter aktiv zusammenziehen.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-wcr')">Warum diese Übung</button>
-      <div class="ex-why" id="why-wcr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Breiter Griff betont oberen Lat und hintere Schulter. Mit engem Griff zusammen = vollständige Rückenentwicklung für symmetrische Wirbelsäulenunterstützung.</div></div>
-    </div>
-  </div>
-
-  <!-- Langhantel Reverse Grip — kein Video -->
-  <div class="ex" id="ex-rgr">
-    <div class="ex-body-top">
-      <div class="ex-top-row"><div class="ex-name">Langhantel Reverse Grip Rudern</div><button class="ex-check" onclick="toggleDone('ex-rgr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 15 Wdh · Mittleres Gewicht</div>
-      <div class="ex-cue">Untergriff (Handflächen zeigen nach oben). Rücken neutral, leicht vorgeneigt. Langhantel zur Hüfte ziehen. Ellbogen eng am Körper halten.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-rgr')">Warum diese Übung</button>
-      <div class="ex-why" id="why-rgr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Der Untergriff verlagert die Aktivierung auf den unteren Lat und Biceps — ein anderer Trainingsreiz als Übergriff. Zusammen decken beide Griffarten den gesamten Latissimus ab für gleichmäßige Rückenentwicklung.</div></div>
-    </div>
-  </div>
-
-  <!-- Rope Straight Arm Pulldown — VIDEO vorhanden -->
-  <div class="ex" id="ex-rsa">
-    <div class="ex-vid-wrap" onclick="playVid('vid-rsa','ex-rsa')">
-      <video id="vid-rsa" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/02371201-Cable-Straight-Arm-Pulldown-(with-rope)_Back.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Rope Straight Arm Pulldown</div><button class="ex-check" onclick="toggleDone('ex-rsa')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 15 Wdh · Leichtes–mittleres Gewicht</div>
-      <div class="ex-cue">Arme gerade oder so hoch gestreckt dass die Schulter nicht schmerzt. Von da aus zur Hüfte bringen. Schulterblätter aktiv halten.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-rsa')">Warum diese Übung</button>
-      <div class="ex-why" id="why-rsa"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Isoliert den Lat ohne Schultergelenkbelastung — Arm bleibt gestreckt. Ideal bei eingeschränkter Schulterrotation. Trainiert Kraft und Körperspannung ohne Risiko für C4.</div></div>
-    </div>
-  </div>
-
   <div class="muscle-sep">Biceps</div>
-
-  <!-- Bicep Curl Maschine — VIDEO vorhanden -->
+  <!-- Bicep Curl EZ-Bar — GIF -->
   <div class="ex" id="ex-bcm">
-    <div class="ex-vid-wrap" onclick="playVid('vid-bcm','ex-bcm')">
-      <video id="vid-bcm" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/10321201-Lever-Alternate-Biceps-Curl_Upper-Arms_.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/ez-bar-bicep-curl.gif" alt="EZ-Bar Bicep Curl">
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Bicep Curl – Maschine</div><button class="ex-check" onclick="toggleDone('ex-bcm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 15 Wdh · Mittleres Gewicht</div>
-      <div class="ex-cue">Ellbogen bleibt stabil auf der Auflage. Geführte Bewegung — keine HWS-Belastung durch unkontrollierte Schulterbewegungen.</div>
+      <div class="ex-top-row"><div class="ex-name">Bicep Curl – EZ-Bar</div><button class="ex-check" onclick="toggleDone('ex-bcm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 12–15 Wdh · Mittleres Gewicht</div>
+      <div class="ex-cue">Untergriff am EZ-Bar, Ellbogen stabil an den Seiten. Stange kontrolliert bis zur Schulter curlen — kurz oben halten. Handgelenk bleibt gerade, kein Schwung mit dem Oberkörper.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-bcm')">Warum diese Übung</button>
-      <div class="ex-why" id="why-bcm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Maschine schützt deine HWS vollständig. Biceps-Kraft erhöht Grundumsatz und verbessert Alltagsbelastungen (Tragen, Heben).</div></div>
+      <div class="ex-why" id="why-bcm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Der EZ-Bar-Griff reduziert Supinationsdruck auf das Handgelenk und den Ellbogen im Vergleich zur geraden Stange. Der schräge Griff entlastet den Unterarm und ermöglicht gleichzeitig starke Biceps-Aktivierung. Kein Druck auf die HWS bei korrekter Ausführung.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Trizeps</div>
-
-  <!-- Trizeps Kabelzug — VIDEO vorhanden -->
+  <!-- Trizeps Kickback — GIF -->
   <div class="ex" id="ex-trk">
-    <div class="ex-vid-wrap" onclick="playVid('vid-trk','ex-trk')">
-      <video id="vid-trk" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/24381201-Cable-Pushdown-(with-rope-attachment)-(female)_Upper-Arms.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/tricep_bench_kickback.gif" alt="Trizeps Kickback">
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Trizeps Drücken am Kabelzug</div><button class="ex-check" onclick="toggleDone('ex-trk')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 15 Wdh · Mittleres Gewicht</div>
-      <div class="ex-cue">Komplett oben einstellen. Ellbogen nah am Körper. Zur Hüfte bringen und wieder hoch — Ellbogen bleibt immer bei der Hüfte.</div>
+      <div class="ex-top-row"><div class="ex-name">Trizeps Kickback – Kurzhantel auf der Bank</div><button class="ex-check" onclick="toggleDone('ex-trk')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 12–15 Wdh pro Seite · Mittleres Gewicht</div>
+      <div class="ex-cue">Knie und Hand auf der Bank aufgestützt. Ellbogen auf Höhe des Rückens halten — nicht absinken lassen. Kurzhantel nach hinten strecken bis der Arm vollständig gestreckt ist. 1 Sek halten, kontrolliert zurück.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-trk')">Warum diese Übung</button>
-      <div class="ex-why" id="why-trk"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Kabelzug erlaubt natürliche Bewegungsbahn ohne Schulterdruck. Trizeps = 2/3 des Oberarmvolumens — mehr Masse = mehr Kalorienverbrauch im Ruhezustand.</div></div>
+      <div class="ex-why" id="why-trk"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Der Trizeps-Kickback auf der Bank isoliert alle drei Trizepsköpfe bei maximaler Kontraktion am Ende der Bewegung. Die abgestützte Position schützt vollständig die HWS und verhindert Kompensationsbewegungen durch den Oberkörper. Trizeps = 2/3 des Oberarmvolumens — mehr Masse, höherer Grundumsatz.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Brust</div>
-
-  <!-- Brustpresse — kein Video -->
+  <!-- Brustpresse -->
   <div class="ex" id="ex-brm">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Brustpresse – Maschine</div><button class="ex-check" onclick="toggleDone('ex-brm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -383,15 +330,12 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-brm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Balance Zug:Druck (2:1) schützt Schultergesundheit langfristig. Verbessert Haltung und verhindert Muskelungleichgewichte, die die HWS belasten würden.</div></div>
     </div>
   </div>
-
-  <!-- Finisher — VIDEO vorhanden -->
   <div class="finisher">
     <div class="fin-label">Aerobischer Finisher</div>
     <div class="fin-name">5–10 Min Stepper</div>
     <div class="fin-desc">Nach dem Krafttraining greift dein Körper bevorzugt auf Fettreserven zurück — der Finisher verlängert dieses Fenster und kurbelt die nachträgliche Fettverbrennung an.</div>
   </div>
 </div>
-
 <!-- ══ BEINE ══ -->
 <div id="page-beine" class="page">
   <div class="wi">
@@ -404,7 +348,6 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <span class="wi-meta-item">Mittleres Gewicht</span>
     </div>
   </div>
-
   <div class="sect-label">Aufwärmen & Mobilität</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Crosstrainer</div><div class="si-detail">10 Min · moderates Tempo</div></div></div>
@@ -413,10 +356,8 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <div class="simple-item"><div class="si-num">04</div><div><div class="si-name">Kettlebell Hip Shift</div><div class="si-detail">10 Wdh · Hüftmobilität aktivieren</div></div></div>
     <div class="simple-item"><div class="si-num">05</div><div><div class="si-name">Good Mornings (ohne Gewicht)</div><div class="si-detail">2 × 10 Wdh · Hamstrings aufwecken</div></div></div>
   </div>
-
   <div class="muscle-sep">Quadriceps</div>
-
-  <!-- Walking Lunges — VIDEO vorhanden -->
+  <!-- Walking Lunges — VIDEO -->
   <div class="ex" id="ex-wlu">
     <div class="ex-vid-wrap" onclick="playVid('vid-wlu','ex-wlu')">
       <video id="vid-wlu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/dumbbell-walking-lunges.mp4" loop muted playsinline preload="none"></video>
@@ -430,8 +371,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-wlu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Quadriceps und Gluteus gleichzeitig — zwei der größten Muskelgruppen. Die Bewegung erfordert Balance und aktiviert indirekt die Rumpfstabilisatoren. Mehr Muskelmasse = höherer Grundumsatz täglich.</div></div>
     </div>
   </div>
-
-  <!-- Step Ups — VIDEO vorhanden -->
+  <!-- Step Ups — VIDEO -->
   <div class="ex" id="ex-stu">
     <div class="ex-vid-wrap" onclick="playVid('vid-stu','ex-stu')">
       <video id="vid-stu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/94901201-Step-Up-on-Box_Thighs_.mp4" loop muted playsinline preload="none"></video>
@@ -445,8 +385,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-stu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Sehr hüftfreundlich — kein übermäßiger Druck auf die Knie. Imitiert eine natürliche Alltagsbewegung. Trainiert Quadriceps und Gesäß gleichzeitig. Ideal bei Bandscheibenvorfall.</div></div>
     </div>
   </div>
-
-  <!-- Leg Press — VIDEO vorhanden -->
+  <!-- Leg Press — VIDEO -->
   <div class="ex" id="ex-lpr">
     <div class="ex-vid-wrap" onclick="playVid('vid-lpr','ex-lpr')">
       <video id="vid-lpr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/07391201-Sled-45-Leg-Press_Hips.mp4" loop muted playsinline preload="none"></video>
@@ -460,10 +399,8 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-lpr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Ermöglicht hohes Gewicht ohne Belastung der Wirbelsäule — ideal bei Bandscheibenvorfall C4. Maximale Quadriceps-Aktivierung bei vollständiger Sicherheit für den Rücken.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Adduktoren & Abduktoren</div>
-
-  <!-- Sumo Squats — VIDEO vorhanden -->
+  <!-- Sumo Squats — VIDEO -->
   <div class="ex" id="ex-ssq">
     <div class="ex-vid-wrap" onclick="playVid('vid-ssq','ex-ssq')">
       <video id="vid-ssq" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/50731201-Kettlebell-Sumo-Squat-(VERSION-2)_Hips_.mp4" loop muted playsinline preload="none"></video>
@@ -477,8 +414,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-ssq"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Breite Beinstellung trainiert gezielt Adduktoren (Innenschenkel) und Gesäß. Kettlebell bleibt unten — kein Druck auf Schultern oder HWS. Eine der besten Übungen für den weiblichen Unterkörper.</div></div>
     </div>
   </div>
-
-  <!-- Abduktion — VIDEO vorhanden -->
+  <!-- Abduktion — VIDEO -->
   <div class="ex" id="ex-abd">
     <div class="ex-vid-wrap" onclick="playVid('vid-abd','ex-abd')">
       <video id="vid-abd" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/05971201-Lever-Seated-Hip-Abduction_Hips.mp4" loop muted playsinline preload="none"></video>
@@ -492,8 +428,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-abd"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Stärkt den Gluteus medius — verantwortlich für Hüftstabilität. Schwache Außenhüfte ist eine häufige Ursache von Rückenschmerzen und Knieproblemen.</div></div>
     </div>
   </div>
-
-  <!-- Adduktion — VIDEO vorhanden -->
+  <!-- Adduktion — VIDEO -->
   <div class="ex" id="ex-add">
     <div class="ex-vid-wrap" onclick="playVid('vid-add','ex-add')">
       <video id="vid-add" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/05981201-Lever-Seated-Hip-Adduction_Thighs.mp4" loop muted playsinline preload="none"></video>
@@ -507,10 +442,8 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-add"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Innenschenkel stabilisieren das Kniegelenk und das Zusammenspiel der gesamten Beinmuskulatur — wichtig für sichere Ausführung aller anderen Übungen.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Hamstrings</div>
-
-  <!-- Romanian Deadlift — VIDEO vorhanden -->
+  <!-- Romanian Deadlift — VIDEO -->
   <div class="ex" id="ex-rdl">
     <div class="ex-vid-wrap" onclick="playVid('vid-rdl','ex-rdl')">
       <video id="vid-rdl" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/14591201-Dumbbell-Romanian-Deadlift_Hips.mp4" loop muted playsinline preload="none"></video>
@@ -524,10 +457,8 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-rdl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Dehnt und kräftigt Hamstrings gleichzeitig (exzentrische Stärke) — besonders effektiv für Muskelaufbau. Die neutrale Wirbelsäulenhaltung macht die Übung trotz Belastung sehr rückenfreundlich.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Waden</div>
-
-  <!-- Standing Calf Raise — kein Video -->
+  <!-- Standing Calf Raise -->
   <div class="ex" id="ex-scr">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Standing Calf Raise</div><button class="ex-check" onclick="toggleDone('ex-scr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -537,10 +468,8 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-scr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Wadentraining verbessert die Durchblutung in den Beinen und unterstützt den venösen Rückfluss. Stabile Waden verbessern Balance und Körperkontrolle bei allen anderen Beinübungen und entlasten die Knie.</div></div>
     </div>
   </div>
-
   <div class="muscle-sep">Gluteus</div>
-
-  <!-- Banded Clamshell — kein Video (nur jpg) -->
+  <!-- Banded Clamshell -->
   <div class="ex" id="ex-bcl">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Banded Clamshell</div><button class="ex-check" onclick="toggleDone('ex-bcl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -550,8 +479,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-bcl"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert den Gluteus medius — den seitlichen Gesäßmuskel, verantwortlich für Hüftstabilität. Schwache Hüftstabilisatoren sind ein häufiger Auslöser für Rückenschmerzen. Einfach aber sehr wirkungsvoll.</div></div>
     </div>
   </div>
-
-  <!-- Hip Thrust — VIDEO vorhanden -->
+  <!-- Hip Thrust — VIDEO -->
   <div class="ex" id="ex-hth">
     <div class="ex-vid-wrap" onclick="playVid('vid-hth','ex-hth')">
       <video id="vid-hth" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/57611201-Smith-Hip-Thrust-(female)_Hips_.mp4" loop muted playsinline preload="none"></video>
@@ -565,15 +493,12 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-hth"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Nachweislich effektivste Übung für den Gluteus maximus. Ein starkes Gesäß stabilisiert die Lendenwirbelsäule von unten. Kein Kompressionsdruck auf die Bandscheiben — du liegst auf dem Boden.</div></div>
     </div>
   </div>
-
-  <!-- Finisher — VIDEO vorhanden -->
   <div class="finisher">
     <div class="fin-label">Aerobischer Finisher</div>
     <div class="fin-name">5–10 Min Stepper</div>
     <div class="fin-desc">Nach intensivem Beintag verbrennt dein Körper noch Stunden lang erhöht Fett — der sog. EPOC-Effekt. Der Finisher kurbelt die nachträgliche Fettverbrennung nach dem Krafttraining an.</div>
   </div>
 </div>
-
 <!-- ══ RUMPF ══ -->
 <div id="page-rumpf" class="page">
   <div class="wi">
@@ -585,22 +510,18 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <span class="wi-meta-item">Technik vor Last</span>
     </div>
   </div>
-
   <div class="sect-label">Aufwärmen</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Rudergerät</div><div class="si-detail">15 Min · gleichmäßiges Tempo · Rumpf aktiv halten</div></div></div>
   </div>
-
   <div class="sect-label">Stretch & Mobilität</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Downward Facing Dog</div><div class="si-detail">5 × 30 Sek · Wirbelsäule dekomprimieren</div></div></div>
     <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Doorway Chest Stretch</div><div class="si-detail">3 × 30 Sek · Brust öffnen, Schultern zurückziehen</div></div></div>
     <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">Glute Bridge (ohne Gewicht)</div><div class="si-detail">1 Set · 10 Wdh · Core und Gesäß aktivieren</div></div></div>
   </div>
-
   <div class="sect-label">Core-Übungen</div>
-
-  <!-- Bird Dog — VIDEO vorhanden -->
+  <!-- Bird Dog — VIDEO -->
   <div class="ex" id="ex-bdo">
     <div class="ex-vid-wrap" onclick="playVid('vid-bdo','ex-bdo')">
       <video id="vid-bdo" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/51821201-Bird-Dog-(VERSION-2)-(female)_Back_.mp4" loop muted playsinline preload="none"></video>
@@ -614,8 +535,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-bdo"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Die wichtigste Stabilisationsübung bei Skoliose. Trainiert Multifidus und Transversus abdominis gleichzeitig — das interne Korsett. Kein Kompressionsdruck auf die Bandscheiben.</div></div>
     </div>
   </div>
-
-  <!-- Dead Bug — VIDEO vorhanden -->
+  <!-- Dead Bug — VIDEO -->
   <div class="ex" id="ex-dbu">
     <div class="ex-vid-wrap" onclick="playVid('vid-dbu','ex-dbu')">
       <video id="vid-dbu" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/78391201-Dead-Bug-(VERSION-3)-(female)_Waist_.mp4" loop muted playsinline preload="none"></video>
@@ -629,8 +549,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-dbu"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Arm-Bein-Koordination und tiefe Stabilisatoren. LWS bleibt flach — verhindert Druck auf C4. Sehr wirksam für neuromuskuläre Körperkontrolle bei Skoliose.</div></div>
     </div>
   </div>
-
-  <!-- Hollow Up — kein Video (nur jpg) -->
+  <!-- Hollow Up -->
   <div class="ex" id="ex-hol">
     <div class="ex-body-top">
       <div class="ex-top-row"><div class="ex-name">Hollow Up</div><button class="ex-check" onclick="toggleDone('ex-hol')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
@@ -640,8 +559,20 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-hol"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert die gesamte anteriore Kette (Bauch, Hüftbeuger, Zwerchfell). Diese Ganzkörperspannung ist die Basis für gesunde Wirbelsäulenausrichtung bei allen Alltagsbewegungen.</div></div>
     </div>
   </div>
-
-  <!-- Plank — VIDEO vorhanden -->
+  <!-- Pallof Press — GIF -->
+  <div class="ex" id="ex-pal">
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/palloff_press.gif" alt="Pallof Press">
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Pallof Press</div><button class="ex-check" onclick="toggleDone('ex-pal')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">3 Sets · 10–12 Wdh pro Seite · Leichtes–mittleres Gewicht</div>
+      <div class="ex-cue">Seitlich zum Kabelzug stehen. Seil auf Brusthöhe halten, dann kontrolliert nach vorne drücken und 2 Sek halten. Rumpf aktiv gegen die Rotation sperren — der Körper soll sich nicht drehen. Zurück und wiederholen. Seite wechseln.</div>
+      <button class="ex-why-btn" onclick="toggleWhy('why-pal')">Warum diese Übung</button>
+      <div class="ex-why" id="why-pal"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Der Pallof Press ist eine anti-rotatorische Stabilitätsübung — er trainiert den Rumpf genau so, wie er im Alltag gebraucht wird: durch Widerstand gegen Rotation. Stärkt gezielt den Transversus abdominis und die schrägen Bauchmuskeln ohne Kompressionsdruck auf die Bandscheiben. Besonders effektiv bei Skoliose, da er die Wirbelsäule aktiv in der Neutralposition hält.</div></div>
+    </div>
+  </div>
+  <!-- Plank — VIDEO -->
   <div class="ex" id="ex-plk">
     <div class="ex-vid-wrap" onclick="playVid('vid-plk','ex-plk')">
       <video id="vid-plk" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/04631201-Front-Plank-m_waist.mp4" loop muted playsinline preload="none"></video>
@@ -655,8 +586,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-plk"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Isometrische Core-Stärke — kein Kompressionsdruck auf Wirbelsäule. Trainiert die gesamte Rumpfkette gleichzeitig. Plank-Zeit ist unser messbarer Fortschrittsindikator.</div></div>
     </div>
   </div>
-
-  <!-- Lying Leg Raise — VIDEO vorhanden -->
+  <!-- Lying Leg Raise — VIDEO -->
   <div class="ex" id="ex-llr">
     <div class="ex-vid-wrap" onclick="playVid('vid-llr','ex-llr')">
       <video id="vid-llr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/11631201-Lying-Leg-Raise_Waist.mp4" loop muted playsinline preload="none"></video>
@@ -670,14 +600,12 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-llr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert untere Bauchmuskeln und Hüftbeuger intensiv. LWS flach = Rücken geschützt + maximale Bauchaktivierung gleichzeitig. Effektiv für Körpermitte und Gewichtsverlust.</div></div>
     </div>
   </div>
-
   <div class="finisher">
     <div class="fin-label">Aerobischer Finisher</div>
     <div class="fin-name">10 Min Crosstrainer</div>
     <div class="fin-desc">Wenn möglich ohne Hanteln zu halten. Schultern entspannen, Rumpf aktiv halten — festigt die neuromuskulären Muster der Core-Übungen.</div>
   </div>
 </div>
-
 <!-- ══ MESSUNGEN ══ -->
 <div id="page-messung" class="page">
   <div class="wi">
@@ -720,9 +648,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
 </div>
-
 </div><!-- /main -->
-
 <script>
 function showPage(name,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
