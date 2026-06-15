@@ -222,9 +222,12 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-ext"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Trainiert Infraspinatus und Teres minor — die Außenrotatoren, die direkt für deine eingeschränkte Schulterrotation verantwortlich sind. Mit jeder Wiederholung wächst der Bewegungsradius.</div></div>
     </div>
   </div>
-  <!-- Thread the Needle -->
+  <!-- Thread the Needle — GIF -->
   <div class="ex" id="ex-ttn">
-    <div class="ex-body-top">
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/Thread-The-Needle.gif" alt="Thread the Needle">
+    </div>
+    <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Thread the Needle</div><button class="ex-check" onclick="toggleDone('ex-ttn')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">2 Sets · 10 Wdh pro Seite · Langsam</div>
       <div class="ex-cue">Im Vierfüssler: einen Arm unter dem Körper durchschieben bis die Schulter den Boden berührt. Zurück und mit der Hand nach oben zur Decke zeigen. Rücken rund halten.</div>
@@ -246,9 +249,13 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
   <div class="muscle-sep">Trapezius</div>
-  <!-- Einarmiges KH-Rudern -->
+  <!-- Einarmiges KH-Rudern — VIDEO -->
   <div class="ex" id="ex-ekr">
-    <div class="ex-body-top">
+    <div class="ex-vid-wrap" onclick="playVid('vid-ekr','ex-ekr')">
+      <video id="vid-ekr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/single-arm-dumbbell-row%202.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Einarmiges Kurzhantel-Rudern</div><button class="ex-check" onclick="toggleDone('ex-ekr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 15 Wdh pro Seite · Mittleres Gewicht</div>
       <div class="ex-cue">Rücken gerade. Ellbogen nah am Körper. Schulterblatt am Ende der Bewegung aktiv zusammenziehen — kurz halten.</div>
@@ -256,9 +263,13 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
       <div class="ex-why" id="why-ekr"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Stärkt mittleren und oberen Trapezius — Basis für Schulterblatt-Stabilisierung und verbesserte Schulterrotation. Aktiviert gleichzeitig tiefe Rückenmuskulatur entlang der Wirbelsäule.</div></div>
     </div>
   </div>
-  <!-- Butterfly Reverse -->
+  <!-- Butterfly Reverse — VIDEO -->
   <div class="ex" id="ex-bfr">
-    <div class="ex-body-top">
+    <div class="ex-vid-wrap" onclick="playVid('vid-bfr','ex-bfr')">
+      <video id="vid-bfr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/06021201-Lever-Seated-Reverse-Fly_Shoulders.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Butterfly Reverse</div><button class="ex-check" onclick="toggleDone('ex-bfr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 15 Wdh · Leichtes Gewicht</div>
       <div class="ex-cue">Brust auf der Polsterung. Arme seitlich und leicht gebeugt nach hinten führen. Schulterblätter aktiv zusammenziehen — nicht schwingen, kontrolliert.</div>
@@ -341,10 +352,53 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
   <div class="sect-label">Aufwärmen & Mobilität</div>
   <div class="simple-list">
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Crosstrainer</div><div class="si-detail">10 Min · moderates Tempo</div></div></div>
-    <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Hip Flexor to Hamstring Stretch</div><div class="si-detail">45 Sek pro Seite · 2 Runden</div></div></div>
-    <div class="simple-item"><div class="si-num">03</div><div><div class="si-name">90/90 Hip Rotation</div><div class="si-detail">1 Set · R&L</div><div class="si-cue">Hüftrotation. Versuche dein Knie am Boden zu bringen R&L. Stütze dich mit Armen nach hinten und öffne die Brust.</div></div></div>
-    <div class="simple-item"><div class="si-num">04</div><div><div class="si-name">Kettlebell Hip Shift</div><div class="si-detail">10 Wdh · Hüftmobilität aktivieren</div></div></div>
-    <div class="simple-item"><div class="si-num">05</div><div><div class="si-name">Good Mornings (ohne Gewicht)</div><div class="si-detail">2 × 10 Wdh · Hamstrings aufwecken</div></div></div>
+  </div>
+  <!-- Hip Flexor to Hamstring Stretch — VIDEO -->
+  <div class="ex" id="ex-hfs">
+    <div class="ex-vid-wrap" onclick="playVid('vid-hfs','ex-hfs')">
+      <video id="vid-hfs" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/hip-flexor-to-hamstring-stretch.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Hip Flexor to Hamstring Stretch</div><button class="ex-check" onclick="toggleDone('ex-hfs')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">45 Sek pro Seite · 2 Runden</div>
+      <div class="ex-cue">Aus dem Ausfallschritt: Hüftbeuger öffnen, dann Gewicht zurück verlagern und Hamstring der vorderen Seite dehnen. Fließend zwischen beiden Positionen wechseln.</div>
+    </div>
+  </div>
+  <!-- 90/90 Hip Rotation — VIDEO -->
+  <div class="ex" id="ex-90r">
+    <div class="ex-vid-wrap" onclick="playVid('vid-90r','ex-90r')">
+      <video id="vid-90r" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/90-90-external-rotation.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">90/90 Hip Rotation</div><button class="ex-check" onclick="toggleDone('ex-90r')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">1 Set · R&L</div>
+      <div class="ex-cue">Hüftrotation. Versuche dein Knie am Boden zu bringen R&L. Stütze dich mit Armen nach hinten und öffne die Brust.</div>
+    </div>
+  </div>
+  <!-- Kettlebell Hip Shift — VIDEO -->
+  <div class="ex" id="ex-khs">
+    <div class="ex-vid-wrap" onclick="playVid('vid-khs','ex-khs')">
+      <video id="vid-khs" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/kettlebell-hip-shift.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Kettlebell Hip Shift</div><button class="ex-check" onclick="toggleDone('ex-khs')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">10 Wdh · Hüftmobilität aktivieren</div>
+      <div class="ex-cue">Kettlebell als Gegengewicht nutzen. Hüfte seitlich verlagern, Gewicht wechseln. Wirbelsäule aufrecht halten — Bewegung kommt aus der Hüfte.</div>
+    </div>
+  </div>
+  <!-- Good Mornings — GIF -->
+  <div class="ex" id="ex-gmo">
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/good_morning.gif" alt="Good Mornings">
+    </div>
+    <div class="ex-body">
+      <div class="ex-top-row"><div class="ex-name">Good Mornings (ohne Gewicht)</div><button class="ex-check" onclick="toggleDone('ex-gmo')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">2 × 10 Wdh · Hamstrings aufwecken</div>
+      <div class="ex-cue">Füsse schulterbreit, Hände hinter dem Kopf. Oberkörper mit geradem Rücken nach vorne neigen bis zur Parallele — Hamstrings dehnen. Kontrolliert zurück in den Stand.</div>
+    </div>
   </div>
   <div class="muscle-sep">Quadriceps</div>
   <!-- Walking Lunges — VIDEO -->
@@ -448,9 +502,13 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
   <div class="muscle-sep">Waden</div>
-  <!-- Standing Calf Raise -->
+  <!-- Standing Calf Raise — VIDEO -->
   <div class="ex" id="ex-scr">
-    <div class="ex-body-top">
+    <div class="ex-vid-wrap" onclick="playVid('vid-scr','ex-scr')">
+      <video id="vid-scr" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/06051201-Lever-Standing-Calf-Raise_Calves.mp4" loop muted playsinline preload="none"></video>
+      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
+    </div>
+    <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Standing Calf Raise</div><button class="ex-check" onclick="toggleDone('ex-scr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 15–20 Wdh · Körpergewicht oder leichte Hanteln</div>
       <div class="ex-cue">Fersen komplett absenken (volle Dehnung unten). Langsam auf Zehenspitzen hochkommen und 1 Sek oben halten. Bewegung vollständig ausführen — kein halbes Auf und Ab.</div>
@@ -459,9 +517,12 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     </div>
   </div>
   <div class="muscle-sep">Gluteus</div>
-  <!-- Banded Clamshell -->
+  <!-- Banded Clamshell — GIF -->
   <div class="ex" id="ex-bcl">
-    <div class="ex-body-top">
+    <div class="ex-vid-wrap gif-wrap">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/banded_clamshell.gif" alt="Banded Clamshell">
+    </div>
+    <div class="ex-body">
       <div class="ex-top-row"><div class="ex-name">Banded Clamshell</div><button class="ex-check" onclick="toggleDone('ex-bcl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <div class="ex-reps">3 Sets · 15 Wdh pro Seite</div>
       <div class="ex-cue">Miniband (stark) oberhalb der Knielinie. Schulterblätter zurück, Bauchnabel ein. Hüfte stabil — nur das obere Knie öffnet sich. 1 Set = R/L × 15.</div>
