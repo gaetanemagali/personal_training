@@ -10,11 +10,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#fff;color:#111;font-size:15px;line-height:1.6}
 :root{--blk:#111111;--wht:#ffffff;--acc:#C9A46A;--acc-lt:#F5EDD8;--glt:#F7F6F4;--gmd:#E2E0DB;--gtx:#777777;--lock:#bbb}
-
-/* IMG PATH PATTERN (drop files into the repo using these names — site will pick them up automatically):
-   ./<exercise_name>.gif
-*/
-
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;background:var(--blk);display:flex;align-items:stretch;height:52px;z-index:1000;border-bottom:2px solid var(--acc)}
 .nav-brand{display:flex;align-items:center;padding:0 22px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);font-weight:700;white-space:nowrap;border-right:1px solid #2a2a2a;flex-shrink:0}
@@ -24,12 +19,10 @@ nav{position:fixed;top:0;left:0;right:0;background:var(--blk);display:flex;align
 .nav-links a:hover{background:#1e1e1e;color:#fff}
 .nav-links a.active{background:var(--acc);color:var(--blk);font-weight:700}
 body{padding-top:52px}
-
 /* LAYOUT */
 .container{max-width:1200px;margin:0 auto;padding:0 28px}
 section{display:none}
 section.active{display:block}
-
 /* SECTION HEADER */
 .sec-head{padding:56px 0 28px;border-bottom:2px solid var(--blk);margin-bottom:48px}
 .sec-tag{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
@@ -37,8 +30,7 @@ section.active{display:block}
 .sec-sub{font-size:12px;color:var(--gtx);letter-spacing:.07em;text-transform:uppercase;margin-top:7px}
 .sec-intro{font-size:14px;line-height:1.75;color:#333;max-width:760px;margin-top:18px}
 .sec-intro em{color:var(--acc);font-style:normal;font-weight:700}
-
-/* PHASE TIMELINE (16-week overview, 4 phases) */
+/* PHASE TIMELINE */
 .timeline-wrap{margin-bottom:56px}
 .timeline-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin-bottom:14px}
 .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--gmd);border:1px solid var(--gmd)}
@@ -53,8 +45,7 @@ section.active{display:block}
 .tl-phase-detail{font-size:11.5px;line-height:1.55;color:#444}
 .tl-locked-tag{position:absolute;top:14px;right:14px;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--lock);font-weight:700}
 .tl-active-tag{position:absolute;top:14px;right:14px;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:700}
-
-/* SCHEDULE STRIP (weekly view) */
+/* SCHEDULE STRIP */
 .schedule-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:48px}
 .sched-day{background:#fff;padding:14px 10px;text-align:center}
 .sched-day-label{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin-bottom:6px}
@@ -63,7 +54,6 @@ section.active{display:block}
 .sched-day.active-session{background:var(--glt)}
 .sched-day.pt-session{background:var(--acc-lt)}
 .sched-day-pt{font-size:7px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-top:4px}
-
 /* SESSION TABS */
 .session-tabs{display:flex;border-bottom:2px solid var(--blk);margin-bottom:40px;overflow-x:auto}
 .session-tab{padding:13px 22px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;background:none;border:none;border-right:1px solid var(--gmd);color:var(--gtx);font-family:inherit;transition:all .15s;white-space:nowrap}
@@ -71,13 +61,11 @@ section.active{display:block}
 .session-tab.active{background:var(--blk);color:#fff}
 .session-content{display:none}
 .session-content.active{display:block}
-
 /* SESSION META BAR */
 .session-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:40px}
 .smeta-item{background:#fff;padding:14px 18px}
 .smeta-label{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin-bottom:3px}
 .smeta-val{font-size:14px;font-weight:700}
-
 /* EXERCISE GRID */
 .ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:56px}
 .ex-card{border:1px solid var(--gmd);background:#fff;transition:border-color .15s;display:flex;flex-direction:column}
@@ -87,6 +75,7 @@ section.active{display:block}
 .ex-card.core{border-left:3px solid #7BBFBF}
 .ex-img{width:100%;aspect-ratio:16/9;background:var(--glt);border-bottom:1px dashed var(--gmd);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .ex-img img{width:100%;height:100%;object-fit:cover}
+.ex-img video{width:100%;height:100%;object-fit:cover}
 .ex-img-label{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#bbb;text-align:center;padding:0 12px}
 .ex-body{padding:14px 16px;flex:1;display:flex;flex-direction:column}
 .ex-num{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:3px}
@@ -94,7 +83,6 @@ section.active{display:block}
 .ex-params{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .ex-param{background:var(--glt);padding:2px 7px;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--blk);white-space:nowrap}
 .ex-cue{font-size:12px;line-height:1.6;color:#444}
-
 /* TABLES */
 .tbl-wrap{overflow-x:auto;margin-bottom:48px}
 .std-table{width:100%;border-collapse:collapse;font-size:12.5px}
@@ -102,14 +90,12 @@ section.active{display:block}
 .std-table td{padding:11px 14px;border-bottom:1px solid var(--gmd);vertical-align:top;line-height:1.55}
 .std-table tr:nth-child(even) td{background:var(--glt)}
 .std-table td strong{color:var(--blk);font-weight:700}
-
 /* GOAL → LEVER GRID */
 .goal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:56px}
 .goal-block{background:#fff;padding:24px}
 .goal-tag{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:7px;font-weight:700}
 .goal-title{font-size:15px;font-weight:700;margin-bottom:11px;padding-bottom:9px;border-bottom:1px solid var(--gmd)}
 .goal-body{font-size:12.5px;line-height:1.7;color:#333}
-
 /* PLAN / NARRATIVE BLOCKS */
 .plan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:56px}
 .plan-block{background:#fff;padding:32px 30px}
@@ -122,36 +108,29 @@ section.active{display:block}
 .plan-list li{font-size:12.5px;line-height:1.65;padding:7px 0;border-bottom:1px solid var(--glt);display:flex;gap:10px;color:#333;align-items:flex-start}
 .plan-list li::before{content:'—';color:var(--acc);flex-shrink:0;font-weight:700;line-height:1.65}
 .plan-list li:last-child{border-bottom:none}
-
 /* COMING SOON / LOCKED PANEL */
 .locked-panel{background:var(--glt);border:1px solid var(--gmd);padding:48px 32px;text-align:center;margin-bottom:56px}
 .locked-icon{font-size:24px;letter-spacing:.2em;color:var(--lock);margin-bottom:16px;font-weight:700}
 .locked-title{font-size:17px;font-weight:700;margin-bottom:10px}
 .locked-body{font-size:13px;color:#555;max-width:540px;margin:0 auto;line-height:1.7}
-
 /* CALLOUT */
 .callout{background:var(--acc-lt);border-left:3px solid var(--acc);padding:18px 22px;margin-bottom:32px;font-size:13px;line-height:1.65;color:#333}
 .callout strong{color:var(--blk)}
-
 /* CITATION FOOTNOTE */
 .cite{font-size:10.5px;color:var(--gtx);font-style:italic;line-height:1.5;margin-top:4px}
-
 /* PROTEIN MINI CARDS */
 .protein-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:32px}
 .protein-card{background:#fff;border:1px solid var(--gmd);padding:14px 16px;border-left:3px solid var(--acc)}
 .protein-name{font-size:12.5px;font-weight:700;margin-bottom:4px}
 .protein-detail{font-size:11px;color:var(--gtx);line-height:1.45}
-
 /* TIP STRIP */
 .tip-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:32px}
 .tip-item{background:#fff;padding:18px 18px}
 .tip-num{font-size:8.5px;letter-spacing:.2em;color:var(--acc);font-weight:700;margin-bottom:6px}
 .tip-text{font-size:12px;line-height:1.55;color:#333}
-
 /* FOOTER */
 footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .footer-l,.footer-r{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gtx)}
-
 /* RESPONSIVE */
 @media(max-width:900px){
   .plan-grid{grid-template-columns:1fr}
@@ -173,7 +152,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
 </style>
 </head>
 <body>
-
 <!-- ── NAVIGATION ── -->
 <nav>
   <div class="nav-brand">Sabrina · 16-Week Programme</div>
@@ -190,14 +168,12 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
 ══════════════════════════════════════════════════════════ -->
 <section id="overview" class="active">
 <div class="container">
-
   <div class="sec-head">
     <div class="sec-tag">01 — Programme Overview</div>
     <h1 class="sec-title">16 weeks. Three levers. One outcome.</h1>
     <div class="sec-sub">20 May – 9 September 2026 · Target: mid-September wedding</div>
     <p class="sec-intro">Your plan is built around three evidence-based levers that — in combination — produce body recomposition in trained and untrained women: <em>progressive resistance training, a moderate energy deficit, and high protein intake</em>. Cardio supports the deficit; it does not drive it. Sleep, stress and consistency drive the outcome more than the programme itself.</p>
   </div>
-
   <!-- 16-WEEK PHASE TIMELINE -->
   <div class="timeline-wrap">
     <div class="timeline-label">— Four-phase progression, ~10% volume increase per phase —</div>
@@ -232,7 +208,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
       </div>
     </div>
   </div>
-
   <!-- WHY EACH PROGRESSION RULE -->
   <div class="callout">
     <strong>Why 10% per phase?</strong> Progressive overload is the central driver of muscle growth — the body adapts to whatever load you give it. Increasing volume gradually (by sets, weight, or reps) keeps the stimulus ahead of adaptation without overwhelming recovery. Jumping volume too fast inflates fatigue without inflating gains; raising it too slowly stalls progress.
@@ -240,49 +215,40 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
   <div class="callout">
     <strong>Why 10 – 12 reps in Phase 1?</strong> This rep range hits the hypertrophy sweet spot for someone newer to lifting. It builds technique, conditions tendons and connective tissue, and creates muscle with less injury risk than heavy low-rep work. Once the patterns are grooved, Phase 2 drops the rep range to 8 – 12 with heavier loads.
   </div>
-
   <!-- GOAL → LEVER MAP -->
   <h2 style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;font-weight:700;color:var(--blk)">Your goals, mapped to the evidence</h2>
   <div class="goal-grid">
-
     <div class="goal-block">
       <div class="goal-tag">Goal · Body Recomposition</div>
       <div class="goal-title">Fat Loss & Muscle Shape</div>
       <div class="goal-body">Focus on a 400 kcal deficit and high protein (110g) to reveal muscle definition. Total-body fat loss will naturally reduce the lower stomach area over time.</div>
     </div>
-
     <div class="goal-block">
       <div class="goal-tag">Goal · Glutes & Legs</div>
       <div class="goal-title">Strength & Shape</div>
       <div class="goal-body">Prioritising heavy compound lifts like squats and deadlifts for maximum glute growth and pelvic stability.</div>
     </div>
-
     <div class="goal-block">
       <div class="goal-tag">Goal · Back & Shoulders</div>
       <div class="goal-title">Posture & Definition</div>
       <div class="goal-body">High-volume pulling work (rows, pulldowns) to build shoulder shape and improve posture for the wedding.</div>
     </div>
-
     <div class="goal-block">
       <div class="goal-tag">Goal · Toned Arms</div>
       <div class="goal-title">Direct Accessory Work</div>
       <div class="goal-body">Targeted bicep and tricep work combined with fat loss to create lean, defined arms.</div>
     </div>
-
     <div class="goal-block">
       <div class="goal-tag">Goal · 16-Week Target</div>
       <div class="goal-title">Sustainable Progress</div>
       <div class="goal-body">Aiming for 4–5kg fat loss and improved muscle tone. Success is driven by consistency and adherence to the plan.</div>
     </div>
-
     <div class="goal-block">
       <div class="goal-tag">Goal · Core & Back Health</div>
       <div class="goal-title">Stability & Support</div>
       <div class="goal-body">Functional core training to protect the lower back and improve overall movement quality.</div>
     </div>
-
   </div>
-
 </div>
 </section>
 
@@ -291,14 +257,12 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
 ══════════════════════════════════════════════════════════ -->
 <section id="phase1">
 <div class="container">
-
   <div class="sec-head">
     <div class="sec-tag">02 — Phase 1 · Foundation</div>
     <h1 class="sec-title">Weeks 1 – 4: build the patterns</h1>
     <div class="sec-sub">20 May – 16 June 2026 · 3 RT sessions + 2 walks per week</div>
     <p class="sec-intro">Phase 1 is about earning the right to lift heavy in Phase 2. The aim — movement quality first, base hypertrophy second, fitness third. Lighter loads (50 – 65% of your eventual working weights), higher reps (10 – 15), and disciplined core work. Your two PT sessions land on the heaviest training days.</p>
   </div>
-
   <!-- WEEKLY SCHEDULE -->
   <h2 style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;font-weight:700;color:var(--blk)">Weekly structure</h2>
   <div class="schedule-strip">
@@ -333,7 +297,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
       <div class="sched-day-session">Full Rest</div>
     </div>
   </div>
-
   <!-- SESSION META -->
   <div class="session-meta">
     <div class="smeta-item"><div class="smeta-label">Sessions / week</div><div class="smeta-val">3 RT + 2 cardio</div></div>
@@ -342,7 +305,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
     <div class="smeta-item"><div class="smeta-label">Effort target</div><div class="smeta-val">2 – 3 reps in reserve</div></div>
     <div class="smeta-item"><div class="smeta-label">Rest between sets</div><div class="smeta-val">90 – 120 sec</div></div>
   </div>
-
   <!-- SESSION TABS -->
   <div class="session-tabs">
     <button class="session-tab active" onclick="showSession('a')" id="tab-a">Session A · Posterior bias</button>
@@ -350,7 +312,7 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
     <button class="session-tab" onclick="showSession('c')" id="tab-c">Session C · Lower bias</button>
   </div>
 
-  <!-- SESSION A -->
+  <!-- ── SESSION A ── -->
   <div class="session-content active" id="session-a">
     <div class="ex-grid">
 
@@ -364,13 +326,18 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
         </div>
       </div>
 
+      <!-- ── CHANGED: RDL → Deficit Single Leg Deadlift KB ── -->
       <div class="ex-card compound">
-        <div class="ex-img"><img src="./Romanian-Deadlift.gif" alt="Dumbbell Romanian deadlift" onerror="this.outerHTML='<span class=ex-img-label>Dumbbell RDL — image pending</span>'"></div>
+        <div class="ex-img">
+          <video autoplay loop muted playsinline>
+            <source src="./single-leg-rdl%202.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="ex-body">
           <div class="ex-num">02 · Compound</div>
-          <div class="ex-name">Romanian Deadlift (Dumbbell)</div>
-          <div class="ex-params"><span class="ex-param">3 × 10</span><span class="ex-param">Light load</span></div>
-          <div class="ex-cue">Hinge, do not squat. Push hips back, keep the bar (or DBs) close to the legs, soft knees. Stop when you feel hamstrings stretch — usually mid-shin.</div>
+          <div class="ex-name">Deficit Single Leg Deadlift (Kettlebell)</div>
+          <div class="ex-params"><span class="ex-param">3 × 8 each leg</span><span class="ex-param">Light KB</span><span class="ex-param">Small step or plate</span></div>
+          <div class="ex-cue">Stand on a 2–5 cm step or plate. Hold the KB in the hand opposite the working leg. Hinge at the hip — push the hips back, keep a flat back, soft knee on the standing leg. The deficit lets the KB travel lower, giving your glute and hamstring a deeper stretch than a standard RDL. Pause when you feel a strong pull in the hamstring; don't round the lower back to go further. Drive through the heel to stand tall. The balance demand here is high — go slow, go light to start.</div>
         </div>
       </div>
 
@@ -414,10 +381,21 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
         </div>
       </div>
 
+      <!-- ── NEW: Back Extension ── -->
+      <div class="ex-card accessory">
+        <div class="ex-img"><img src="./back_extension.gif" alt="Back extension" onerror="this.outerHTML='<span class=ex-img-label>Back Extension — image pending</span>'"></div>
+        <div class="ex-body">
+          <div class="ex-num">07 · Accessory · Posterior Chain</div>
+          <div class="ex-name">Back Extension (45° Hyperextension Bench)</div>
+          <div class="ex-params"><span class="ex-param">3 × 12</span><span class="ex-param">Bodyweight or light plate</span><span class="ex-param">Full ROM</span></div>
+          <div class="ex-cue"><strong>Go lower than the pad angle suggests.</strong> Let your torso descend well past 45° — aim for near-vertical — until you feel a deep stretch in the glutes and hamstrings. Training the muscle in this lengthened position drives more hypertrophy than stopping halfway. Control the descent over 3 seconds.<br><br><strong>At the top, go slightly past neutral and squeeze the glutes hard.</strong> This is hip hyperextension — not spinal hyperextension. The movement comes entirely from the hips: think of pushing your hips forward and tucking your pelvis. The glutes are powerful hip extensors, and those final degrees of extension are exactly where they fire hardest. Hold the squeeze for 1–2 seconds before lowering. You should feel it entirely in your glutes, not your lower back.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- SESSION B -->
+  <!-- ── SESSION B ── -->
   <div class="session-content" id="session-b">
     <div class="ex-grid">
 
@@ -461,13 +439,14 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
         </div>
       </div>
 
+      <!-- ── CHANGED: Bird Dog → TRX Ab Crunch ── -->
       <div class="ex-card core">
-        <div class="ex-img"><img src="./bird_dog.gif" alt="Bird dog" onerror="this.outerHTML='<span class=ex-img-label>Bird Dog — image pending</span>'"></div>
+        <div class="ex-img"><img src="./trx_ab_crunch.gif" alt="TRX ab crunch" onerror="this.outerHTML='<span class=ex-img-label>TRX Ab Crunch — image pending</span>'"></div>
         <div class="ex-body">
-          <div class="ex-num">05 · Core (anti-rotation)</div>
-          <div class="ex-name">Bird Dog</div>
-          <div class="ex-params"><span class="ex-param">3 × 8 each side</span></div>
-          <div class="ex-cue">Opposite arm and leg extend slowly — no hip drop, no twisting. If you wobble, you went too fast.</div>
+          <div class="ex-num">05 · Core (flexion)</div>
+          <div class="ex-name">TRX Ab Crunch</div>
+          <div class="ex-params"><span class="ex-param">3 × 10 – 12</span><span class="ex-param">Feet in TRX handles</span></div>
+          <div class="ex-cue">Start in a plank — hands under shoulders, body in a straight line, feet suspended in the TRX handles. Drive both knees toward your chest in a controlled crunch, flexing at the hip and spine. Pause briefly at the top, then extend slowly back to plank. Keep the hips level throughout — do not let them pike up or sag down. The slower the return, the more the abs work.</div>
         </div>
       </div>
 
@@ -484,7 +463,7 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
     </div>
   </div>
 
-  <!-- SESSION C -->
+  <!-- ── SESSION C ── -->
   <div class="session-content" id="session-c">
     <div class="ex-grid">
 
@@ -508,23 +487,29 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
         </div>
       </div>
 
+      <!-- ── CHANGED: Leg Curl → Cable Hip Abduction ── -->
       <div class="ex-card accessory">
-        <div class="ex-img"><img src="./leg_curl.gif" alt="Leg curl" onerror="this.outerHTML='<span class=ex-img-label>Leg Curl — image pending</span>'"></div>
+        <div class="ex-img">
+          <video autoplay loop muted playsinline>
+            <source src="./cable_hip_abduction.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="ex-body">
-          <div class="ex-num">03 · Accessory</div>
-          <div class="ex-name">Leg Curl (Machine)</div>
-          <div class="ex-params"><span class="ex-param">3 × 12</span></div>
-          <div class="ex-cue">Slow eccentric — three seconds down. Squeeze hamstrings at top, do not let weight stack touch on the way down.</div>
+          <div class="ex-num">03 · Accessory · Glute Medius</div>
+          <div class="ex-name">Cable Hip Abduction</div>
+          <div class="ex-params"><span class="ex-param">3 × 12 each leg</span><span class="ex-param">Cable at ankle height</span></div>
+          <div class="ex-cue">Attach the ankle cuff to the low cable pulley. Stand side-on to the machine, slight forward lean at the hip for balance. Keeping the leg straight, sweep it away from the body to about 45° — no hip hiking or torso leaning. Control the return slowly; resist the cable pulling the leg back in. This targets the glute medius, which shapes the side of the glute and stabilises the pelvis when you walk, run, and squat.</div>
         </div>
       </div>
 
+      <!-- ── CHANGED: Standing Face Pull → Seated Face Pull ── -->
       <div class="ex-card accessory">
-        <div class="ex-img"><img src="./face_pull.gif" alt="Cable face pull" onerror="this.outerHTML='<span class=ex-img-label>Face Pull — image pending</span>'"></div>
+        <div class="ex-img"><img src="./seated_face_pull.gif" alt="Seated face pull" onerror="this.outerHTML='<span class=ex-img-label>Seated Face Pull — image pending</span>'"></div>
         <div class="ex-body">
-          <div class="ex-num">04 · Accessory</div>
-          <div class="ex-name">Cable Face Pull</div>
-          <div class="ex-params"><span class="ex-param">3 × 12</span></div>
-          <div class="ex-cue">Pull the rope to the forehead, elbows high and wide. Drives posterior shoulder and posture — your back-pain insurance policy.</div>
+          <div class="ex-num">04 · Accessory · Rear Delt & Posture</div>
+          <div class="ex-name">Seated Face Pull (Cable)</div>
+          <div class="ex-params"><span class="ex-param">3 × 12</span><span class="ex-param">Seated on bench or floor</span><span class="ex-param">Rope attachment</span></div>
+          <div class="ex-cue">Sit facing the cable stack with the pulley set at or just above head height. Pull the rope toward your face — elbows drive high and wide, hands finishing beside your ears. Sitting eliminates lower-body momentum, so your rear delts and upper back do all the work. Squeeze the shoulder blades together at the end of each rep and hold for one second. Your back and posture insurance policy.</div>
         </div>
       </div>
 
@@ -555,7 +540,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
   <div class="callout">
     <strong>Progression rule for Phase 1.</strong> When you can complete all prescribed reps with two reps still in reserve — meaning you could have done two more if pushed — add 1 – 2 kg to the working weight in the following session. Strength gains in Phase 1 are mostly neural; your brain learns to recruit muscle before the muscle itself grows. Both happen in Phase 2.
   </div>
-
 </div>
 </section>
 
@@ -564,17 +548,14 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
 ══════════════════════════════════════════════════════════ -->
 <section id="nutrition">
 <div class="container">
-
   <div class="sec-head">
     <div class="sec-tag">03 — Nutrition</div>
     <h1 class="sec-title">The numbers, and why they're set there.</h1>
     <div class="sec-sub">Calibrated to your InBody scan · 54.6 kg · BMR 1,208 kcal</div>
     <p class="sec-intro">Nutrition is the hinge. Train hard and eat carelessly and you'll plateau in week six. The numbers below are tight but not punishing — small enough to be sustainable for sixteen weeks, large enough to make weekly progress visible.</p>
   </div>
-
   <!-- HOW THE NUMBERS ARE CALCULATED -->
   <div class="plan-grid">
-
     <div class="plan-block">
       <div class="plan-tag">How the numbers are calculated</div>
       <div class="plan-title">From BMR to daily target</div>
@@ -582,7 +563,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
       <p><strong>TDEE (total daily energy expenditure)</strong> is BMR multiplied by an activity factor. With four resistance sessions and two to three walks each week, that factor is ~1.55 — putting your training-phase TDEE at <strong>1,872 kcal/day</strong>.</p>
       <p>A <strong>400 kcal/day deficit</strong> puts your daily intake at ~1,470 kcal — producing weight loss of approximately 0.36 kg per week, or 0.67% of your body weight. This sits inside the 0.5 – 0.7% range that minimises lean-mass loss while making meaningful progress.</p>
     </div>
-
     <div class="plan-block">
       <div class="plan-tag">Why this size of deficit</div>
       <div class="plan-title">Why not bigger and faster</div>
@@ -590,9 +570,7 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
       <p>One <strong>refeed day per week at maintenance</strong> (~1,880 kcal) restores muscle glycogen, supports leptin (the hormone signalling adequacy to the brain), and meaningfully improves long-term adherence. The weekly average remains ~1,530 kcal — still in a deficit, but psychologically and hormonally easier.</p>
       <p>Place the refeed on your highest-volume training day, usually Monday or Friday.</p>
     </div>
-
   </div>
-
   <!-- DAILY TARGETS TABLE -->
   <h2 style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;font-weight:700;color:var(--blk)">Daily targets</h2>
   <div class="tbl-wrap">
@@ -611,12 +589,10 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
       </tbody>
     </table>
   </div>
-
   <!-- PROTEIN DISTRIBUTION -->
   <div class="callout">
     <strong>Protein distribution matters.</strong> Spread your 110 g across four meals at ~25 – 30 g each. Even distribution maximises muscle protein synthesis better than skewed intake — a single 80 g meal does less work than three 30 g ones <em>(Jäger et al., 2017)</em>.
   </div>
-
   <!-- LACTOSE-FREE / NO-PORK PROTEIN SOURCES -->
   <h2 style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;font-weight:700;color:var(--blk)">Lactose-free, no-pork protein sources</h2>
   <div class="protein-grid">
@@ -632,7 +608,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
     <div class="protein-card"><div class="protein-name">Lentils, chickpeas</div><div class="protein-detail">Plant-based · 8 – 9 g per 100 g cooked</div></div>
     <div class="protein-card"><div class="protein-name">Protein powder</div><div class="protein-detail">Whey isolate (lactose &lt;1 g) or pea/rice blend if intolerant</div></div>
   </div>
-
   <!-- FIXING MEAL-SKIPPING -->
   <h2 style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;font-weight:700;color:var(--blk)">Fixing the meal-skipping pattern</h2>
   <div class="tip-strip">
@@ -653,7 +628,6 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
       <div class="tip-text"><strong>Track for four weeks.</strong> MyFitnessPal, Cronometer, or Macrofactor — Macrofactor adapts targets weekly and is the most evidence-aligned. Stop tracking once 110 g protein and 1,500 kcal feel intuitive.</div>
     </div>
   </div>
-
 </div>
 </section>
 
@@ -662,32 +636,27 @@ footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display
 ══════════════════════════════════════════════════════════ -->
 <section id="upcoming">
 <div class="container">
-
   <div class="sec-head">
     <div class="sec-tag">04 — Phases 2 to 4</div>
     <h1 class="sec-title">Unlocked after your Week 4 review.</h1>
     <div class="sec-sub">Programming finalised based on Phase 1 progress data</div>
     <p class="sec-intro">Phases 2 – 4 are intentionally not detailed yet — the prescription depends on how your body responds to Phase 1. Strength gains, recovery quality, sleep, and the InBody scan at week four will determine load progression, volume increases, and whether the deficit needs adjusting.</p>
   </div>
-
   <div class="locked-panel">
     <div class="locked-icon">— · — · —</div>
     <div class="locked-title">Phase 2 unlocks after your Week 4 check-in</div>
     <div class="locked-body">Hypertrophy emphasis · Weeks 5 – 10. Four sessions per week, upper/lower split, 65 – 80% 1RM, 8 – 12 reps. Glute, back and shoulder volume rises to 10 – 14 working sets per muscle group per week.</div>
   </div>
-
   <div class="locked-panel">
     <div class="locked-icon">— · — · —</div>
     <div class="locked-title">Phase 3 unlocks at the start of Week 11</div>
     <div class="locked-body">Definition and recomp · Weeks 11 – 15. Same split with reduced volume to manage deficit fatigue, plus a third cardio session and a mid-phase deload in week 12.</div>
   </div>
-
   <div class="locked-panel">
     <div class="locked-icon">— · — · —</div>
     <div class="locked-title">Phase 4 unlocks at the start of Week 16</div>
     <div class="locked-body">Peak week · Wedding week. Volume halved, intensity held, sleep and stress prioritised. No new variables. Coaching call on the Monday to walk through the week in detail.</div>
   </div>
-
 </div>
 </section>
 
