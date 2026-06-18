@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuego Llama — Phase 2 Training Programme</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#F5F3EF;color:#0F0F0F;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+:root{--blk:#0F0F0F;--wht:#ffffff;--acc:#4A6741;--acc-lt:#EDF2EC;--glt:#F5F3EF;--gmd:#E0DDD8;--gtx:#9A9690;--dark-gray:#3A3835;--amber:#8B5E14;--amber-bg:#FDF3E3;--c2:#4A6741;--bf:#3D5A73;--trail:#7A5B3D}
+nav{position:fixed;top:0;left:0;right:0;background:var(--blk);display:flex;align-items:stretch;height:52px;z-index:1000;border-bottom:1px solid #1a1a1a}
+.nav-brand{display:flex;align-items:center;padding:0 22px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);font-weight:700;white-space:nowrap;border-right:1px solid #2a2a2a;flex-shrink:0}
+.nav-links{display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{display:flex;align-items:center;padding:0 16px;color:#555;text-decoration:none;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border-right:1px solid #1a1a1a;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;cursor:pointer}
+.nav-links a:hover{color:#fff}
+.nav-links a.active{color:#fff;border-bottom-color:#fff;font-weight:500}
+body{padding-top:52px}
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
+section{display:none}
+section.active{display:block}
+.sec-head{padding:56px 0 28px;border-bottom:1px solid var(--gmd);margin-bottom:48px}
+.sec-tag{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:36px;font-weight:400;font-style:italic;letter-spacing:-.01em;line-height:1.1}
+.sec-sub{font-size:12px;color:var(--gtx);letter-spacing:.07em;text-transform:uppercase;margin-top:7px}
+.sec-intro{font-size:13.5px;line-height:1.8;color:var(--dark-gray);max-width:760px;margin-top:18px}
+.sec-intro em{color:var(--acc);font-style:normal;font-weight:500}
+
+/* ATHLETE CARDS */
+.athlete-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:48px}
+.athlete-card{background:#fff;padding:28px}
+.athlete-tag{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.athlete-tag.c2{color:var(--c2)}
+.athlete-tag.bf{color:var(--bf)}
+.athlete-name{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:400;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--gmd)}
+.athlete-facts{list-style:none}
+.athlete-facts li{font-size:12.5px;line-height:1.6;padding:5px 0;border-bottom:1px solid var(--glt);display:flex;gap:10px;color:#333;align-items:flex-start}
+.athlete-facts li::before{content:'—';color:var(--acc);flex-shrink:0}
+.athlete-facts li.flag::before{content:'⚠';color:var(--amber);flex-shrink:0}
+
+/* RACE BANNER */
+.race-banner{background:var(--blk);color:#fff;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+.race-banner-l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#aaa}
+.race-banner-r{display:flex;gap:32px}
+.race-stat{text-align:right}
+.race-stat-val{font-size:22px;font-weight:700;color:#fff;line-height:1}
+.race-stat-label{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#666;margin-top:2px}
+
+/* PHASE STRIP */
+.phase-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:48px}
+.phase-item{background:#fff;padding:18px 16px}
+.phase-item.active-phase{border-top:3px solid var(--acc);padding-top:15px;background:var(--acc-lt)}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:26px;color:var(--gmd);line-height:1}
+.phase-item.active-phase .phase-num{color:var(--acc)}
+.phase-label{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin:5px 0}
+.phase-wks{font-size:12px;font-weight:700;margin-bottom:4px}
+.phase-detail{font-size:11.5px;color:#555;line-height:1.5}
+.phase-badge{display:inline-block;font-size:7px;letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:#fff;padding:2px 7px;margin-top:6px}
+
+/* WEEKLY SCHEDULE */
+.sched-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin-bottom:14px}
+.sched-grid{display:grid;grid-template-columns:80px 1fr 1fr;border:1px solid var(--gmd);margin-bottom:48px}
+.sched-hdr{background:var(--blk);color:#fff;padding:10px 14px;font-size:8px;letter-spacing:.15em;text-transform:uppercase}
+.sched-hdr.c2-hdr{background:var(--c2)}
+.sched-hdr.bf-hdr{background:var(--bf)}
+.sched-day-row{display:contents}
+.sched-cell{padding:12px 14px;border-bottom:1px solid var(--gmd);border-right:1px solid var(--gmd);font-size:12px;line-height:1.4;vertical-align:top}
+.sched-cell:last-child{border-right:none}
+.sched-day-name{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--dark-gray);padding:12px 14px;border-bottom:1px solid var(--gmd);border-right:1px solid var(--gmd);background:var(--glt);display:flex;align-items:center}
+.tag-fixed{display:inline-block;font-size:7px;letter-spacing:.13em;text-transform:uppercase;background:var(--amber-bg);color:var(--amber);border:1px solid #e8d5b0;padding:1px 5px;margin-left:4px;vertical-align:middle}
+.tag-together{display:inline-block;font-size:7px;letter-spacing:.13em;text-transform:uppercase;background:var(--acc-lt);color:var(--acc);border:1px solid #c5d8c3;padding:1px 5px;margin-left:4px;vertical-align:middle}
+.tag-flex{display:inline-block;font-size:7px;letter-spacing:.13em;text-transform:uppercase;background:#f0f0f0;color:#888;border:1px solid #ddd;padding:1px 5px;margin-left:4px;vertical-align:middle}
+.sched-cell .session-name{font-weight:700;color:var(--blk);display:block;margin-bottom:2px}
+.sched-cell .session-note{font-size:11px;color:var(--gtx)}
+
+/* SESSION META BAR */
+.smeta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:40px}
+.smeta-item{background:#fff;padding:14px 18px}
+.smeta-label{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin-bottom:3px}
+.smeta-val{font-size:14px;font-weight:700}
+
+/* EXERCISE GRID */
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;margin-bottom:56px}
+.ex-card{border:1px solid var(--gmd);background:#fff;display:flex;flex-direction:column;transition:border-color .2s}
+.ex-card:hover{border-color:#b8b4ae}
+.ex-card.compound{border-left:3px solid var(--acc)}
+.ex-card.accessory{border-left:3px solid var(--gtx)}
+.ex-card.core{border-left:3px solid #8FADA8}
+.ex-media{width:100%;aspect-ratio:16/9;background:var(--glt);border-bottom:1px solid var(--gmd);overflow:hidden;position:relative}
+.ex-media img,.ex-media video{width:100%;height:100%;object-fit:cover;display:block}
+.ex-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.ex-placeholder-icon{font-size:20px;color:#ccc}
+.ex-placeholder-text{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:#bbb}
+.ex-body{padding:14px 16px;flex:1;display:flex;flex-direction:column}
+.ex-num{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:3px}
+.ex-name{font-family:'Libre Baskerville',serif;font-size:14px;font-weight:400;line-height:1.3;margin-bottom:10px}
+.ex-params{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ex-param{background:var(--glt);padding:2px 8px;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--dark-gray);border:1px solid var(--gmd)}
+.ex-cue{font-size:12.5px;line-height:1.65;color:var(--dark-gray);padding:.6rem .85rem;border-left:2px solid var(--gmd);background:var(--glt);margin-top:4px}
+.ex-race{font-size:11.5px;color:var(--acc);font-style:italic;margin-top:8px;padding-left:.85rem}
+.ex-warn{font-size:11.5px;color:var(--amber);background:var(--amber-bg);border-left:2px solid #e8c478;padding:.5rem .85rem;margin-top:8px}
+.ex-athlete-badge{display:inline-block;font-size:7px;letter-spacing:.14em;text-transform:uppercase;padding:2px 6px;margin-top:6px}
+.badge-c2{background:#edf2ec;color:var(--c2);border:1px solid #c5d8c3}
+.badge-bf{background:#e8edf5;color:var(--bf);border:1px solid #b8cce0}
+
+/* CALLOUT */
+.callout{padding:18px 22px;margin-bottom:32px;font-size:13px;line-height:1.75;color:var(--dark-gray)}
+.callout.green{background:var(--acc-lt);border-left:3px solid var(--acc)}
+.callout.amber{background:var(--amber-bg);border-left:3px solid #e8c478}
+.callout strong{color:var(--blk)}
+
+/* PULLUP TRACK */
+.pullup-track{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:40px}
+.pullup-stage{background:#fff;padding:18px 14px;text-align:center}
+.pullup-stage.current{background:var(--acc-lt);border-top:3px solid var(--acc);padding-top:15px}
+.pullup-stage.done{background:var(--glt)}
+.pullup-stage-num{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gtx);margin-bottom:6px}
+.pullup-stage.current .pullup-stage-num{color:var(--acc);font-weight:700}
+.pullup-stage-name{font-family:'Libre Baskerville',serif;font-size:13px;line-height:1.3;margin-bottom:8px}
+.pullup-stage-detail{font-size:11px;color:#555;line-height:1.5}
+.pullup-media{width:100%;aspect-ratio:4/3;background:var(--glt);border:1px solid var(--gmd);margin-bottom:10px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pullup-badge{font-size:7.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-top:6px}
+
+/* CARDIO TABLE */
+.tbl-wrap{overflow-x:auto;margin-bottom:48px}
+.std-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.std-table th{background:var(--blk);color:#fff;padding:11px 14px;text-align:left;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+.std-table td{padding:11px 14px;border-bottom:1px solid var(--gmd);line-height:1.55}
+.std-table tr:nth-child(even) td{background:var(--glt)}
+.std-table td strong{font-weight:700}
+
+/* PLAN BLOCKS */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:1px;background:var(--gmd);border:1px solid var(--gmd);margin-bottom:48px}
+.plan-block{background:#fff;padding:28px}
+.plan-tag{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:7px;font-weight:700}
+.plan-title{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:400;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--gmd)}
+.plan-block p{font-size:13px;line-height:1.8;margin-bottom:10px;color:var(--dark-gray)}
+.plan-block p:last-child{margin-bottom:0}
+.plan-list{list-style:none;margin:8px 0}
+.plan-list li{font-size:12.5px;line-height:1.65;padding:6px 0;border-bottom:1px solid var(--glt);display:flex;gap:10px;color:#333;align-items:flex-start}
+.plan-list li::before{content:'—';color:var(--acc);flex-shrink:0}
+
+footer{margin-top:72px;padding:24px 28px;border-top:1px solid var(--gmd);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-l,.footer-r{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gtx)}
+
+@media(max-width:900px){
+  .athlete-grid,.plan-grid{grid-template-columns:1fr}
+  .phase-strip{grid-template-columns:repeat(2,1fr)}
+  .sched-grid{grid-template-columns:60px 1fr 1fr}
+  .pullup-track{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  .container{padding:0 16px}
+  .sec-title{font-size:24px}
+  .ex-grid{grid-template-columns:1fr}
+  .phase-strip{grid-template-columns:1fr}
+  .sched-grid{grid-template-columns:1fr}
+  .sched-hdr,.sched-day-name{grid-column:1/-1}
+  .pullup-track{grid-template-columns:1fr 1fr}
+  .nav-brand{display:none}
+  .race-banner{flex-direction:column}
+  .race-banner-r{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Fuego Llama · Phase 2</div>
+  <div class="nav-links">
+    <a onclick="show('overview')" id="nav-overview" class="active">Overview</a>
+    <a onclick="show('mobility')" id="nav-mobility">Daily Mobility</a>
+    <a onclick="show('s1')" id="nav-s1">Session 1 — Lower Power</a>
+    <a onclick="show('s2')" id="nav-s2">Session 2 — Upper Body</a>
+    <a onclick="show('s3')" id="nav-s3">Session 3 — Full Body</a>
+    <a onclick="show('pullup')" id="nav-pullup">Pull-Up Track</a>
+    <a onclick="show('cardio')" id="nav-cardio">Cardio & Elevation</a>
+  </div>
+</nav>
+
+<!-- ══ OVERVIEW ══ -->
+<section id="overview" class="active">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Fuego Llama Team — Ultra X Madeira</div>
+    <h1 class="sec-title">Phase 2 — Build.</h1>
+    <div class="sec-sub">June – July 2026 · Weeks 7–14 · Base: Bremen</div>
+    <p class="sec-intro">Strength volume peaks this phase. Running volume climbs weekly. The race demands <em>eccentric quad endurance for 3,800m of descent</em>, <em>sustained glute power for 3,800m of ascent</em>, and a body that stays upright under a 6–8 kg pack for 10–16 hours. Every session serves one or more of these demands directly.</p>
+  </div>
+
+  <div class="race-banner">
+    <div class="race-banner-l">Ultra X Madeira · 31 October 2026 · Volcanic terrain · Self-supported</div>
+    <div class="race-banner-r">
+      <div class="race-stat"><div class="race-stat-val">60</div><div class="race-stat-label">km</div></div>
+      <div class="race-stat"><div class="race-stat-val">3,800</div><div class="race-stat-label">m elevation gain</div></div>
+      <div class="race-stat"><div class="race-stat-val">~19</div><div class="race-stat-label">weeks out</div></div>
+    </div>
+  </div>
+
+  <div class="phase-strip">
+    <div class="phase-item"><div class="phase-num">01</div><div class="phase-label">Foundation</div><div class="phase-wks">Weeks 1–6 · Apr–May</div><div class="phase-detail">Movement quality, base aerobic volume, return-to-run protocol.</div></div>
+    <div class="phase-item active-phase"><div class="phase-num">02</div><div class="phase-label">Build</div><div class="phase-wks">Weeks 7–14 · Jun–Jul</div><div class="phase-detail">Strength volume peak. Run volume building. Elevation accumulation begins.</div><span class="phase-badge">Current</span></div>
+    <div class="phase-item"><div class="phase-num">03</div><div class="phase-label">Race-Specific</div><div class="phase-wks">Weeks 15–22 · Aug–Sep</div><div class="phase-detail">Run volume peaks. Strength to maintenance. Technical trail exposure.</div></div>
+    <div class="phase-item"><div class="phase-num">04</div><div class="phase-label">Taper</div><div class="phase-wks">Weeks 23–26 · Oct</div><div class="phase-detail">40% volume reduction. Arrive at start line rested. No new adaptations.</div></div>
+  </div>
+
+  <div class="athlete-grid">
+    <div class="athlete-card">
+      <div class="athlete-tag c2">Client 2 — Fitness Instructor</div>
+      <div class="athlete-name">Goals: Ultra X 60 km · Pull-up · Hourglass recomposition</div>
+      <ul class="athlete-facts">
+        <li>Age 29 · 168 cm · 69.5 kg · FFMI 18.7 — exceptional lean mass</li>
+        <li>BodyAttack Express Thursday (30 min) — fixed HIIT. Shapes Monday + Thursday 7pm — fixed.</li>
+        <li>Rotating shifts — weekend availability varies. Saturday sessions marked FLEX.</li>
+        <li>Low gluten / low lactose. Protein target: 125–140 g/day.</li>
+        <li class="flag">C4–C5 herniation + mild syrinx. No barbell back squat. No behind-neck loading. No Valsalva under heavy load. DB shoulder press: neutral head, never to failure.</li>
+        <li class="flag">Right foot: overuse fatigue history. Monitor sissy squat, step-downs, and all single-leg work. Stop if symptomatic.</li>
+      </ul>
+    </div>
+    <div class="athlete-card">
+      <div class="athlete-tag bf">Boyfriend</div>
+      <div class="athlete-name">Goal: Ultra X 60 km · Maintain strength base</div>
+      <ul class="athlete-facts">
+        <li>Highly fit, experienced. Consistent Monday–Friday 9–5 schedule.</li>
+        <li>4×4 HIIT weekly — his fixed cardio complement (4 min max effort / 4 min rest × 4 rounds).</li>
+        <li>Can already do multiple pull-ups — progresses to weighted this phase.</li>
+        <li>No injury modifications required.</li>
+        <li>Sessions 1, 2, and 3 align with Client 2 where schedules permit.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sched-label">— Sample week · adjust Client 2 around shift pattern —</div>
+  <div class="sched-grid">
+    <div class="sched-hdr">Day</div>
+    <div class="sched-hdr c2-hdr">Client 2</div>
+    <div class="sched-hdr bf-hdr">Boyfriend</div>
+
+    <div class="sched-day-name">Mon</div>
+    <div class="sched-cell"><span class="session-name">Short run 7 km (AM)</span><span class="session-note">Shapes 7pm <span class="tag-fixed">Fixed</span></span></div>
+    <div class="sched-cell"><span class="session-name">4×4 HIIT</span><span class="session-note">His fixed cardio — do not add extra HIIT</span></div>
+
+    <div class="sched-day-name">Tue</div>
+    <div class="sched-cell"><span class="session-name">Session 1 — Lower Power <span class="tag-together">Together</span></span><span class="session-note">~65 min · primary race session</span></div>
+    <div class="sched-cell"><span class="session-name">Session 1 — Lower Power <span class="tag-together">Together</span></span><span class="session-note">~65 min</span></div>
+
+    <div class="sched-day-name">Wed</div>
+    <div class="sched-cell"><span class="session-name">Session 2 — Upper Body <span class="tag-together">Together</span></span><span class="session-note">~60 min · pull-up track included</span></div>
+    <div class="sched-cell"><span class="session-name">Session 2 — Upper Body <span class="tag-together">Together</span></span><span class="session-note">~60 min · weighted pull-ups</span></div>
+
+    <div class="sched-day-name">Thu</div>
+    <div class="sched-cell"><span class="session-name">BodyAttack Express <span class="tag-fixed">Fixed</span></span><span class="session-note">Shapes 7pm <span class="tag-fixed">Fixed</span> · Mobility only on this day</span></div>
+    <div class="sched-cell"><span class="session-name">Short run 7–8 km</span><span class="session-note">Easy pace, RPE 5–6</span></div>
+
+    <div class="sched-day-name">Fri</div>
+    <div class="sched-cell"><span class="session-name">Session 3 — Full Body <span class="tag-together">Together</span></span><span class="session-note">~50 min · optional / recovery-dependent</span></div>
+    <div class="sched-cell"><span class="session-name">Session 3 — Full Body <span class="tag-together">Together</span></span><span class="session-note">~50 min</span></div>
+
+    <div class="sched-day-name">Sat</div>
+    <div class="sched-cell"><span class="session-name">Long run <span class="tag-flex">Flex</span></span><span class="session-note">Move to Sunday if working. 15–18 km Phase 2.</span></div>
+    <div class="sched-cell"><span class="session-name">Long run + StairMaster</span><span class="session-note">Long run AM · StairMaster 30 min PM or separate day</span></div>
+
+    <div class="sched-day-name">Sun</div>
+    <div class="sched-cell"><span class="session-name">Long run (if Sat = work) <span class="tag-flex">Flex</span></span><span class="session-note">Otherwise: REST · Full recovery</span></div>
+    <div class="sched-cell"><span class="session-name">StairMaster or REST</span><span class="session-note">Elevation accumulation target: 400–600 m vertical / week</span></div>
+  </div>
+
+  <div class="callout amber">
+    <strong>C4–C5 + Syrinx — active every session:</strong> No barbell back squat. No behind-the-neck loading. No Valsalva under heavy load. DB shoulder press: strict neutral head position, stop 2 reps short of failure. Farmer's carries: load through hips and core, not traps. Neurological alert — stop immediately and seek review if: arm/hand tingling or numbness, loss of coordination, worsening neck pain, headache with exertion.
+  </div>
+</div>
+</section>
+
+<!-- ══ DAILY MOBILITY ══ -->
+<section id="mobility">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Daily — Both Athletes</div>
+    <h1 class="sec-title">Mobility.</h1>
+    <div class="sec-sub">Every day · ~10 minutes · before any session or independently</div>
+    <p class="sec-intro">Done daily, not just on training days. These exercises maintain the hip, knee, and ankle range of motion that trail terrain demands — and that 60 km of volcanic rock will test. The cossack squat at the end doubles as activation before Session 1.</p>
+  </div>
+  <div class="ex-grid">
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/lying_hip_car.jpg" alt="Lying Hip CARs"></div>
+      <div class="ex-body"><div class="ex-num">Mobility 01</div><div class="ex-name">Lying Hip CARs</div><div class="ex-params"><span class="ex-param">5 reps each direction</span><span class="ex-param">Both legs</span><span class="ex-param">Slow</span></div><div class="ex-cue">Lie on your side. Draw the largest possible circle with your knee. Full range — move through end-range in every direction. No compensating at the spine.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/knee_car.gif" alt="Knee CARs"></div>
+      <div class="ex-body"><div class="ex-num">Mobility 02</div><div class="ex-name">Knee CARs</div><div class="ex-params"><span class="ex-param">5 reps each</span><span class="ex-param">Both legs</span><span class="ex-param">Full circle</span></div><div class="ex-cue">Standing or supported. Circle the knee through its full range — flex, circumduct, extend. Keep the hip still. This is knee joint health work, not a stretch.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/poor_man.jpg" alt="Poor Man's Leg Extensions"></div>
+      <div class="ex-body"><div class="ex-num">Mobility 03</div><div class="ex-name">Poor Man's Leg Extensions</div><div class="ex-params"><span class="ex-param">10 reps each</span><span class="ex-param">Controlled</span></div><div class="ex-cue">Seated on a bench edge. Extend the lower leg slowly until fully straight. Hold 1 second. Lower slowly. Targets terminal knee extension and VMO activation — the muscle that fails first on long descents.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><div class="ex-placeholder"><div class="ex-placeholder-icon">📷</div><div class="ex-placeholder-text">Image pending upload</div></div></div>
+      <div class="ex-body"><div class="ex-num">Mobility 04</div><div class="ex-name">Foot & Ankle Mobility</div><div class="ex-params"><span class="ex-param">2 min</span><span class="ex-param">Both ankles</span></div><div class="ex-cue">Ankle circles (10 each direction) + banded ankle distraction (30 s each) + toe spreads. Volcanic rock requires active, proprioceptively alive feet. This is not optional.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/landmine_cossack_squat.gif" alt="Cossack Squat"></div>
+      <div class="ex-body"><div class="ex-num">Mobility 05 / Activation</div><div class="ex-name">Landmine Cossack Squat</div><div class="ex-params"><span class="ex-param">8 reps each side</span><span class="ex-param">Bodyweight or light load</span></div><div class="ex-cue">Wide stance. Shift into one hip, keeping the other leg straight. The landmine gives balance support — use it to reach full depth. Hip adductor and lateral chain activation.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SESSION 1 — LOWER POWER ══ -->
+<section id="s1">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Session 1 — Both Athletes · Together</div>
+    <h1 class="sec-title">Lower Power.</h1>
+    <div class="sec-sub">Tuesday · ~65 minutes · Primary race session</div>
+    <p class="sec-intro">This is the session that wins the race. Eccentric quad for 3,800 m of descent. Glute power for 3,800 m of ascent. Lateral stability for volcanic rock. Every exercise has a direct race transfer — this is not general fitness training.</p>
+  </div>
+  <div class="smeta">
+    <div class="smeta-item"><div class="smeta-label">Duration</div><div class="smeta-val">~65 min</div></div>
+    <div class="smeta-item"><div class="smeta-label">Primary movers</div><div class="smeta-val">Glute max · Quad (eccentric) · Hamstring · Hip stabilisers</div></div>
+    <div class="smeta-item"><div class="smeta-label">Race transfer</div><div class="smeta-val">Ascent power + Descent control</div></div>
+    <div class="smeta-item"><div class="smeta-label">Frequency</div><div class="smeta-val">1× weekly · never before a long run</div></div>
+  </div>
+  <div class="ex-grid">
+    <div class="ex-card compound">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/barbell-hip-thrust%202.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S1 · 01</div><div class="ex-name">Barbell Hip Thrust</div><div class="ex-params"><span class="ex-param">4 × 8</span><span class="ex-param">Rest 90 s</span><span class="ex-param">RPE 7–8</span></div><div class="ex-cue">Drive through heels. Full hip extension — squeeze at the top, hold 1 s. Rib cage down. Do not hyperextend the lumbar spine.</div><div class="ex-race">Primary glute engine for sustained uphill climbing. The most loaded hip extension pattern in this programme.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/bulgarian-split-squat-male.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S1 · 02</div><div class="ex-name">Bulgarian Split Squat</div><div class="ex-params"><span class="ex-param">4 × 6 each</span><span class="ex-param">3 s eccentric</span><span class="ex-param">Rest 90 s</span><span class="ex-param">RPE 8</span></div><div class="ex-cue">Rear foot elevated. Vertical torso. Front foot far enough forward that the knee stays over the ankle. The 3-second descent is non-negotiable — this is where the race adaptation happens.</div><div class="ex-race">The single most race-specific strength exercise in this programme. Loads eccentric quad (descent) and hip extensor (ascent) simultaneously.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/nordic_curl.gif" alt="Nordic Hamstring Curl"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 03</div><div class="ex-name">Nordic Hamstring Curl</div><div class="ex-params"><span class="ex-param">3 × 5</span><span class="ex-param">Full eccentric · 4–5 s descent</span><span class="ex-param">Rest 2 min</span></div><div class="ex-cue">Hips fully extended throughout. Lower as slowly as possible — catch with hands at the bottom. Pull back using hamstrings only, not by hip-hinging. Reps are low because quality is everything here.</div><div class="ex-race">Most effective exercise for hamstring injury prevention. Eccentric strength protects the posterior chain on sustained, technical descents.</div><div class="ex-warn">Client 2 — C4–C5/syrinx: keep bracing effort controlled. Do not strain or Valsalva. If any neck symptoms: stop immediately.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/sissy_to_box.jpg" alt="Sissy Squat with Box"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 04</div><div class="ex-name">Sissy Squat with Box</div><div class="ex-params"><span class="ex-param">3 × 10</span><span class="ex-param">3 s down</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Heels on box or plate. Lean back from the ankle — not from the hips. Control the descent fully. The burn is the point: this is patellar tendon conditioning.</div><div class="ex-race">Builds patellar tendon resilience for repeated quad loading over 60 km. Own the range before adding load.</div><div class="ex-warn">Client 2 — right foot: monitor discomfort. Reduce range of motion or switch to bilateral goblet squat if symptomatic.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/depth_step_down.jpg" alt="Depth Step-Down"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 05</div><div class="ex-name">Depth Step-Down</div><div class="ex-params"><span class="ex-param">3 × 8 each</span><span class="ex-param">3 s lowering</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Stand on a step edge. Lower the free foot toward the floor — controlled, 3 seconds. Don't touch. Drive back up through the working heel. This is eccentric quad training, not a cardio exercise.</div><div class="ex-race">Direct simulation of descent mechanics. The same demand as 3,800 m of technical downhill under fatigue.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/lateral_step_up.webp" alt="Weighted Step-Up"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 06</div><div class="ex-name">Weighted Step-Up</div><div class="ex-params"><span class="ex-param">3 × 10 each</span><span class="ex-param">Rest 60 s</span><span class="ex-param">Progress to pack weight</span></div><div class="ex-cue">Drive through the heel of the working leg. Do not push off the trailing foot. Torso upright as if carrying a pack. Begin with DBs — build to a loaded pack by week 12.</div><div class="ex-race">Direct uphill simulation. The most transferable cardio-strength crossover in the programme.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/pistol_box.gif" alt="Pistol Box Squat"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 07</div><div class="ex-name">Pistol Box Squat</div><div class="ex-params"><span class="ex-param">3 × 6 each</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Sit back to the box under full tension — never collapse onto it. Drive through the entire foot on the way up. Build depth before adding load. Full balance and proprioceptive demand.</div><div class="ex-race">Single-leg ankle and hip stability. Technical volcanic terrain demands unilateral control at end-range positions this movement directly trains.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/skater_jump.jpg" alt="Lateral Bounds"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 08</div><div class="ex-name">Lateral Bounds / Skater Jumps</div><div class="ex-params"><span class="ex-param">3 × 8 each</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Absorb the landing on one leg — soft knee, controlled hip hinge. Landing quality matters more than jump distance. Pause 1 s on landing before the next bound.</div><div class="ex-race">Lateral force production for trail direction changes. Reactive ankle stability for uneven rock surfaces.</div></div>
+    </div>
+    <div class="ex-card core">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/copenhagen-plank.gif.webp" alt="Copenhagen Plank"></div>
+      <div class="ex-body"><div class="ex-num">S1 · 09</div><div class="ex-name">Copenhagen Plank</div><div class="ex-params"><span class="ex-param">3 × 20–30 s each</span><span class="ex-param">Rest 45 s</span><span class="ex-param">Progress: add hip dip</span></div><div class="ex-cue">Top ankle or shin on the bench. Body in a straight line — hip stays level. Do not let it sag. Progress by extending hold duration, then adding a controlled hip dip.</div><div class="ex-race">Lateral hip stability for sustained single-leg stance. Far more race-specific than a standard side plank — this loads the full adductor and lateral chain under body weight.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SESSION 2 — UPPER BODY ══ -->
+<section id="s2">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Session 2 — Both Athletes · Together</div>
+    <h1 class="sec-title">Upper Body + Free Weights.</h1>
+    <div class="sec-sub">Wednesday · ~60 minutes · Hourglass architecture + pack endurance</div>
+    <p class="sec-intro">Two goals in one session: <em>shoulder-to-waist V-taper</em> for Client 2's hourglass objective, and <em>upper back endurance</em> for hours of pack carriage across volcanic terrain. Farmer's carries and kettlebell swings are not optional — they are race simulation. Pull-up track runs every session.</p>
+  </div>
+  <div class="smeta">
+    <div class="smeta-item"><div class="smeta-label">Duration</div><div class="smeta-val">~60 min</div></div>
+    <div class="smeta-item"><div class="smeta-label">Primary movers</div><div class="smeta-val">Lats · Rear delt · Traps · Hip extensors</div></div>
+    <div class="smeta-item"><div class="smeta-label">Race transfer</div><div class="smeta-val">Pack carriage endurance · Hip explosion</div></div>
+    <div class="smeta-item"><div class="smeta-label">Client 2 bonus</div><div class="smeta-val">Pull-up progression · Shoulder width</div></div>
+  </div>
+  <div class="callout green">
+    <strong>Pull-up split this session:</strong> Client 2 follows her progressive track (see Pull-Up Track tab — current stage). Boyfriend: weighted pull-ups 4 × 3–5, adding 5–10 kg. Both perform pull-up work first, before any other upper body fatigue.
+  </div>
+  <div class="ex-grid">
+    <div class="ex-card compound">
+      <div class="ex-media"><div class="ex-placeholder"><div class="ex-placeholder-icon">📷</div><div class="ex-placeholder-text">Pull-up images pending</div></div></div>
+      <div class="ex-body"><div class="ex-num">S2 · 01</div><div class="ex-name">Pull-Up Work</div><div class="ex-params"><span class="ex-param">4 sets</span><span class="ex-param">Rest 2 min</span></div><div class="ex-cue">Always first — before any other upper body work. Full range of motion: dead hang at the bottom, chin over bar at the top. No kipping.</div><span class="ex-athlete-badge badge-c2">Client 2 — see Pull-Up Track</span><br><span class="ex-athlete-badge badge-bf">Boyfriend — weighted, 3–5 reps</span></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/lat-pulldown-female%202.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S2 · 02</div><div class="ex-name">Lat Pulldown</div><div class="ex-params"><span class="ex-param">3 × 10</span><span class="ex-param">Rest 90 s</span><span class="ex-param">RPE 7–8</span></div><div class="ex-cue">Pull to upper chest. Elbows drive down and back. Torso ~10° back — avoid excessive lay. Full stretch at the top. Scapular endurance is the training goal here, not ego load.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/single-arm-dumbbell-row%202.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S2 · 03</div><div class="ex-name">Single-Arm DB Row</div><div class="ex-params"><span class="ex-param">3 × 10 each</span><span class="ex-param">Rest 90 s</span></div><div class="ex-cue">Brace the core. Row the elbow to hip, not to shoulder. Let the weight stretch at the bottom — full range. Anti-rotation demand is intentional.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/Dumbbell-Shoulder-Press.gif" alt="DB Shoulder Press"></div>
+      <div class="ex-body"><div class="ex-num">S2 · 04</div><div class="ex-name">DB Shoulder Press</div><div class="ex-params"><span class="ex-param">3 × 10</span><span class="ex-param">Rest 90 s</span></div><div class="ex-cue">Elbows at 45°. Press to full extension. Stop 2 reps short of failure. Head neutral throughout — never jut the chin forward.</div><div class="ex-warn">Client 2 — C4–C5 / syrinx: strict neutral head. Never to failure. If any cervical symptoms begin: stop this exercise immediately.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/cable_lateral_raise.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S2 · 05</div><div class="ex-name">Lateral Raise</div><div class="ex-params"><span class="ex-param">3 × 12–15</span><span class="ex-param">2 s descent</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Lead with the elbow. Slight internal rotation. 2-second controlled descent. Do not shrug the trap — the medial deltoid is the target. Light load, high quality.</div><div class="ex-race">Shoulder width is the primary mechanism of hourglass silhouette. This exercise, done consistently, creates the visual ratio.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/cable-face-pull.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S2 · 06</div><div class="ex-name">Face Pull</div><div class="ex-params"><span class="ex-param">3 × 15</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Pull to face height. External rotation at end range. Elbows high throughout. This is a postural endurance exercise — do not go heavy. The rear deltoid and scapular retractors are the target.</div><div class="ex-race">Prevents postural collapse under a 6–8 kg pack at hour 10. Upper back endurance is a race finisher.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/farmers%20carry.gif" alt="Farmer's Carry"></div>
+      <div class="ex-body"><div class="ex-num">S2 · 07</div><div class="ex-name">Farmer's Carries</div><div class="ex-params"><span class="ex-param">3 × 40 m</span><span class="ex-param">Rest 90 s</span><span class="ex-param">Progress to pack weight</span></div><div class="ex-cue">Tall posture. Shoulders packed — not elevated. Walk with intent and pace. Load through the hips and core, not the neck. Time each carry and aim to beat it.</div><div class="ex-race">The closest gym exercise to 10 hours of self-supported pack carriage. Non-negotiable in Phase 2. Progress to a loaded pack by week 10.</div><div class="ex-warn">Client 2 — C4–C5 / syrinx: load must stay through the hip belt equivalent — no neck/trap loading. Use DBs rather than a barbell yoke.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/kettlebell_swings.gif" alt="Kettlebell Swings"></div>
+      <div class="ex-body"><div class="ex-num">S2 · 08</div><div class="ex-name">Kettlebell Swings</div><div class="ex-params"><span class="ex-param">4 × 15</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Hip hinge — not a squat. Let the bell float at the top; don't muscle it up. Explosive hip snap. Breathe: inhale on backswing, sharp exhale at the top. Back flat throughout.</div><div class="ex-race">Explosive hip extension power — the same neuromuscular pattern as pushing up a steep ascent. Transfers directly to climbing efficiency.</div></div>
+    </div>
+    <div class="ex-card core">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/wall_dead_bug.gif" alt="Wall Dead Bug"></div>
+      <div class="ex-body"><div class="ex-num">S2 · 09</div><div class="ex-name">Wall Dead Bug</div><div class="ex-params"><span class="ex-param">3 × 8 each</span><span class="ex-param">3 s per rep</span><span class="ex-param">Rest 45 s</span></div><div class="ex-cue">Lower back flat against the wall the entire time. If it lifts — you've gone too far. Slow and deliberate. This is anti-extension core training, not a stretch.</div><div class="ex-race">Core stability for descents and technical single-leg terrain. No Valsalva — C4–C5 safe.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SESSION 3 — FULL BODY ══ -->
+<section id="s3">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Session 3 — Both Athletes · Together · Optional</div>
+    <h1 class="sec-title">Full Body Race Power.</h1>
+    <div class="sec-sub">Friday · ~50 minutes · Recovery-dependent — skip if fatigued</div>
+    <p class="sec-intro">Integration session. If Sessions 1 and 2 were hard — and they should have been — only do Session 3 if recovery is good. Prioritise the long run over Session 3 if time or energy requires a choice.</p>
+  </div>
+  <div class="smeta">
+    <div class="smeta-item"><div class="smeta-label">Duration</div><div class="smeta-val">~50 min</div></div>
+    <div class="smeta-item"><div class="smeta-label">Priority rule</div><div class="smeta-val">Long run > Session 3 if forced to choose</div></div>
+    <div class="smeta-item"><div class="smeta-label">Skip trigger</div><div class="smeta-val">DOMS from S1/S2 still present at RPE 4+</div></div>
+  </div>
+  <div class="ex-grid">
+    <div class="ex-card compound">
+      <div class="ex-media"><video autoplay loop muted playsinline><source src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/elevated_goblet_squat%202.mp4" type="video/mp4"></video></div>
+      <div class="ex-body"><div class="ex-num">S3 · 01</div><div class="ex-name">Goblet Squat</div><div class="ex-params"><span class="ex-param">3 × 10</span><span class="ex-param">Rest 90 s</span><span class="ex-param">Full depth</span></div><div class="ex-cue">Heels elevated if depth is limited. Chest tall, elbows inside knees at the bottom. Sit into it. Drive up through the full foot — not just the heels.</div><div class="ex-warn">Client 2 — C4–C5: this is the preferred squat variation throughout. No barbell back squat.</div></div>
+    </div>
+    <div class="ex-card compound">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/single_leg_deficit_deadlift.jpg" alt="Single-Leg Deficit Deadlift"></div>
+      <div class="ex-body"><div class="ex-num">S3 · 02</div><div class="ex-name">Single-Leg Deficit Deadlift</div><div class="ex-params"><span class="ex-param">3 × 8 each</span><span class="ex-param">Rest 90 s</span></div><div class="ex-cue">Stand on a plate or low step. The deficit increases range of motion through the ankle and foot — own the bottom position. Hips square throughout. This is harder than a standard SL-RDL and more race-specific.</div><div class="ex-race">The deficit adds ankle and foot stability demands identical to volcanic trail terrain. Directly prepares the foot-to-hip chain for technical rock.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/lateral_step_up.webp" alt="Lateral Step-Up"></div>
+      <div class="ex-body"><div class="ex-num">S3 · 03</div><div class="ex-name">Lateral Step-Up</div><div class="ex-params"><span class="ex-param">3 × 10 each</span><span class="ex-param">Rest 60 s</span></div><div class="ex-cue">Step laterally onto the bench. Drive through the working hip — not the knee. The lateral pattern targets gluteus medius, which is critical for trail running hip stability during single-leg stance.</div></div>
+    </div>
+    <div class="ex-card core">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/palloff_press.gif" alt="Pallof Press"></div>
+      <div class="ex-body"><div class="ex-num">S3 · 04</div><div class="ex-name">Pallof Press</div><div class="ex-params"><span class="ex-param">3 × 12 each side</span><span class="ex-param">2 s hold</span><span class="ex-param">Rest 45 s</span></div><div class="ex-cue">Feet hip-width. Slight knee bend. Press out and hold 2 s. The goal is zero rotation — resist the cable completely. The harder this feels, the more you need it.</div><div class="ex-race">Anti-rotation stability for single-leg stance on uneven rock. The core pattern used every step on technical terrain.</div></div>
+    </div>
+    <div class="ex-card accessory">
+      <div class="ex-media"><img src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Fuego_Ilama/landmine_cossack_squat.gif" alt="Landmine Cossack Squat"></div>
+      <div class="ex-body"><div class="ex-num">S3 · 05</div><div class="ex-name">Landmine Cossack Squat</div><div class="ex-params"><span class="ex-param">2 × 8 each</span><span class="ex-param">Session finisher</span></div><div class="ex-cue">Loaded variation — use the landmine for balance. Reach full depth on the working side. The opposite leg stays straight. Hip adductor strength and lateral chain mobility in one movement.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ PULL-UP TRACK ══ -->
+<section id="pullup">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Client 2 Only — Session 2 · First Exercise</div>
+    <h1 class="sec-title">Pull-Up Progression.</h1>
+    <div class="sec-sub">12-week track · 4 sets every Session 2 · Goal: first unassisted pull-up</div>
+    <p class="sec-intro">A full pull-up is achievable in 12 weeks from any baseline with the correct eccentric-first progression. Move to the next stage only when the current stage is solid — do not rush. Stage 3 (Banded) is the likely entry point for Phase 2.</p>
+  </div>
+  <div class="callout green">
+    <strong>C4–C5 / syrinx note:</strong> Pull-ups load through the shoulder girdle — not the cervical spine axially. This is generally safe with the C4–C5 modification, provided the head stays neutral throughout and loading is progressive. If any cervical symptoms appear during pull-up work, cease immediately and seek physio review before continuing.
+  </div>
+  <div class="pullup-track">
+    <div class="pullup-stage done">
+      <div class="pullup-media"><div class="ex-placeholder"><div class="ex-placeholder-text">Image pending</div></div></div>
+      <div class="pullup-stage-num">Stage 1</div>
+      <div class="pullup-stage-name">Dead Hang</div>
+      <div class="pullup-stage-detail">3 × 30–45 s. Build grip and shoulder stability. Scapula neutral — do not shrug.</div>
+    </div>
+    <div class="pullup-stage done">
+      <div class="pullup-media"><div class="ex-placeholder"><div class="ex-placeholder-text">Image pending</div></div></div>
+      <div class="pullup-stage-num">Stage 2</div>
+      <div class="pullup-stage-name">Scapular Pulls</div>
+      <div class="pullup-stage-detail">3 × 8. From dead hang, depress and retract scapulae — body rises slightly. No elbow bend yet.</div>
+    </div>
+    <div class="pullup-stage current">
+      <div class="pullup-media"><div class="ex-placeholder"><div class="ex-placeholder-text">Image pending</div></div></div>
+      <div class="pullup-stage-num">Stage 3 — Phase 2 Entry</div>
+      <div class="pullup-stage-name">Banded Pull-Ups</div>
+      <div class="pullup-stage-detail">3 × 5–8. Light band. Full range — chin over bar. Reduce band thickness as reps become easy.</div>
+      <div class="pullup-badge">Current Stage</div>
+    </div>
+    <div class="pullup-stage">
+      <div class="pullup-media"><div class="ex-placeholder"><div class="ex-placeholder-text">Image pending</div></div></div>
+      <div class="pullup-stage-num">Stage 4</div>
+      <div class="pullup-stage-name">Negatives</div>
+      <div class="pullup-stage-detail">3 × 3–5. Jump to top position. Lower in 5–8 s. Full eccentric control. Builds strength not yet accessible concentrically.</div>
+    </div>
+    <div class="pullup-stage">
+      <div class="pullup-media"><div class="ex-placeholder"><div class="ex-placeholder-text">Image pending</div></div></div>
+      <div class="pullup-stage-num">Stage 5</div>
+      <div class="pullup-stage-name">Full Pull-Up</div>
+      <div class="pullup-stage-detail">3 × 3+. Unassisted. Dead hang start. Chin over bar. The goal. Build reps over weeks.</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std-table">
+      <thead><tr><th>Week</th><th>Stage</th><th>Sets × Reps</th><th>Progression trigger</th></tr></thead>
+      <tbody>
+        <tr><td><strong>7–8</strong></td><td>Banded (medium band)</td><td>4 × 5</td><td>5 clean reps, band not stretching hard</td></tr>
+        <tr><td><strong>9–10</strong></td><td>Banded (light band)</td><td>4 × 6–8</td><td>8 reps with light band, full depth</td></tr>
+        <tr><td><strong>11–12</strong></td><td>Negatives</td><td>3 × 3–5 (5–8 s descent)</td><td>Full 8-second descent with control</td></tr>
+        <tr><td><strong>13–14</strong></td><td>Negatives + 1 attempt</td><td>3 negatives + 1 full attempt</td><td>First unassisted rep achieved</td></tr>
+        <tr><td><strong>15+</strong></td><td>Full pull-up</td><td>3 × max</td><td>Build reps. Add load when 5+ consistent.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ══ CARDIO & ELEVATION ══ -->
+<section id="cardio">
+<div class="container">
+  <div class="sec-head">
+    <div class="sec-tag">Phase 2 · Both Athletes</div>
+    <h1 class="sec-title">Cardio & Elevation.</h1>
+    <div class="sec-sub">June – July 2026 · Building to 2×8 km + 1×18 km by end of Phase 2</div>
+    <p class="sec-intro">Running volume is the most important training variable for a 60 km ultra. Strength supports it — it does not replace it. The StairMaster and treadmill incline sessions are the primary solution for training vertical gain in flat Bremen. These are not optional add-ons. Track cumulative vertical metres weekly.</p>
+  </div>
+
+  <div class="plan-grid">
+    <div class="plan-block">
+      <div class="plan-tag">Client 2</div>
+      <div class="plan-title">Running + Fixed Classes</div>
+      <ul class="plan-list">
+        <li><strong>Monday AM:</strong> Short run 7–8 km. Easy to moderate, RPE 5–6. Before shift or in morning window before Shapes 7pm.</li>
+        <li><strong>Thursday:</strong> BodyAttack Express (30 min) — counts as HIIT. Do not add a run on this day. Shapes 7pm follows.</li>
+        <li><strong>Saturday:</strong> Long run 15–18 km. FLEXIBLE — move to Sunday if working. Do not skip; move instead.</li>
+        <li><strong>StairMaster:</strong> 1× weekly, 30–40 min, RPE 6–7. Best on a free morning. Log vertical metres.</li>
+        <li>Total Phase 2 run volume target: 30–35 km/week by week 14.</li>
+      </ul>
+    </div>
+    <div class="plan-block">
+      <div class="plan-tag">Boyfriend</div>
+      <div class="plan-title">Running + 4×4 HIIT</div>
+      <ul class="plan-list">
+        <li><strong>Monday:</strong> 4×4 HIIT — his fixed cardio. 4 min max effort / 4 min rest × 4 rounds. Do not add running on this day.</li>
+        <li><strong>Thursday:</strong> Short run 7–8 km. Easy to moderate, RPE 5–6.</li>
+        <li><strong>Saturday:</strong> Long run 15–18 km AM. StairMaster 30 min PM same day or Sunday.</li>
+        <li><strong>Sunday:</strong> StairMaster or full rest. Elevation accumulation target: 400–600 m vertical/week.</li>
+        <li>Total Phase 2 run volume target: 30–35 km/week by week 14.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std-table">
+      <thead><tr><th>Week</th><th>Short Run 1</th><th>Short Run 2</th><th>Long Run</th><th>Weekly km</th><th>Vertical Target</th></tr></thead>
+      <tbody>
+        <tr><td><strong>7–8</strong></td><td>7 km</td><td>7 km</td><td>15 km</td><td>~29 km</td><td>300–400 m</td></tr>
+        <tr><td><strong>9–10</strong></td><td>8 km</td><td>7 km</td><td>16 km</td><td>~31 km</td><td>400–500 m</td></tr>
+        <tr><td><strong>11–12</strong></td><td>8 km</td><td>8 km</td><td>17 km</td><td>~33 km</td><td>500 m</td></tr>
+        <tr><td><strong>13–14</strong></td><td>8 km</td><td>8 km</td><td>18 km</td><td>~34 km</td><td>500–600 m</td></tr>
+        <tr><td><strong>Deload (every 4th week)</strong></td><td colspan="3">Reduce all runs by 40%. Maintain pace — reduce volume only.</td><td>~18 km</td><td>200 m</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="plan-grid">
+    <div class="plan-block">
+      <div class="plan-tag">Elevation prep — Bremen</div>
+      <div class="plan-title">StairMaster Protocol</div>
+      <p>Set resistance to moderate. RPE 6–7 — you should be able to hold a short sentence. 30–40 min per session. Track cumulative vertical on the machine display.</p>
+      <p><strong>StairMaster conversion:</strong> ~1,500 steps ≈ 150 m vertical. A 35-min session at moderate pace ≈ 250–300 m vertical. Two sessions per week = 500–600 m — on target.</p>
+      <p>From week 10: add a small pack (5 kg) to StairMaster sessions. From week 14: build to 8 kg. This is the closest Bremen offers to race-day carry simulation on incline.</p>
+    </div>
+    <div class="plan-block">
+      <div class="plan-tag">Travel plan — real terrain</div>
+      <div class="plan-title">Terrain Exposure Schedule</div>
+      <ul class="plan-list">
+        <li><strong>Week 10:</strong> Teutoburg Forest day trip (~1 hr drive). First real trail exposure. 15–18 km, moderate terrain. Run easy.</li>
+        <li><strong>Week 16:</strong> Harz Mountains weekend (2 hr drive). 20+ km, 1,000+ m elevation. Race simulation effort.</li>
+        <li><strong>Week 20:</strong> Madeira recce if possible (4 hr flight). Walk levadas, feel volcanic rock surface. Mental preparation is as valuable as physical.</li>
+        <li><strong>Race day:</strong> Ultra X Madeira 60 km · 31 October 2026.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-l">Fuego Llama Team — Ultra X Madeira 2026 · Phase 2 Build</div>
+  <div class="footer-r">Prepared for professional personal training use · Not medical advice</div>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
