@@ -109,6 +109,17 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 .note strong{color:var(--black);}
 .round-hr{font-size:11.5px;color:var(--accent);font-weight:500;letter-spacing:.03em;margin-bottom:.6rem;}
 .gif-wrap .ex-vid{object-fit:contain;background:#fff;}
+.itab{background:var(--white);border:1px solid var(--border);margin-bottom:.9rem;}
+.itab-row{display:grid;grid-template-columns:28px 1.4fr .8fr 1.3fr;gap:.5rem;padding:.75rem 1rem;border-bottom:1px solid var(--border);font-size:12.5px;align-items:center;}
+.itab-row:last-child{border-bottom:none;}
+.itab-head{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid-gray);background:var(--off-white);}
+.itab-n{color:var(--mid-gray);font-size:11px;}
+.itab-st{font-weight:500;}
+.itab-s{background:var(--black);color:#fff;border-bottom-color:#222;}
+.itab-s .itab-n{color:#777;}
+.itab-c{background:var(--accent-light);}
+.itab-c .itab-st{color:var(--accent);}
+.itab-e{color:var(--mid-gray);}
 .phase-done-badge{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid-gray);white-space:nowrap;margin-top:.2rem;padding:2px 7px;border:1px solid var(--border);}
 </style>
 </head>
@@ -154,7 +165,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <div class="phase-body">
       <div class="phase-desc">
         <strong>3× pro Woche · max. 90 Min · Maschinen · bis zum Muskelversagen</strong><br><br>
-        Eine Ganzkörper-Einheit, die du wiederholst — jeder Muskel wird 3× pro Woche trainiert, und du siehst deine Fortschritte direkt an den Gewichten. Einmal pro Woche wird daraus ein Hybrid-Tag mit StairMaster-Intervallen gegen Bauch- und Viszeralfett.<br><br>
+        Eine Ganzkörper-Einheit, die du wiederholst — jeder Muskel wird 2× pro Woche trainiert, und du siehst deine Fortschritte direkt an den Gewichten. Einmal pro Woche wird daraus ein Hybrid-Tag mit StairMaster-Intervallen gegen Bauch- und Viszeralfett.<br><br>
         Neu: ein Block für <strong>Nacken & oberen Schulterbereich</strong>, RDL und Sumo Squat mit Tempo bzw. 1¼-Technik, Hip Thrust neu eingestellt plus <strong>Glute Kickback</strong>, und Muskelversagen im letzten Satz.
       </div>
       <div class="phase-pills">
@@ -178,7 +189,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Dienstag</div><div class="sched-type">Zügiges Gehen · 45 Min</div></div>
     <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Mittwoch</div><div class="sched-type">Ganzkörper · 90 Min</div></div>
     <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Donnerstag</div><div class="sched-type">Zügiges Gehen · 45 Min</div></div>
-    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Freitag</div><div class="sched-type">Hybrid · Kraft + StairMaster 4×4</div></div>
+    <div class="sched-row"><div class="sched-dot"></div><div class="sched-day">Freitag</div><div class="sched-type">Hybrid · StairMaster 4×4 + Core</div></div>
     <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Samstag</div><div class="sched-type">Zügiges Gehen · 45 Min</div></div>
     <div class="sched-row"><div class="sched-dot rest"></div><div class="sched-day">Sonntag</div><div class="sched-type">Erholung</div></div>
   </div>
@@ -198,7 +209,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
   </div>
   <div class="sect-label">Warum dieser Plan?</div>
   <div class="info-block">
-    <p><strong>Ganzkörper 3× pro Woche.</strong> Mit begrenzter Zeit ist es effektiver, jeden Muskel öfter zu trainieren. Mehr Sätze pro Woche bringen mehr Muskelaufbau, mit abnehmendem Zusatznutzen (Pelland et al., Sports Medicine 2026). Dieselbe Einheit zu wiederholen macht deinen Fortschritt messbar.</p>
+    <p><strong>2× Ganzkörper + 1× Hybrid.</strong> Mit begrenzter Zeit ist es effektiver, jeden Muskel in jeder Einheit zu trainieren statt einzelne Muskelgruppen an einzelnen Tagen. Mehr Sätze pro Woche bringen mehr Muskelaufbau, mit abnehmendem Zusatznutzen (Pelland et al., Sports Medicine 2026). Dieselbe Einheit zu wiederholen macht deinen Fortschritt messbar.</p>
     <p><strong>Bis zum Muskelversagen.</strong> Je näher ein Satz am Muskelversagen endet, desto größer der Muskelzuwachs (Robinson et al., Sports Medicine 2024). An Maschinen ist das sicher. Bei RDL und Sumo Squat bleibt immer 1–2 Wdh Reserve — dort bringt Versagen keinen Zusatznutzen, aber Risiko für die Technik.</p>
     <p><strong>Du kannst mehr, als du denkst.</strong> Frauen ermüden bei gleicher relativer Intensität weniger und erholen sich schneller als Männer (Hunter, J Appl Physiol 2014) — dein Plan nutzt das mit mehr Sätzen und kurzen Pausen.</p>
     <p><strong>Training + Ernährung.</strong> Krafttraining in Kombination mit einem Kaloriendefizit reduzierte bei Übergewicht im Schnitt 5,3 kg Fettmasse — ohne Muskelverlust (Lopez et al., Obesity Reviews 2022). Die deutsche S3-Leitlinie empfiehlt ein Defizit von ca. 500 kcal pro Tag. Das Training entscheidet, <em>was</em> du verlierst: Fett statt Muskeln.</p>
@@ -211,7 +222,7 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
   <div class="wi">
     <div class="wi-label">Tag 1 & Tag 2 · gleiche Einheit</div>
     <div class="wi-title">Ganzkörper · Maschinen</div>
-    <div class="wi-desc">Eine Einheit, die du jedes Mal wiederholst — so siehst du Woche für Woche, wie deine Gewichte steigen. Jeder Muskel wird 3× pro Woche trainiert (Tag 3 = Hybrid).</div>
+    <div class="wi-desc">Eine Einheit, die du jedes Mal wiederholst — so siehst du Woche für Woche, wie deine Gewichte steigen. Jeder Muskel wird 2× pro Woche trainiert, Tag 3 ist der Hybrid-Tag.</div>
     <div class="wi-meta">
       <span class="wi-meta-item">ca. 90 Min</span>
       <span class="wi-meta-item">6–15 Wdh</span>
@@ -461,16 +472,15 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
 <div id="page-hy" class="page">
   <div class="wi">
     <div class="wi-label">Tag 3 · Hybrid</div>
-    <div class="wi-title">Kraft + StairMaster 4×4</div>
-    <div class="wi-desc">Erst der Unterkörper an den Maschinen, dann einmal hoch zum StairMaster. Dort wechselst du 4× zwischen hartem Intervall und Core-Übungen am Kabelzug direkt daneben — kein Etagenwechsel während der Intervalle.</div>
+    <div class="wi-title">StairMaster 4×4 + Core</div>
+    <div class="wi-desc">StairMaster im Wechsel mit Core-Übungen.</div>
     <div class="wi-meta">
-      <span class="wi-meta-item">ca. 85–90 Min</span>
+      <span class="wi-meta-item">ca. 50 Min</span>
       <span class="wi-meta-item">4 × 4 Min</span>
       <span class="wi-meta-item">85–95 % HFmax</span>
     </div>
   </div>
   <div class="note"><strong>Ziel dieses Tages: Bauch- und Viszeralfett.</strong> Ausdauertraining ist die wirksamste Trainingsform, um Fett im Bauchraum und an den Organen (Viszeralfett) zu reduzieren (EASO-Empfehlungen, Obesity Reviews 2021). Intervalle schaffen das in deutlich kürzerer Zeit.</div>
-  <div class="note"><strong>Vorbereitung oben:</strong> Richte dir vor dem Start einen <strong>Kabelzug</strong> nahe am StairMaster ein (Griff + Seil) und lege dir einen <strong>Sandbag</strong> bereit. Herzfrequenz-Gurt oder Uhr tragen.</div>
   <div class="sect-label">Aufwärmen & Nacken · ca. 14 Min</div>
   <div class="ex" id="ex-ctr-h">
     <div class="ex-vid-wrap" onclick="playVid('vid-ctr-h','ex-ctr-h')">
@@ -487,107 +497,55 @@ body{font-family:'Inter',sans-serif;background:var(--off-white);color:var(--blac
     <div class="simple-item"><div class="si-num">01</div><div><div class="si-name">Chin Tuck Hold</div><div class="si-detail">2 × 8 × 5 Sek</div></div></div>
     <div class="simple-item"><div class="si-num">02</div><div><div class="si-name">Nacken-Isometrie · 4 Richtungen</div><div class="si-detail">2 Runden · je 10 Sek · Intensität wie in der aktuellen Woche</div></div></div>
   </div>
-  <div class="sect-label">Teil 1 · Unterkörper an den Maschinen · ca. 25 Min</div>
-  <div class="ex" id="ex-rdl-h">
-    <div class="ex-vid-wrap" onclick="playVid('vid-rdl-h','ex-rdl-h')">
-      <video id="vid-rdl-h" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/14591201-Dumbbell-Romanian-Deadlift_Hips.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Romanian Deadlift · Smith Machine · Tempo 3-1-1</div><button class="ex-check" onclick="toggleDone('ex-rdl-h')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">4 Sets · 6–10 Wdh · 2 Min Pause</div>
-      <div class="ex-cue"><strong>Neu:</strong> 3 Sek kontrolliert absenken, 1 Sek Pause in der tiefsten Dehnung (Stange unterhalb der Knie), dann kraftvoll hoch. Hüfte nach hinten schieben, Knie leicht gebeugt, Wirbelsäule neutral, Blick schräg nach unten.<br><br><strong>Kein Muskelversagen</strong> — jeder Satz endet mit 1–2 Wdh im Tank.</div>
-      <div class="ex-alt"><b>Alternative</b>Smith besetzt → Kurzhantel-RDL mit gleichem Tempo.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-rdl-h')">Warum diese Übung</button>
-      <div class="ex-why" id="why-rdl-h"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Muskelaufbau ist in der gedehnten Position besonders effektiv — Training mit Fokus auf langen Muskellängen erzielte bei untrainierten Frauen vergleichbares oder besseres Wachstum als volle Bewegungsamplitude (Pedrosa et al., 2022). Die Pause nimmt den Schwung raus. Muskelversagen ist für den Muskelaufbau nicht nötig (Refalo et al., Sports Medicine 2022) — beim RDL würde es nur die Technik und den unteren Rücken gefährden.</div></div>
-    </div>
+  <div class="sect-label">StairMaster 4×4 · ca. 30 Min</div>
+  <div class="itab">
+    <div class="itab-row itab-head"><div>#</div><div>Station</div><div>Dauer</div><div>Stufe / Wdh</div></div>
+    <div class="itab-row itab-s"><div class="itab-n">1</div><div class="itab-st">StairMaster</div><div>4 Min</div><div>Stufe 6–8</div></div>
+    <div class="itab-row itab-c"><div class="itab-n">2</div><div class="itab-st">Pallof Press</div><div>3 Min</div><div>2 × 10 pro Seite</div></div>
+    <div class="itab-row itab-s"><div class="itab-n">3</div><div class="itab-st">StairMaster</div><div>4 Min</div><div>Stufe 6–8</div></div>
+    <div class="itab-row itab-c"><div class="itab-n">4</div><div class="itab-st">Cable Crunch</div><div>3 Min</div><div>2 × 12–15</div></div>
+    <div class="itab-row itab-s"><div class="itab-n">5</div><div class="itab-st">StairMaster</div><div>4 Min</div><div>Stufe 6–8</div></div>
+    <div class="itab-row itab-c"><div class="itab-n">6</div><div class="itab-st">Sandbag Lunges</div><div>3 Min</div><div>2 × 10 pro Bein</div></div>
+    <div class="itab-row itab-s"><div class="itab-n">7</div><div class="itab-st">StairMaster</div><div>4 Min</div><div>Stufe 6–8</div></div>
+    <div class="itab-row itab-e"><div class="itab-n">8</div><div class="itab-st">Cool-down</div><div>5 Min</div><div>StairMaster Stufe 3 + Stretching</div></div>
   </div>
-  <div class="ex" id="ex-ssq-h">
-    <div class="ex-vid-wrap" onclick="playVid('vid-ssq-h','ex-ssq-h')">
-      <video id="vid-ssq-h" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/50731201-Kettlebell-Sumo-Squat-(VERSION-2)_Hips_.mp4" loop muted playsinline preload="none"></video>
-      <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Sumo Squat · Smith Machine · „1¼ Wiederholungen“</div><button class="ex-check" onclick="toggleDone('ex-ssq-h')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">3 Sets · 8–10 Wdh · 2 Min Pause</div>
-      <div class="ex-cue"><strong>Neu:</strong> Tief runter → ¼ hochkommen → wieder ganz runter → komplett hoch = 1 Wdh. Füsse weit, Zehen 30–45° nach aussen, Knie folgen den Zehen. Brust auf, Schulterblätter zurück.<br><br><strong>Kein Muskelversagen</strong> — jeder Satz endet mit 1–2 Wdh im Tank.</div>
-      <div class="ex-alt"><b>Alternative</b>Smith besetzt → Kettlebell-Sumo-Squat mit beiden Füssen auf zwei Stepper-Plattformen (mehr Tiefe), ebenfalls 1¼.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-ssq-h')">Warum diese Übung</button>
-      <div class="ex-why" id="why-ssq-h"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Die zusätzliche Viertel-Wiederholung verdoppelt die Zeit in der tiefen, gedehnten Position — dort, wo Gesäß und Adduktoren am stärksten arbeiten. Kniebeugen bauen das Gesäß ähnlich effektiv auf wie Hip Thrusts und trainieren zusätzlich Quadrizeps und Adduktoren (Plotkin et al., Frontiers in Physiology 2023 — 23 von 34 Teilnehmenden waren Frauen).</div></div>
-    </div>
-  </div>
-  <div class="ex" id="ex-lcu-h">
-    <div class="ex-vid-wrap gif-wrap">
-      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/seated_leg_curl.gif" alt="Beinbeuger sitzend (Seated Leg Curl)">
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Beinbeuger sitzend (Seated Leg Curl)</div><button class="ex-check" onclick="toggleDone('ex-lcu-h')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">2 Sets · 10–12 Wdh</div>
-      <div class="ex-cue">Oberkörper aufrecht oder leicht nach vorne gelehnt, Polster knapp über den Fersen. Fersen kraftvoll Richtung Po, 3 Sek zurück bis zur vollen Dehnung.<br><br><strong>Letzter Satz bis zum Muskelversagen</strong> — an der Maschine sicher. Danach Teilwiederholungen nur im gedehnten Bereich, bis nichts mehr geht.</div>
-      <div class="ex-alt"><b>Alternative</b>Kein Sitz-Beinbeuger frei → liegender Beinbeuger, gleiche Technik.</div>
-      <button class="ex-why-btn" onclick="toggleWhy('why-lcu-h')">Warum diese Übung</button>
-      <div class="ex-why" id="why-lcu-h"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Im Sitzen sind die Hamstrings durch die gebeugte Hüfte gedehnt: Der sitzende Leg Curl erzeugte 14 % Muskelzuwachs gegenüber 9 % im Liegen (Maeo et al., MSSE 2021). Teilwiederholungen in der Dehnung bauen bei Frauen nachweislich Muskulatur auf (Kassiano et al., 2023; Pedrosa et al., 2022).</div></div>
-    </div>
-  </div>
-  <div class="sect-label">Teil 2 · StairMaster 4×4 · ca. 32 Min</div>
+  <div class="note"><strong>Stufe & Puls:</strong> Die Stufe ist ein Startwert. Entscheidend ist dein Puls: Am Ende jedes StairMaster-Intervalls solltest du bei <strong>ca. 160–175 Schlägen/Min</strong> sein (85–95 % HFmax) — du kannst nur noch einzelne Worte sprechen. Zu leicht → 1 Stufe höher. Zu schwer → 1 Stufe runter.<br><br><strong>Woche 1–2:</strong> StairMaster je 3 Min · <strong>ab Woche 3:</strong> je 4 Min.</div>
   <div class="ex" id="ex-stm">
     <div class="ex-vid-wrap" onclick="playVid('vid-stm','ex-stm')">
       <video id="vid-stm" class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/23111201-Walking-on-Stepmill_Cardio.mp4" loop muted playsinline preload="none"></video>
       <div class="ex-overlay"><div class="play-btn"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><polygon points="0,0 14,8 0,16"/></svg></div></div>
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">StairMaster-Intervall · so gehst du vor</div><button class="ex-check" onclick="toggleDone('ex-stm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">4 Runden · 4 Min hart → 3–4 Min Core am Kabelzug</div>
-      <div class="ex-cue"><strong>Intervall:</strong> Stufe so wählen, dass du nach ca. 2 Min bei <strong>85–95 % deiner max. Herzfrequenz</strong> bist (Borg 16–17: du kannst nur noch einzelne Worte sprechen). Aufrecht, Kinn neutral, nicht über das Display lehnen. Leichter Griffkontakt zur Balance ist ok — nicht abstützen.<br><br><strong>Woche 1–2:</strong> 4 × 3 Min · <strong>ab Woche 3:</strong> 4 × 4 Min · Ziel-HF wird leichter erreicht → nächste Stufe.<br><br>Knie melden sich? Gleiches 4×4 auf dem Crosstrainer.</div>
+      <div class="ex-top-row"><div class="ex-name">StairMaster · Technik</div><button class="ex-check" onclick="toggleDone('ex-stm')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">4 Intervalle · Stufe 6–8</div>
+      <div class="ex-cue">Aufrecht, Kinn neutral, nicht über das Display lehnen. Leichter Griffkontakt zur Balance ist ok — nicht abstützen. Ganzen Fuß auf die Stufe setzen.<br><br>Knie melden sich? Gleiches 4×4 auf dem Crosstrainer.</div>
       <button class="ex-why-btn" onclick="toggleWhy('why-stm')">Warum diese Übung</button>
-      <div class="ex-why" id="why-stm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Intervalltraining reduzierte die absolute Fettmasse um 28,5 % stärker als gleichmäßiges Ausdauertraining (Viana et al., BJSM 2019). Bei jungen Frauen mit Adipositas senkten Intervalle das Viszeralfett genauso stark wie langes Ausdauertraining — in kürzerer Zeit (Zhang et al., 2017). Bei Erwachsenen mit Adipositas führte HIIT zum gleichen Gewichtsverlust wie moderates Ausdauertraining in 35 statt 46 Minuten pro Einheit, mit deutlich größerem Fitnesszuwachs (BMJ Open Sport & Exercise Medicine 2021). Der Stepper hat keine Abwärtsbewegung — die gelenkschonendste Treppenvariante.</div></div>
+      <div class="ex-why" id="why-stm"><div class="ex-why-label">Wissenschaftlicher Hintergrund</div><div class="ex-why-text">Intervalltraining reduzierte die absolute Fettmasse um 28,5 % stärker als gleichmäßiges Ausdauertraining (Viana et al., BJSM 2019). Bei jungen Frauen mit Adipositas senkten Intervalle das Viszeralfett genauso stark wie langes Ausdauertraining — in kürzerer Zeit (Zhang et al., 2017). Bei Erwachsenen mit Adipositas führte HIIT zum gleichen Gewichtsverlust wie moderates Ausdauertraining in 35 statt 46 Minuten pro Einheit (BMJ Open Sport & Exercise Medicine 2021). Der Stepper hat keine Abwärtsbewegung — die gelenkschonendste Treppenvariante. Core-Übungen in der Pause halten den Puls im Erholungsbereich, während sich die Beine erholen; bei Frauen beeinträchtigt die Kombination den Kraftzuwachs nicht (Huiberts et al., Sports Medicine 2024).</div></div>
     </div>
   </div>
-  <div class="note"><strong>Warum Core in der Pause?</strong> Beim 4×4 folgt jedem Intervall eine aktive Erholung bei ca. 70 % HFmax. Core-Übungen halten deinen Puls in diesem Bereich, während sich die Beine erholen. Bei Frauen beeinträchtigt die Kombination von Ausdauer- und Krafttraining den Kraftzuwachs nicht (Huiberts et al., Sports Medicine 2024).</div>
-  <div class="ex" id="ex-r1">
+  <div class="ex" id="ex-pal-h">
     <div class="ex-vid-wrap gif-wrap">
-      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/palloff_press.gif" alt="Runde 1">
+      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/media/palloff_press.gif" alt="Pallof Press">
     </div>
     <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Runde 1</div><button class="ex-check" onclick="toggleDone('ex-r1')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">4 Min StairMaster · dann Core · dann direkt zurück</div>
-      <div class="round-hr">Pallof Press · 2 × 10 pro Seite</div>
-      <div class="ex-cue"><strong>Pallof Press:</strong> Seitlich zum Kabel, Seil auf Brusthöhe, nach vorne drücken, 2 Sek halten. Rumpf dreht sich nicht.</div>
-      <div class="ex-alt"><b>Alternative</b>Kabel-Pulldown im Halbkniestand statt Pallof Press.</div>
+      <div class="ex-top-row"><div class="ex-name">Pallof Press</div><button class="ex-check" onclick="toggleDone('ex-pal-h')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">Station 2 · 2 Sets · 10 Wdh pro Seite · 2 Sek halten</div>
+      <div class="ex-cue">Seitlich zum Kabelzug, Seil auf Brusthöhe. Nach vorne drücken, 2 Sek halten — der Rumpf dreht sich nicht. Seite wechseln.</div>
     </div>
   </div>
-  <div class="ex" id="ex-r2">
-    <div class="ex-vid-wrap gif-wrap">
-      <img class="ex-vid" src="https://raw.githubusercontent.com/gaetanemagali/personal_training/main/Cathleen_Schuettendieb/one_arm_pulldown.png" alt="Runde 2">
-    </div>
-    <div class="ex-body">
-      <div class="ex-top-row"><div class="ex-name">Runde 2</div><button class="ex-check" onclick="toggleDone('ex-r2')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">4 Min StairMaster · dann Core · dann direkt zurück</div>
-      <div class="round-hr">Kabel-Pulldown im Halbkniestand · 2 × 12 pro Seite</div>
-      <div class="ex-cue"><strong>Halbkniestand</strong> vor dem Kabel (oben eingestellt), einarmig. Ellbogen Richtung Hüfte ziehen — Bauch fest, Becken gerade, der Oberkörper kippt und dreht nicht. Der Core arbeitet gegen die Zugkraft.</div>
-      <div class="ex-alt"><b>Alternative</b>Pallof Press statt Kabel-Pulldown.</div>
-    </div>
-  </div>
-  <div class="ex" id="ex-r3">
+  <div class="ex" id="ex-ccr">
     <div class="ex-body-top">
-      <div class="ex-top-row"><div class="ex-name">Runde 3</div><button class="ex-check" onclick="toggleDone('ex-r3')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">4 Min StairMaster · dann Core · dann direkt zurück</div>
-      <div class="round-hr">Sandbag Lunges · 2 × 10 pro Bein</div>
-      <div class="ex-cue">Sandbag vor der Brust umarmen (Front Hold) oder auf einer Schulter. Großer Schritt, hinteres Knie kontrolliert Richtung Boden, Oberkörper aufrecht, Bauch fest. Ruhiges Tempo — der Puls soll sinken, nicht steigen.</div>
+      <div class="ex-top-row"><div class="ex-name">Cable Crunch · kniend</div><button class="ex-check" onclick="toggleDone('ex-ccr')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">Station 4 · 2 Sets · 12–15 Wdh</div>
+      <div class="ex-cue">Vor dem Kabelzug knien, Seil oben eingehängt. Seilenden auf Höhe der Stirn halten, Kinn leicht eingezogen. Oberkörper einrollen — Rippen Richtung Becken. <strong>Die Bewegung kommt aus dem Bauch</strong>, nicht aus Armen oder Nacken. Hüfte bleibt ruhig.</div>
     </div>
   </div>
-  <div class="ex" id="ex-r4">
+  <div class="ex" id="ex-sbl">
     <div class="ex-body-top">
-      <div class="ex-top-row"><div class="ex-name">Runde 4</div><button class="ex-check" onclick="toggleDone('ex-r4')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-      <div class="ex-reps">4 Min StairMaster · dann Core · dann direkt zurück</div>
-      <div class="round-hr">Pallof Press × 10 pro Seite + Kabel-Pulldown × 12 pro Seite</div>
-      <div class="ex-cue">Abschluss-Runde: beide Core-Übungen nacheinander, je 1 Satz.</div>
+      <div class="ex-top-row"><div class="ex-name">Sandbag Lunges</div><button class="ex-check" onclick="toggleDone('ex-sbl')"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="ex-reps">Station 6 · 2 Sets · 10 Wdh pro Bein</div>
+      <div class="ex-cue">Sandbag vor der Brust umarmen. Großer Schritt, hinteres Knie kontrolliert Richtung Boden, Oberkörper aufrecht, Bauch fest. Ruhiges Tempo — der Puls soll sinken, nicht steigen.</div>
     </div>
-  </div>
-  <div class="finisher">
-    <div class="fin-label">Cool-down</div>
-    <div class="fin-name">3 Min StairMaster locker + Stretching</div>
-    <div class="fin-desc">Thread the Needle · Hip Flexor to Hamstring Stretch. Puls unter 120 bringen, bevor du die Treppe nimmst.</div>
   </div>
 </div>
 <!-- ══ MESSUNGEN ══ -->
