@@ -165,6 +165,12 @@ section.block{padding-block:56px 0}
 .info p{font-size:14.5px;color:var(--fg)}
 .exs{display:grid;gap:10px;margin-top:12px}
 .ex{background:var(--card);border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:6px 16px;align-items:start;transition:box-shadow .2s}
+.media{grid-column:1 / -1;position:relative;margin:-6px -8px 14px;border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9;max-width:calc(100% + 16px);cursor:pointer}
+.media video,.media img{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.media .play{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .2s;pointer-events:none}
+.media .play span{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.media.playing .play{opacity:0}
+.ex.has-media .check{grid-row:2 / 4}
 .ex .no{font-family:var(--serif);font-size:1.6rem;line-height:1;color:var(--dim)}
 .ex h4{font-family:var(--serif);font-size:1.45rem;line-height:1.1;letter-spacing:-.3px}
 .ex .dose{grid-column:2;font-size:13px;color:var(--c);font-variant-numeric:tabular-nums}
@@ -422,11 +428,11 @@ footer .mark sup{font-size:.45em}
       intro:'Glutes and hamstrings. Heavy, slow and controlled.',
       warm:{gym:'5 min hard on the StairMaster.',home:homeLegWarm},
       gym:[
-        ['Smith machine hip thrust','4 × 6–8 · rest 1 min','Chin tucked, ribs down. Drive through your heels and pause one second at the top.','Side'],
-        ['Dumbbell Romanian deadlift','3 × 6–8 · rest 1 min','Soft knees, push your hips back until you feel your hamstrings. The dumbbells stay close to your legs.','Side'],
-        ['Leg press, feet high and wide','3 × 6–8 · rest 1 min','Lower until your hips want to tuck under, then press through your heels.','Side, 45°'],
-        ['Seated or lying leg curl','3 × 8–10 · rest 1 min','Hips pressed into the pad. Curl quickly, lower over 3 seconds.','Side'],
-        ['Hip abductor machine','3 × 10–12 · rest 1 min','Heavy. Lean slightly forward, push out, hold for one second.','Front'],
+        ['Smith machine hip thrust','4 × 6–8 · rest 1 min','Chin tucked, ribs down. Drive through your heels and pause one second at the top.','Side','barbell-hip-thrust.mp4'],
+        ['Dumbbell Romanian deadlift','3 × 6–8 · rest 1 min','Soft knees, push your hips back until you feel your hamstrings. The dumbbells stay close to your legs.','Side','romanian_deadlift.mp4'],
+        ['Leg press, feet high and wide','3 × 6–8 · rest 1 min','Lower until your hips want to tuck under, then press through your heels.','Side, 45°','leg_press 2.mp4'],
+        ['Seated or lying leg curl','3 × 8–10 · rest 1 min','Hips pressed into the pad. Curl quickly, lower over 3 seconds.','Side','seated-leg-curl.mp4'],
+        ['Hip abductor machine','3 × 10–12 · rest 1 min','Heavy. Lean slightly forward, push out, hold for one second.','Front','hip_abduction.gif'],
         ['Dead bug + side plank','2 × 8/side + 2 × 30 s/side · rest 1 min','Lower back stays on the floor. Breathe out as your arm and leg reach away.','Side']],
       home:[
         ['Single-leg hip thrust','3 × 10–15/leg · rest 1 min','Shoulders on the sofa or a slightly raised flat surface, one foot planted. Push your hip high and keep your pelvis level.','Side'],
@@ -439,11 +445,11 @@ footer .mark sup{font-size:.45em}
       intro:'A strong back and shoulders to frame your waist.',
       warm:{gym:'5 min elliptical, then miniband pull-aparts ×15 and miniband overhead pull-aparts ×10.',home:'Easy jog on the spot for 3 min, arm circles ×10 each way, miniband pull-aparts ×15.'},
       gym:[
-        ['Lat pulldown, neutral or wide grip','4 × 6–8 · rest 1 min','Chest up. Pull your elbows down towards your back pockets.','Side'],
-        ['Incline dumbbell press','3 × 6–8 · rest 1 min','Bench at about 30°, shoulder blades pinched. Lower to chest level.','Side'],
-        ['Seated row machine','3 × 6–8 · rest 1 min','Sit tall, pull to your belly button, squeeze your shoulder blades together.','Side'],
-        ['Dumbbell lateral raise','3 × 8–10 · rest 1 min','Lead with your elbows and stop at shoulder height. Slow on the way down.','Front'],
-        ['Superset: overhead triceps extension + hammer curl','3 × 8–10 each · rest 1 min','Elbows point to the ceiling for the extension and stay at your sides for the curl.','Side'],
+        ['Lat pulldown, neutral or wide grip','4 × 6–8 · rest 1 min','Chest up. Pull your elbows down towards your back pockets.','Side','lat-pulldown-female 3.mp4'],
+        ['Incline dumbbell press','3 × 6–8 · rest 1 min','Bench at about 30°, shoulder blades pinched. Lower to chest level.','Side','incline_dumbell_press 2.mp4'],
+        ['Seated row machine','3 × 6–8 · rest 1 min','Sit tall, pull to your belly button, squeeze your shoulder blades together.','Side','02181201-Cable-Seated-Wide-grip-Row_Back.mp4'],
+        ['Dumbbell lateral raise','3 × 8–10 · rest 1 min','Lead with your elbows and stop at shoulder height. Slow on the way down.','Front','dumbell_lateral_raise.gif'],
+        ['Superset: overhead triceps extension + hammer curl','3 × 8–10 each · rest 1 min','Elbows point to the ceiling for the extension and stay at your sides for the curl.','Side','hammer-curls.mp4'],
         ['Core: ab crunch machine · dead bug · side plank with reach-through','3 × 12 · 3 × 8/side · 2 × 30 s/side · rest 1 min','Crunch by rolling your ribs towards your hips. Don’t pull with your arms.','Side']],
       home:[
         ['Bent-over row with a backpack','3 × 10–15 · 3 s down · rest 1 min','Both hands on a loaded backpack, hinge forward with a flat back. Pull it to your belly button.','Side'],
@@ -456,12 +462,12 @@ footer .mark sup{font-size:.45em}
       intro:'Legs and single-leg strength. Heavy first, then the details.',
       warm:{gym:'5 min on the StairMaster.',home:homeLegWarm},
       gym:[
-        ['Smith machine squat, feet slightly forward','4 × 6–8 · rest 1 min','Feet a little in front of the bar. Sit down between your heels, chest proud.','Side'],
-        ['Smith machine Romanian deadlift','3 × 6–8 · rest 1 min','Same hinge as Monday. The bar slides along your thighs.','Side'],
-        ['Dumbbell Bulgarian split squat, slight forward lean','3 × 8–10/leg · rest 1 min','A slight forward lean puts the work into your glutes. Front knee tracks over your toes.','Side + front'],
+        ['Smith machine squat, feet slightly forward','4 × 6–8 · rest 1 min','Feet a little in front of the bar. Sit down between your heels, chest proud.','Side','barbell_back_squat 2.mp4'],
+        ['Smith machine Romanian deadlift','3 × 6–8 · rest 1 min','Same hinge as Monday. The bar slides along your thighs.','Side','romanian_deadlift.mp4'],
+        ['Dumbbell Bulgarian split squat, slight forward lean','3 × 8–10/leg · rest 1 min','A slight forward lean puts the work into your glutes. Front knee tracks over your toes.','Side + front','bulgarian-split-squat-male 2.mp4'],
         ['Leg extension','3 × 8–10 · rest 1 min','Pause for one second at the top, lower slowly.','Side'],
         ['Cable kickback','3 × 10–12/leg · rest 1 min','Hips square. Kick back and slightly out, squeeze, don’t swing.','Side'],
-        ['Hip abductor machine','3 × 10–12 · rest 1 min','Heavy. Lean slightly forward, push out, hold for one second.','Front']],
+        ['Hip abductor machine','3 × 10–12 · rest 1 min','Heavy. Lean slightly forward, push out, hold for one second.','Front','hip_abduction.gif']],
       home:[
         ['Backpack goblet squat','3 × 12–15 · 3 s down · rest 1 min','Backpack hugged to your chest. Three seconds down, strong on the way up.','Side'],
         ['B-stance Romanian deadlift with backpack','3 × 10–12/leg · rest 1 min','Back foot only on its toes for balance. Most of the weight on the front leg.','Side'],
@@ -471,6 +477,12 @@ footer .mark sup{font-size:.45em}
         ['Miniband lateral walk','2 × 15 steps/side · rest 1 min','Knees soft, toes forward. Small steps, keep the band tight.','Front']]}
   };
   function esc(s){return s.replace(/"/g,'&quot;')}
+  function mediaHtml(f,name){
+    if(!f)return '';
+    var src=encodeURI(f), alt=esc(name);
+    if(/\.gif$/i.test(f))return '<div class="media"><img src="'+src+'" alt="'+alt+'" loading="lazy"></div>';
+    return '<div class="media" data-video><video src="'+src+'#t=0.1" preload="metadata" muted loop playsinline aria-label="'+alt+'"></video><div class="play" aria-hidden="true"><span><svg width="18" height="20" viewBox="0 0 18 20"><path d="M3 1l14 9-14 9z" fill="#fff"/></svg></span></div></div>';
+  }
   function renderSession(key){
     var s=S[key], el=document.getElementById('p-'+key);
     var mode=load('mode-'+key,'gym'), done=load('done-'+key+'-'+mode,[]), tone='var(--'+s.tone+')';
@@ -480,7 +492,7 @@ footer .mark sup{font-size:.45em}
       '<div class="exs" style="--c:'+tone+'">';
     s[mode].forEach(function(e,i){
       var d=done.indexOf(i)>-1;
-      h+='<div class="ex'+(d?' done':'')+'"><span class="no">'+(i+1)+'</span><h4>'+e[0]+'</h4>'+
+      h+='<div class="ex'+(d?' done':'')+(e[4]?' has-media':'')+'">'+mediaHtml(e[4],e[0])+'<span class="no">'+(i+1)+'</span><h4>'+e[0]+'</h4>'+
         '<button type="button" class="check" data-i="'+i+'" aria-pressed="'+d+'" aria-label="Mark '+esc(e[0])+' as done"><svg width="14" height="11" viewBox="0 0 14 11" aria-hidden="true"><path d="M1 5.5l4 4 8-8" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>'+
         '<span class="dose">'+e[1]+'</span><p class="cue">'+e[2]+'</p><span class="film">Film from: '+e[3]+'</span></div>';
     });
@@ -493,6 +505,7 @@ footer .mark sup{font-size:.45em}
       save('done-'+key+'-'+mode,arr);
       b.closest('.ex').classList.toggle('done');b.setAttribute('aria-pressed',p===-1);
     }});
+    el.querySelectorAll('[data-video]').forEach(function(m){m.onclick=function(){var v=m.querySelector('video');if(v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){});m.classList.add('playing')}else{v.pause();m.classList.remove('playing')}}});
     el.querySelector('.reset').onclick=function(){save('done-'+key+'-'+mode,[]);renderSession(key)};
   }
   ['lowera','upper','lowerb'].forEach(renderSession);
